@@ -5,10 +5,13 @@ import org.springframework.beans.factory.InitializingBean;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 
+@Component
+@Service
 public class Cat  {
     private String name;
     private String secretField;

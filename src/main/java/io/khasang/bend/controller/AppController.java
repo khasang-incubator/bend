@@ -20,8 +20,7 @@ public class AppController {
     @RequestMapping("/cat")
     public String getHelloPage(Model model) {
         model.addAttribute("name", cat.getName());
-        model.addAttribute("description", cat.getSecretField());
-        return "cat";
+        return "hello";
     }
 
     @Autowired
