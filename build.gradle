@@ -3,7 +3,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.5.19.RELEASE")
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:2.1.3.RELEASE")
     }
 }
 
@@ -11,7 +11,7 @@ apply plugin: 'java'
 apply plugin: 'idea'
 apply plugin: 'application'
 apply plugin: 'org.springframework.boot'
-apply plugin: 'war'
+apply plugin: 'io.spring.dependency-management'
 
 group 'bend'
 version '1.0-SNAPSHOT'
