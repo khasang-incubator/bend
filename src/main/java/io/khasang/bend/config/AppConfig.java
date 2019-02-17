@@ -1,10 +1,10 @@
 package io.khasang.bend.config;
 
-import io.khasang.bend.model.Cat;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 
 @Configuration
+@EnableAspectJAutoProxy
 public class AppConfig {
 //
 //    @Bean

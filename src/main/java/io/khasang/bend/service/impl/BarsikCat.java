@@ -1,31 +1,25 @@
-package io.khasang.bend.model;
+package io.khasang.bend.service.impl;
 
-import org.springframework.beans.factory.DisposableBean;
-import org.springframework.beans.factory.InitializingBean;
-import org.springframework.context.ApplicationContextAware;
-import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Component;
+import io.khasang.bend.service.Cat;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 
-@Component
 @Service
-public class Cat  {
+public class BarsikCat implements Cat {
     private String name;
     private String secretField;
 
-    public Cat(String name, String secretField) {
+    public BarsikCat(String name, String secretField) {
         this.name = name;
         this.secretField = secretField;
     }
 
-    public Cat() {
+    public BarsikCat() {
     }
 
     public String getName() {
-        return name;
+        return "Barsik";
     }
 
     public void setName(String name) {
@@ -39,7 +33,8 @@ public class Cat  {
     public void setSecretField(String secretField) {
         this.secretField = secretField;
     }
-//
+
+    //
 //    @Override
 //    public void afterPropertiesSet() throws Exception {
 //
