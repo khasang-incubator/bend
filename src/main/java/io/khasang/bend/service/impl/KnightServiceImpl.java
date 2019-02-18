@@ -7,16 +7,16 @@ import org.springframework.stereotype.Service;
 public class KnightServiceImpl implements KnightService {
 
     @Override
-    public String getAchievement(String val) {
+    public String getAchievement(String val) throws IllegalArgumentException {
         try {
             Thread.sleep(100);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
         if (val.equalsIgnoreCase("dragon")) {
-            throw new IllegalArgumentException("I can't slave a dragon!");
+            System.err.println("I can't enslaved a dragon!");
+            throw new IllegalArgumentException("I can't enslaved a dragon!");
         }
-        return "I am slave a " + val + "!";
+        return "I enslaved a " + val + "!";
     }
-
 }

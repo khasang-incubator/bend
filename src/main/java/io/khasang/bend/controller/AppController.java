@@ -13,9 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @ImportResource(value = "classpath:ioc.xml")
 public class AppController {
-    //        private ApplicationContext context = new ClassPathXmlApplicationContext("ioc.xml");
+//    private ApplicationContext context = new ClassPathXmlApplicationContext("ioc.xml");
 //    private Cat cat = context.getBean("cat", Cat.class);
-    // not recommended
+//    not recommended
     private final Cat cat;
     private final KnightService knightService;
 
