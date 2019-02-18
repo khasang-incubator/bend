@@ -16,7 +16,7 @@ public class KnightServiceImpl implements KnightService {
         if (val.equalsIgnoreCase("dragon")) {
             throw new IllegalArgumentException("I can't slave a dragon!");
         }
-        return "I am slave a " + val + "!";
+        return "I slave a " + val + "!";
     }
 
 }
