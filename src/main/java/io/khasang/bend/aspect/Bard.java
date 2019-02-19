@@ -2,10 +2,7 @@ package io.khasang.bend.aspect;
 
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
-import org.aspectj.lang.annotation.Around;
-import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Before;
-import org.aspectj.lang.annotation.Pointcut;
+import org.aspectj.lang.annotation.*;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -33,5 +30,20 @@ public class Bard {
         return obj;
     }
 
+    @AfterThrowing(pointcut = "execution(* io.khasang.bend.service.impl.KnightServiceImpl.getAchievement(..))", throwing = "ex")
+    public void bardSingSongOfUpset(Throwable ex) throws Throwable {
+        System.err.println("Something awfull has happened and knight could not solve his sacral mission :( this is how it happened in details:");
+        ex.printStackTrace();
+        System.err.println("May be it was a.... ddddrrragonnnn?   =$");
+    }
 
+    @AfterReturning(pointcut="execution(* io.khasang.bend.service.impl.KnightServiceImpl.getAchievement(..))", returning="retVal")
+    public void bardIsApprovingSuccess(Object retVal) {
+        System.err.println("Knight successfully crushed a "+ retVal);
+    }
+
+    @After("execution(* io.khasang.bend.service.impl.KnightServiceImpl.getAchievement(..))")
+    public void bardConstitutingFact() {
+        System.err.println("singing a song... anyway... he is brave, he have tried.... ");
+    }
 }
