@@ -36,7 +36,7 @@ public class AppController {
 
     @RequestMapping("/create")
     public String getTableCreateStatus(Model model) {
-        model.addAttribute("name", createTable.getTableCreationStatus("cats"));
+        model.addAttribute("name", createTable.getAllCatsByName(1L));
         return "create";
     }
 

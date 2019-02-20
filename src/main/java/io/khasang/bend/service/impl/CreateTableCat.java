@@ -11,17 +11,17 @@ public class CreateTableCat implements CreateTable {
     private JdbcTemplate jdbcTemplate;
 
     @Override
-    public String getTableCreationStatus(String val) {
+    public String getAllCatsByName(Long id) {
+        String query = "select * from cats where cat_id = ?";
+
         try {
-            jdbcTemplate.execute("DROP TABLE IF EXISTS " + val);
-            jdbcTemplate.execute("CREATE TABLE public.cats\n" +
-                    "(\n" +
-                    "    cat_id bigint NOT NULL,\n" +
-                    "    description character varying(255),\n" +
-                    "    name character varying(255),\n" +
-                    "    CONSTRAINT cats_pkey PRIMARY KEY (cat_id)\n" +
-                    ")");
-            return "table created";
+            BarsikCat cat = jdbcTemplate.queryForObject(query, new Object[]{id}, (rs, rowNum) -> {
+                BarsikCat cat1 = new BarsikCat();
+                cat1.setName(rs.getString("name"));
+                cat1.setSecretField(rs.getString("description"));
+                return cat1;
+            });
+            return cat.toString();
         } catch (BadSqlGrammarException e) {
             return "table creation failed";
         }
@@ -35,4 +35,5 @@ public class CreateTableCat implements CreateTable {
     public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
+
 }

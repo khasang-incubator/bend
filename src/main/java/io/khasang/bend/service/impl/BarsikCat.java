@@ -7,8 +7,17 @@ import javax.annotation.PreDestroy;
 
 @Service
 public class BarsikCat implements Cat {
+    private Long id;
     private String name;
     private String secretField;
+
+    @Override
+    public String toString() {
+        return "BarsikCat{" +
+                "name='" + name + '\'' +
+                ", secretField='" + secretField + '\'' +
+                '}';
+    }
 
     public BarsikCat(String name, String secretField) {
         this.name = name;
@@ -45,4 +54,11 @@ public class BarsikCat implements Cat {
         System.out.println("!!!!!!adadad");
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 }
