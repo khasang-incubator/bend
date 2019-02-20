@@ -1,6 +1,7 @@
 package io.khasang.bend.controller;
 
 import io.khasang.bend.service.Cat;
+import io.khasang.bend.service.CreateTable;
 import io.khasang.bend.service.KnightService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -18,11 +19,13 @@ public class AppController {
     // not recommended
     private final Cat cat;
     private final KnightService knightService;
+    private final CreateTable createTable;
 
     @Autowired
-    public AppController(@Qualifier("murzik") Cat cat, KnightService knightService) {
+    public AppController(@Qualifier("murzik") Cat cat, KnightService knightService, CreateTable createTable) {
         this.cat = cat;
         this.knightService = knightService;
+        this.createTable = createTable;
     }
 
     @RequestMapping("/cat")
@@ -31,7 +34,13 @@ public class AppController {
         return "hello";
     }
 
-    @RequestMapping("/{val}")
+    @RequestMapping("/create")
+    public String getTableCreateStatus(Model model) {
+        model.addAttribute("name", createTable.getTableCreationStatus("cats"));
+        return "create";
+    }
+
+    @RequestMapping("/quest/{val}")
     public String getQuest(@PathVariable("val") String enemy, Model model) {
         model.addAttribute("info", knightService.getAchievement(enemy));
         return "quest";
