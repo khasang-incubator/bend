@@ -1,5 +1,5 @@
 package io.khasang.bend.service;
 
 public interface CreateTable {
-    String getAllCatsByName(Long val);
+    String getTableCreationStatus(String val);
 }
