@@ -32,7 +32,7 @@ public class Bard {
     }
 
     @AfterThrowing(value = "servicePointcut(val)", argNames = "joinPoint,val")
-    public void getSongAfterThrow(JoinPoint joinPoint, String val) {
+    public void getSongAfterThrow(JoinPoint joinPoint, String val) throws Throwable {
         System.err.println(val);
         System.err.println("AfterThrowing");
     }

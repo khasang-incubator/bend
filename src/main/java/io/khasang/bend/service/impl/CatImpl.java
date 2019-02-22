@@ -3,19 +3,17 @@ package io.khasang.bend.service.impl;
 import io.khasang.bend.service.Cat;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.PreDestroy;
-
 @Service
-public class BarsikCat implements Cat {
+public class CatImpl implements Cat {
     private int cat_id;
     private String name;
     private String description;
     private int color_id;
 
-    public BarsikCat() {
+    public CatImpl() {
     }
 
-    public BarsikCat(int cat_id, String name, String description, int color_id) {
+    public CatImpl(int cat_id, String name, String description, int color_id) {
         this.cat_id = cat_id;
         this.name = name;
         this.description = description;
@@ -26,6 +24,7 @@ public class BarsikCat implements Cat {
     public int getCat_id() {
         return cat_id;
     }
+
     @Override
     public void setCat_id(int cat_id) {
         this.cat_id = cat_id;
@@ -33,8 +32,9 @@ public class BarsikCat implements Cat {
 
     @Override
     public int getColor_id() {
-        return 2;
+        return color_id;
     }
+
     @Override
     public void setColor_id(int color_id) {
         this.color_id = color_id;
@@ -42,8 +42,9 @@ public class BarsikCat implements Cat {
 
     @Override
     public String getName() {
-        return "Barsik";
+        return name;
     }
+
     @Override
     public void setName(String name) {
         this.name = name;
@@ -51,16 +52,16 @@ public class BarsikCat implements Cat {
 
     @Override
     public String getDescription() {
-        return "good";
+        return description;
     }
 
+    @Override
     public void setDescription(String description) {
         this.description = description;
     }
 
-    @PreDestroy
-    public void getInfo() {
-        System.out.println("!!!!!!adadad");
+    @Override
+    public String toString() {
+        return "cat_id = " + cat_id + " name=" + name + "  description=" + description + "  color_id=" + color_id + "<br>";
     }
-
 }

@@ -1,39 +1,67 @@
 package io.khasang.bend.controller;
 
-import io.khasang.bend.service.Cat;
-import io.khasang.bend.service.KnightService;
+import io.khasang.bend.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.context.annotation.ImportResource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@ImportResource(value = "classpath:ioc.xml")
+//@ImportResource(value = "classpath:ioc.xml")
 public class AppController {
-//    private ApplicationContext context = new ClassPathXmlApplicationContext("ioc.xml");
-//    private Cat cat = context.getBean("cat", Cat.class);
-//    not recommended
-    private final Cat cat;
     private final KnightService knightService;
+    private final CreateTable createTable;
+    private final QueriesTableCats queriesTableCats;
 
     @Autowired
-    public AppController(@Qualifier("murzik") Cat cat, KnightService knightService) {
-        this.cat = cat;
+    public AppController(KnightService knightService, CreateTable createTable, QueriesTableCats queriesTableCats) {
         this.knightService = knightService;
+        this.createTable = createTable;
+        this.queriesTableCats = queriesTableCats;
     }
 
-    @RequestMapping("/cat")
-    public String getHelloPage(Model model) {
-        model.addAttribute("name", cat.getName());
-        return "hello";
+    @RequestMapping("/create")
+    public String getTableCreateStatus(Model model) {
+        model.addAttribute("name", createTable.getTableCreationStatus("colors"));
+        return "create";
     }
 
-    @RequestMapping("/{val}")
+    @RequestMapping("/quest/{val}")
     public String getQuest(@PathVariable("val") String enemy, Model model) {
         model.addAttribute("info", knightService.getAchievement(enemy));
         return "quest";
+    }
+
+    //cats
+    @RequestMapping("/cats/insert")
+    public String getInsertCatStatus(Model model) {
+        model.addAttribute("name", queriesTableCats.getInsertCatStatus(5, "'Ryzhik'",
+                "'foxy'", 4));
+        return "insert";
+    }
+
+    @RequestMapping("/cats/select")
+    public String getSelectCatStatus(Model model) {
+        model.addAttribute("name", queriesTableCats.getSelectCatStatus(4));
+        return "select";
+    }
+
+    @RequestMapping("/cats/select.all")
+    public String getSelectAllCatsStatus(Model model) {
+        model.addAttribute("name", queriesTableCats.getSelectAllCatsStatus());
+        return "select";
+    }
+
+    @RequestMapping("/cats/update")
+    public String getUpdateCatsStatus(Model model) {
+        model.addAttribute("name", queriesTableCats.getUpdateCatsStatus(2));
+        return "update";
+    }
+
+    @RequestMapping("/cats/delete")
+    public String getDeleteCatsStatus(Model model) {
+        model.addAttribute("name", queriesTableCats.getDeleteCatStatus(3));
+        return "delete";
     }
 }
