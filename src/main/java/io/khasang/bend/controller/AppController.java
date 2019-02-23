@@ -1,6 +1,8 @@
 package io.khasang.bend.controller;
 
 import io.khasang.bend.service.*;
+import io.khasang.bend.service.impl.BarsikCat;
+import io.khasang.bend.service.impl.MurzikCat;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,12 +15,16 @@ public class AppController {
     private final KnightService knightService;
     private final CreateTable createTable;
     private final QueriesTableCats queriesTableCats;
+    private final MurzikCat murzik;
+    private final BarsikCat barsik;
 
     @Autowired
-    public AppController(KnightService knightService, CreateTable createTable, QueriesTableCats queriesTableCats) {
+    public AppController(KnightService knightService, CreateTable createTable, QueriesTableCats queriesTableCats, MurzikCat murzik, BarsikCat barsik) {
         this.knightService = knightService;
         this.createTable = createTable;
         this.queriesTableCats = queriesTableCats;
+        this.murzik = murzik;
+        this.barsik = barsik;
     }
 
     @RequestMapping("/create")
@@ -36,8 +42,7 @@ public class AppController {
     //cats
     @RequestMapping("/cats/insert")
     public String getInsertCatStatus(Model model) {
-        model.addAttribute("name", queriesTableCats.getInsertCatStatus(5, "'Ryzhik'",
-                "'foxy'", 4));
+        model.addAttribute("name", queriesTableCats.getInsertCatStatus(barsik));
         return "insert";
     }
 
@@ -61,7 +66,7 @@ public class AppController {
 
     @RequestMapping("/cats/delete")
     public String getDeleteCatsStatus(Model model) {
-        model.addAttribute("name", queriesTableCats.getDeleteCatStatus(3));
+        model.addAttribute("name", queriesTableCats.getDeleteCatStatus(murzik));
         return "delete";
     }
 }

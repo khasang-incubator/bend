@@ -42,7 +42,7 @@ public class BarsikCat implements Cat {
 
     @Override
     public String getName() {
-        return "Barsik";
+        return "'Barsik'";
     }
     @Override
     public void setName(String name) {
@@ -51,7 +51,7 @@ public class BarsikCat implements Cat {
 
     @Override
     public String getDescription() {
-        return "good";
+        return "'good'";
     }
 
     public void setDescription(String description) {

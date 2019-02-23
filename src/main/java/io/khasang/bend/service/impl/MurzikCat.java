@@ -14,7 +14,7 @@ public class MurzikCat implements Cat {
 
     @Override
     public String getName() {
-        return "Murzik";
+        return "'Murzik'";
     }
 
     @Override
@@ -24,7 +24,7 @@ public class MurzikCat implements Cat {
 
     @Override
     public int getCat_id() {
-        return 0;
+        return 2;
     }
 
     @Override
@@ -34,7 +34,7 @@ public class MurzikCat implements Cat {
 
     @Override
     public int getColor_id() {
-        return 0;
+        return 1;
     }
 
     @Override
@@ -44,11 +44,17 @@ public class MurzikCat implements Cat {
 
     @Override
     public String getDescription() {
-        return null;
+        return "'hungry'";
     }
 
     @Override
     public void setDescription(String description) {
 
+    }
+
+    @Override
+    public String toString() {
+        return "Murzik: " + "cat_id=" + cat_id + ", name=" + name +
+                ", description=" + description + ", color_id=" + color_id;
     }
 }

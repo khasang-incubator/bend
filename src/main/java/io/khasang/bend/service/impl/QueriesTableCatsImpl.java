@@ -17,17 +17,18 @@ public class QueriesTableCatsImpl implements QueriesTableCats {
     private JdbcTemplate jdbcTemplate;
 
     @Override
-    public String getInsertCatStatus(int cat_id, String name, String description, int color_id) {
+    public String getInsertCatStatus(Cat cat) {
 //        String query = "INSERT INTO cats VALUES ( cat_id=?, name=?, description=?, color_id=?)";
 
         String query = "INSERT INTO cats (cat_id, name, description, color_id) VALUES" +
-                " (" + cat_id + ", " + name + ", " + description + ", " + color_id + ")";
+                " (" + cat.getCat_id() + ", " + cat.getName() + ", " + cat.getDescription()
+                + ", " + cat.getColor_id() + ")";
 
         try {
             jdbcTemplate.execute(query);
-            return "cats inserted";
+            return "cat " + cat.getName() + " inserted";
         } catch (DataAccessException e) {
-            return "cats insert failed";
+            return "cat insert failed: " + e.getMessage();
         }
     }
 
@@ -51,13 +52,13 @@ public class QueriesTableCatsImpl implements QueriesTableCats {
             List<Cat> cats = jdbcTemplate.query(query, (rs, rowNum) -> getSelectCat(rs));
             return cats;
         } catch (BadSqlGrammarException e) {
-            System.out.println(e);
+            System.out.println(e.getMessage());
         }
         return null;
     }
 
     private Cat getSelectCat(ResultSet rs) throws SQLException {
-        Cat cat = new CatImpl();
+        Cat cat = new BarsikCat();
         cat.setCat_id(rs.getInt("cat_id"));
         cat.setName(rs.getString("name"));
         cat.setDescription(rs.getString("description"));
@@ -71,18 +72,18 @@ public class QueriesTableCatsImpl implements QueriesTableCats {
             jdbcTemplate.execute("update cats set description='good' where cat_id=" + cat_id);
             return "cats updated";
         } catch (DataAccessException e) {
-            return "update failed";
+            return "update failed: " + e.getMessage();
         }
     }
 
     @Override
-    public String getDeleteCatStatus(int cat_id) {
-        String query = "delete from  cats  where cat_id=" + cat_id;
+    public String getDeleteCatStatus(Cat cat) {
+        String query = "delete from  cats  where cat_id=" + cat.getCat_id();
         try {
             jdbcTemplate.execute(query);
-            return "cat_id=" + cat_id + " deleted from cats";
+            return "cat " + cat.getName() + " deleted from cats";
         } catch (DataAccessException e) {
-            return "delete failed";
+            return "delete failed: " + e.getMessage();
         }
     }
 
