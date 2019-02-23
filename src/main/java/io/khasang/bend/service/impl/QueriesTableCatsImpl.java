@@ -27,7 +27,7 @@ public class QueriesTableCatsImpl implements QueriesTableCats {
         try {
             jdbcTemplate.execute(query);
             return "cat " + cat.getName() + " inserted";
-        } catch (DataAccessException e) {
+        } catch (BadSqlGrammarException e) {
             return "cat insert failed: " + e.getMessage();
         }
     }
@@ -71,7 +71,7 @@ public class QueriesTableCatsImpl implements QueriesTableCats {
         try {
             jdbcTemplate.execute("update cats set description='good' where cat_id=" + cat_id);
             return "cats updated";
-        } catch (DataAccessException e) {
+        } catch (BadSqlGrammarException e) {
             return "update failed: " + e.getMessage();
         }
     }
@@ -82,7 +82,7 @@ public class QueriesTableCatsImpl implements QueriesTableCats {
         try {
             jdbcTemplate.execute(query);
             return "cat " + cat.getName() + " deleted from cats";
-        } catch (DataAccessException e) {
+        } catch (BadSqlGrammarException e) {
             return "delete failed: " + e.getMessage();
         }
     }

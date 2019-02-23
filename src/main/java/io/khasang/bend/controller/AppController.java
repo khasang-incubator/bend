@@ -27,19 +27,18 @@ public class AppController {
         this.barsik = barsik;
     }
 
-    @RequestMapping("/create")
-    public String getTableCreateStatus(Model model) {
-        model.addAttribute("name", createTable.getTableCreationStatus("colors"));
-        return "create";
-    }
-
     @RequestMapping("/quest/{val}")
     public String getQuest(@PathVariable("val") String enemy, Model model) {
         model.addAttribute("info", knightService.getAchievement(enemy));
         return "quest";
     }
 
-    //cats
+    @RequestMapping("/create")
+    public String getTableCreateStatus(Model model) {
+        model.addAttribute("name", createTable.getTableCreationStatus("cats"));
+        return "create";
+    }
+
     @RequestMapping("/cats/insert")
     public String getInsertCatStatus(Model model) {
         model.addAttribute("name", queriesTableCats.getInsertCatStatus(barsik));
@@ -48,7 +47,7 @@ public class AppController {
 
     @RequestMapping("/cats/select")
     public String getSelectCatStatus(Model model) {
-        model.addAttribute("name", queriesTableCats.getSelectCatStatus(4));
+        model.addAttribute("name", queriesTableCats.getSelectCatStatus(barsik.getCat_id()));
         return "select";
     }
 
@@ -60,7 +59,7 @@ public class AppController {
 
     @RequestMapping("/cats/update")
     public String getUpdateCatsStatus(Model model) {
-        model.addAttribute("name", queriesTableCats.getUpdateCatsStatus(2));
+        model.addAttribute("name", queriesTableCats.getUpdateCatsStatus(murzik.getCat_id()));
         return "update";
     }
 
