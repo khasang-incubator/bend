@@ -1,7 +1,7 @@
 package io.khasang.bend.controller;
 
+import io.khasang.bend.model.dao.CatDao;
 import io.khasang.bend.service.Cat;
-import io.khasang.bend.service.CatDao;
 import io.khasang.bend.service.CreateTable;
 import io.khasang.bend.service.KnightService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -61,7 +61,7 @@ public class AppController {
 
     @RequestMapping("/cat/update")
     public String getCatUpdateStatus(@RequestParam("id") Long id, @RequestParam("name") String name, @RequestParam("description") String desc, Model model) {
-        model.addAttribute("info", catDao.create(id, name, desc));
+        model.addAttribute("info", catDao.update(name, desc, id));
         return "catCrud";
     }
 

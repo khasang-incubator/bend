@@ -1,17 +1,23 @@
 package io.khasang.bend.model.dao.impl;
 
+import io.khasang.bend.model.dao.CatDao;
 import io.khasang.bend.service.Cat;
-import io.khasang.bend.service.CatDao;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.BadSqlGrammarException;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.PreparedStatementCallback;
+import org.springframework.stereotype.Service;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
+@Service
 public class PlainCatDao implements CatDao{
 
     private JdbcTemplate jdbcTemplate;
@@ -24,17 +30,25 @@ public class PlainCatDao implements CatDao{
 
     @Override
     public String create(Long id, String nm, String desc) {
-        logger.error(id + " " + nm + " " + desc);
+        String query="INSERT INTO cats (cat_id, name, description)\n" +
+                "VALUES\n" +
+                " (?,?,?);";
         try {
-            jdbcTemplate.execute("INSERT INTO cats (cat_id, name, description)\n" +
-                    "VALUES\n" +
-                    " (id,nm,desc);");
-            return "create successfull";
+            jdbcTemplate.execute(query, new PreparedStatementCallback<Boolean>() {
+                @Override
+                public Boolean doInPreparedStatement(PreparedStatement ps) throws SQLException, DataAccessException {
+                    ps.setLong(1, id);
+                    ps.setString(2, nm);
+                    ps.setString(3, desc);
+                    return ps.execute();
+                }
+            });
+            return "cat created";
         } catch (BadSqlGrammarException ex) {
-            logger.error("insertion error",ex);
+            logger.error("insertion error:"+query,ex);
             ex.printStackTrace();
         }
-        return "creating failed";
+        return "creating cat failed";
     }
 
     @Override
@@ -47,22 +61,35 @@ public class PlainCatDao implements CatDao{
             logger.error("delete cat entity with id="+id+" failed ",ex);
             ex.printStackTrace();
         }
-        return "deleting failed";
+        return "deleting cat failed";
     }
 
     @Override
-    public String update(Long id, String nm, String desc) {
+    public String update( String nm, String desc, Long id) {
+        String query="UPDATE cats \n" +
+                "SET name='?',\n" +
+                "description='?'\n" +
+                "WHERE cat_id =?";
         try {
-            jdbcTemplate.execute("UPDATE table\n" +
-                    "SET cat_id = id,\n" +
-                    "    name = nm\n" +
-                    "    description = desc,\n" +
-                    "WHERE cats.id = id ");
+            jdbcTemplate.execute(query, new PreparedStatementCallback<Boolean>() {
+                @Override
+                public Boolean doInPreparedStatement(PreparedStatement ps) throws SQLException, DataAccessException {
+                    ps.setString(2, nm);
+                    ps.setString(3, desc);
+                    ps.setLong(1, id);
+                    return ps.execute();
+                }
+            });
+//            jdbcTemplate.execute("UPDATE table\n" +
+//                    "SET cat_id = id,\n" +
+//                    "    name = nm\n" +
+//                    "    description = desc,\n" +
+//                    "WHERE cats.id = id ");
             return "successfully updated";
         } catch (BadSqlGrammarException ex) {
             logger.error("update cat entity with id="+id+" failed ",ex);
             ex.printStackTrace();
         }
-        return "updaing failed";
+        return "updaing cat failed";
     }
 }
