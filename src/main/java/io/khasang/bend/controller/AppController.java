@@ -1,6 +1,7 @@
 package io.khasang.bend.controller;
 
-import io.khasang.bend.service.Cat;
+import io.khasang.bend.model.Cat;
+import io.khasang.bend.service.CatQuery;
 import io.khasang.bend.service.CreateTable;
 import io.khasang.bend.service.KnightService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,12 +21,14 @@ public class AppController {
     private final Cat cat;
     private final KnightService knightService;
     private final CreateTable createTable;
+    private final CatQuery catQuery;
 
     @Autowired
-    public AppController(@Qualifier("murzik") Cat cat, KnightService knightService, CreateTable createTable) {
+    public AppController(@Qualifier("murzik") Cat cat, KnightService knightService, CreateTable createTable, CatQuery catQuery) {
         this.cat = cat;
         this.knightService = knightService;
         this.createTable = createTable;
+        this.catQuery = catQuery;
     }
 
     @RequestMapping("/cat")
@@ -36,7 +39,11 @@ public class AppController {
 
     @RequestMapping("/create")
     public String getTableCreateStatus(Model model) {
-        model.addAttribute("name", createTable.getTableCreationStatus("cats"));
+        //model.addAttribute("name", catQuery.getCatById(2));
+        //model.addAttribute("name", catQuery.getAllCats());
+        //model.addAttribute("name", catQuery.updateCatWithId("dydka","very bad",1));
+        model.addAttribute("name",catQuery.deleteCatWithId(1));
+        model.addAttribute("name",catQuery.addNewCat(1,"dyda","soft"));
         return "create";
     }
 
