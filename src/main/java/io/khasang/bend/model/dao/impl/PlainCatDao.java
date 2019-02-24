@@ -52,44 +52,46 @@ public class PlainCatDao implements CatDao{
     }
 
     @Override
-    public String delete(Long id) {//небезопасно втыкать параметр в sql
-        try {
-            jdbcTemplate.execute(" DELETE FROM cats\n" +
-                    "WHERE cats.id = id ");
-            return "delete successfull";
-        } catch (BadSqlGrammarException ex) {
-            logger.error("delete cat entity with id="+id+" failed ",ex);
-            ex.printStackTrace();
-        }
-        return "deleting cat failed";
-    }
-
-    @Override
     public String update( String nm, String desc, Long id) {
         String query="UPDATE cats \n" +
-                "SET name='?',\n" +
-                "description='?'\n" +
+                "SET name=?,\n" +
+                "description=?\n" +
                 "WHERE cat_id =?";
         try {
             jdbcTemplate.execute(query, new PreparedStatementCallback<Boolean>() {
                 @Override
                 public Boolean doInPreparedStatement(PreparedStatement ps) throws SQLException, DataAccessException {
-                    ps.setString(2, nm);
-                    ps.setString(3, desc);
-                    ps.setLong(1, id);
+                    ps.setString(1, nm);
+                    ps.setString(2, desc);
+                    ps.setLong(3, id);
                     return ps.execute();
                 }
             });
-//            jdbcTemplate.execute("UPDATE table\n" +
-//                    "SET cat_id = id,\n" +
-//                    "    name = nm\n" +
-//                    "    description = desc,\n" +
-//                    "WHERE cats.id = id ");
             return "successfully updated";
         } catch (BadSqlGrammarException ex) {
             logger.error("update cat entity with id="+id+" failed ",ex);
             ex.printStackTrace();
         }
         return "updaing cat failed";
+    }
+
+    @Override
+    public String delete(Long id) {//небезопасно втыкать параметр в sql
+        try {
+            String query=" DELETE FROM cats\n" +
+                    "WHERE cats.cat_id = ? ";
+            jdbcTemplate.execute(query, new PreparedStatementCallback<Boolean>() {
+                @Override
+                public Boolean doInPreparedStatement(PreparedStatement ps) throws SQLException, DataAccessException {
+                    ps.setLong(1, id);
+                    return ps.execute();
+                }
+            });
+            return "delete successfull";
+        } catch (BadSqlGrammarException ex) {
+            logger.error("delete cat entity with id="+id+" failed ",ex);
+            ex.printStackTrace();
+        }
+        return "deleting cat failed";
     }
 }

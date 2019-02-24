@@ -52,6 +52,7 @@ public class AppController {
         return "quest";
     }
 
+    //http://localhost:8080/cat/create?id=2&name=vaska&description=voryugahttp://localhost:8080/cat/create?id=2&name=vaska&description=voryuga
     @RequestMapping("/cat/create")
     public String getCatCreateStatus(@RequestParam("id") Long id, @RequestParam("name") String name, @RequestParam("description") String desc, Model model) {
         //model.addAttribute("info", knightService.getAchievement(enemy));
@@ -59,15 +60,17 @@ public class AppController {
         return "catCrud";
     }
 
+    //http://localhost:8080/cat/update?id=2&name=vaska&description=voryuga
     @RequestMapping("/cat/update")
     public String getCatUpdateStatus(@RequestParam("id") Long id, @RequestParam("name") String name, @RequestParam("description") String desc, Model model) {
         model.addAttribute("info", catDao.update(name, desc, id));
         return "catCrud";
     }
 
+    //http://localhost:8080/cat/delete?id=3
     @RequestMapping("/cat/delete")
-    public String getDeleteStatus(@PathVariable("val") String enemy, Model model) {
-        model.addAttribute("info", knightService.getAchievement(enemy));
+    public String getDeleteStatus(@RequestParam("id") Long id, Model model) {
+        model.addAttribute("info", catDao.delete(id));
         return "catCrud";
     }
 
