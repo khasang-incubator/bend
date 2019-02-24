@@ -2,8 +2,8 @@ package io.khasang.bend.service.impl;
 
 import io.khasang.bend.service.Cat;
 import io.khasang.bend.service.QueriesTableCats;
+import io.khasang.bend.service.impl.cats.BarsikCat;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.BadSqlGrammarException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
@@ -18,8 +18,6 @@ public class QueriesTableCatsImpl implements QueriesTableCats {
 
     @Override
     public String getInsertCatStatus(Cat cat) {
-//        String query = "INSERT INTO cats VALUES ( cat_id=?, name=?, description=?, color_id=?)";
-
         String query = "INSERT INTO cats (cat_id, name, description, color_id) VALUES" +
                 " (" + cat.getCat_id() + ", " + cat.getName() + ", " + cat.getDescription()
                 + ", " + cat.getColor_id() + ")";
@@ -49,8 +47,7 @@ public class QueriesTableCatsImpl implements QueriesTableCats {
         String query = "select cat_id, name, description, color_id from cats";
 
         try {
-            List<Cat> cats = jdbcTemplate.query(query, (rs, rowNum) -> getSelectCat(rs));
-            return cats;
+            return jdbcTemplate.query(query, (rs, rowNum) -> getSelectCat(rs));
         } catch (BadSqlGrammarException e) {
             System.out.println(e.getMessage());
         }

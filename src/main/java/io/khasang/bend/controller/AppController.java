@@ -1,8 +1,9 @@
 package io.khasang.bend.controller;
 
 import io.khasang.bend.service.*;
-import io.khasang.bend.service.impl.BarsikCat;
-import io.khasang.bend.service.impl.MurzikCat;
+import io.khasang.bend.service.impl.CreateTableCats;
+import io.khasang.bend.service.impl.cats.BarsikCat;
+import io.khasang.bend.service.impl.cats.MurzikCat;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,13 +14,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 //@ImportResource(value = "classpath:ioc.xml")
 public class AppController {
     private final KnightService knightService;
-    private final CreateTable createTable;
+    private final CreateTableCats createTable;
     private final QueriesTableCats queriesTableCats;
     private final MurzikCat murzik;
     private final BarsikCat barsik;
 
     @Autowired
-    public AppController(KnightService knightService, CreateTable createTable, QueriesTableCats queriesTableCats, MurzikCat murzik, BarsikCat barsik) {
+    public AppController(KnightService knightService, CreateTableCats createTable, QueriesTableCats queriesTableCats, MurzikCat murzik, BarsikCat barsik) {
         this.knightService = knightService;
         this.createTable = createTable;
         this.queriesTableCats = queriesTableCats;
@@ -51,14 +52,14 @@ public class AppController {
         return "select";
     }
 
-    @RequestMapping("/cats/select.all")
+    @RequestMapping("/cats/select/all")
     public String getSelectAllCatsStatus(Model model) {
         model.addAttribute("name", queriesTableCats.getSelectAllCatsStatus());
         return "select";
     }
 
     @RequestMapping("/cats/update")
-    public String getUpdateCatsStatus(Model model) {
+    public String getUpdateCatStatus(Model model) {
         model.addAttribute("name", queriesTableCats.getUpdateCatsStatus(murzik.getCat_id()));
         return "update";
     }

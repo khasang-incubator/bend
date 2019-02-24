@@ -1,16 +1,14 @@
-package io.khasang.bend.service.impl;
+package io.khasang.bend.service.impl.cats;
 
 import io.khasang.bend.service.Cat;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 @Service
-@Qualifier("murzik")
 public class MurzikCat implements Cat {
-    private int cat_id;
     private String name;
-    private String description;
-    private int color_id;
+    private int cat_id = 2;
+    private String description = "'hungry'";
+    private int color_id = 1;
 
     @Override
     public String getName() {
@@ -19,42 +17,42 @@ public class MurzikCat implements Cat {
 
     @Override
     public void setName(String name) {
-
+        this.name = name;
     }
 
     @Override
     public int getCat_id() {
-        return 2;
+        return cat_id;
     }
 
     @Override
     public void setCat_id(int cat_id) {
-
+        this.cat_id = cat_id;
     }
 
     @Override
     public int getColor_id() {
-        return 1;
+        return color_id;
     }
 
     @Override
     public void setColor_id(int color_id) {
-
+        this.color_id = color_id;
     }
 
     @Override
     public String getDescription() {
-        return "'hungry'";
+        return description;
     }
 
     @Override
     public void setDescription(String description) {
-
+        this.description = description;
     }
 
     @Override
     public String toString() {
-        return "Murzik: " + "cat_id=" + cat_id + ", name=" + name +
-                ", description=" + description + ", color_id=" + color_id;
+        return "cat_id=" + cat_id + ", name=" + name +
+                ", description=" + description + ", color_id=" + color_id + "<br>";
     }
 }
