@@ -28,6 +28,11 @@ dependencies {
     compile("org.springframework.boot:spring-boot-starter-web")
     compile("org.springframework.boot:spring-boot-starter-tomcat")
     compile("org.springframework.boot:spring-boot-devtools")
+    
+    compile group: 'org.springframework.security', name: 'spring-security-core', version: '5.1.4.RELEASE'
+    compile group: 'org.springframework.security', name: 'spring-security-web', version: '5.1.4.RELEASE'
+    compile group: 'org.springframework.security', name: 'spring-security-config', version: '5.1.4.RELEASE'
+
 
     compile group: 'org.springframework', name: 'spring-orm', version: '5.1.5.RELEASE'
     compile group: 'org.aspectj', name: 'aspectjrt', version:'1.9.2'
