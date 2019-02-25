@@ -7,6 +7,8 @@ import io.khasang.bend.service.KnightService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.ImportResource;
+import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -54,6 +56,7 @@ public class AppController {
 
     //http://localhost:8080/cat/create?id=2&name=vaska&description=voryugahttp://localhost:8080/cat/create?id=2&name=vaska&description=voryuga
     @RequestMapping("/cat/create")
+    @Secured({"ROLE_USER","ROLE_ADMIN"})
     public String getCatCreateStatus(@RequestParam("id") Long id, @RequestParam("name") String name, @RequestParam("description") String desc, Model model) {
         //model.addAttribute("info", knightService.getAchievement(enemy));
         model.addAttribute("info", catDao.create(id, name, desc));
@@ -72,6 +75,26 @@ public class AppController {
     public String getDeleteStatus(@RequestParam("id") Long id, Model model) {
         model.addAttribute("info", catDao.delete(id));
         return "catCrud";
+    }
+
+
+    @RequestMapping("/admin")
+    public String getAdminPage(Model model) {
+        model.addAttribute("info", "verySecuredAdminInfo");
+        return "admin";
+    }
+
+    @RequestMapping("/user")
+    public String getUserPage(Model model) {
+        model.addAttribute("info", "verySecuredUserInfo");
+        return "user";
+    }
+
+    @RequestMapping("/password/{password}")
+    public String getPasswordHash(@PathVariable("password") String password, Model model){
+        model.addAttribute("password", password);
+        model.addAttribute("passwordAfterEncode", new BCryptPasswordEncoder().encode(password));
+        return "password";
     }
 
 }
