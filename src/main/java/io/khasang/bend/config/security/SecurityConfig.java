@@ -27,14 +27,20 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and().csrf().disable().formLogin().defaultSuccessUrl("/",false);
     }
 
-//    NON PROD
+//    NON PROD spring-sec3-4
 //    public void configure(AuthenticationManagerBuilder auth) throws Exception {
 //        auth.inMemoryAuthentication().withUser("admin").password("admin").roles("ADMIN");
 //        auth.inMemoryAuthentication().withUser("user").password("user").roles("USER");
 //    }
 
+    //prod
+//    public void configure(AuthenticationManagerBuilder auth) throws Exception {
+//        auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
+//    }
+
+    //    NON PROD spring-sec5
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
+        auth.userDetailsService(userDetailsService);
     }
 
     private PasswordEncoder passwordEncoder() {

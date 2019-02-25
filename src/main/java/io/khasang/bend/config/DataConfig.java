@@ -7,8 +7,10 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.jdbc.JdbcDaoImpl;
+import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 
 import javax.sql.DataSource;
 
@@ -35,13 +37,25 @@ public class DataConfig {
         return jdbcTemplate;
     }
 
+    //for PROD
+//    @Bean
+//    public UserDetailsService userDetailsService() {
+//        JdbcDaoImpl dao = new JdbcDaoImpl();
+//        dao.setDataSource(dataSource());
+//        dao.setUsersByUsernameQuery(environment.getRequiredProperty("usersByQuery"));
+//        dao.setAuthoritiesByUsernameQuery(environment.getProperty("rolesByQuery"));
+//        return dao;
+//    }
+
+    //non for prod spr-sec5
     @Bean
-    public UserDetailsService userDetailsService() {
-        JdbcDaoImpl dao = new JdbcDaoImpl();
-        dao.setDataSource(dataSource());
-        dao.setUsersByUsernameQuery(environment.getRequiredProperty("usersByQuery"));
-        dao.setAuthoritiesByUsernameQuery(environment.getProperty("rolesByQuery"));
-        return dao;
+    public UserDetailsService userDetailsService() throws Exception {
+        // ensure the passwords are encoded properly
+        User.UserBuilder users = User.withDefaultPasswordEncoder();
+        InMemoryUserDetailsManager manager = new InMemoryUserDetailsManager();
+        manager.createUser(users.username("user").password("$2a$10$zA.n8qIe449TohXeRZqVR.YEF4ocaCcqfRfY4Y1wYdgRgRnzaZa.S").roles("USER").build());
+        manager.createUser(users.username("admin").password("$2a$10$zA.n8qIe449TohXeRZqVR.YEF4ocaCcqfRfY4Y1wYdgRgRnzaZa.S").roles("ADMIN").build());
+        return manager;
     }
 
     public Environment getEnvironment() {
