@@ -53,8 +53,8 @@ public class DataConfig {
         // ensure the passwords are encoded properly
         User.UserBuilder users = User.withDefaultPasswordEncoder();
         InMemoryUserDetailsManager manager = new InMemoryUserDetailsManager();
-        manager.createUser(users.username("user").password("$2a$10$zA.n8qIe449TohXeRZqVR.YEF4ocaCcqfRfY4Y1wYdgRgRnzaZa.S").roles("USER").build());
-        manager.createUser(users.username("admin").password("$2a$10$zA.n8qIe449TohXeRZqVR.YEF4ocaCcqfRfY4Y1wYdgRgRnzaZa.S").roles("ADMIN").build());
+        manager.createUser(users.username("user").password("user").roles("USER").build());
+        manager.createUser(users.username("admin").password("admin").roles("ADMIN").build());
         return manager;
     }
 
