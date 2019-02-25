@@ -4,6 +4,7 @@
     <title>Title</title>
 </head>
 <body>
-<p>${name}</p>
+<h1>Password before encrypt: ${password}</h1>
+<h1>Password after encrypt: ${passwordAfterEncode}</h1>
 </body>
 </html>

@@ -18,39 +18,41 @@ public class QueriesTableCatsImpl implements QueriesTableCats {
 
     @Override
     public String getInsertCatStatus(Cat cat) {
-        String query = "INSERT INTO cats (cat_id, name, description, color_id) VALUES" +
-                " (" + cat.getCat_id() + ", " + cat.getName() + ", " + cat.getDescription()
-                + ", " + cat.getColor_id() + ")";
-
-        try {
-            jdbcTemplate.execute(query);
-            return "cat " + cat.getName() + " inserted";
-        } catch (BadSqlGrammarException e) {
-            return "cat insert failed: " + e.getMessage();
-        }
+//        String query = "INSERT INTO cats (cat_id, name, description, color_id) VALUES" +
+//                " (" + cat.getCat_id() + ", " + cat.getName() + ", " + cat.getDescription()
+//                + ", " + ")";
+//
+//        try {
+//            jdbcTemplate.execute(query);
+//            return "cat " + cat.getName() + " inserted";
+//        } catch (BadSqlGrammarException e) {
+//            return "cat insert failed: " + e.getMessage();
+//        }
+        return null;
     }
 
     @Override
     public String getSelectCatStatus(long id) {
-        String query = "select * from cats where cat_id = ?";
-
-        try {
-            Cat cat = jdbcTemplate.queryForObject(query, new Object[]{id}, (rs, rowNum) -> getSelectCat(rs));
-            return cat.toString();
-        } catch (BadSqlGrammarException e) {
-            return "cat selected failed";
-        }
+//        String query = "select * from cats where cat_id = ?";
+//
+//        try {
+//            Cat cat = jdbcTemplate.queryForObject(query, new Object[]{id}, (rs, rowNum) -> getSelectCat(rs));
+//            return cat.toString();
+//        } catch (BadSqlGrammarException e) {
+//            return "cat selected failed";
+//        }
+        return null;
     }
 
     @Override
     public List<Cat> getSelectAllCatsStatus() {
-        String query = "select cat_id, name, description, color_id from cats";
-
-        try {
-            return jdbcTemplate.query(query, (rs, rowNum) -> getSelectCat(rs));
-        } catch (BadSqlGrammarException e) {
-            System.out.println(e.getMessage());
-        }
+//        String query = "select cat_id, name, description, color_id from cats";
+//
+//        try {
+//            return jdbcTemplate.query(query, (rs, rowNum) -> getSelectCat(rs));
+//        } catch (BadSqlGrammarException e) {
+//            System.out.println(e.getMessage());
+//        }
         return null;
     }
 
@@ -59,29 +61,30 @@ public class QueriesTableCatsImpl implements QueriesTableCats {
         cat.setCat_id(rs.getInt("cat_id"));
         cat.setName(rs.getString("name"));
         cat.setDescription(rs.getString("description"));
-        cat.setColor_id(rs.getInt("color_id"));
         return cat;
     }
 
     @Override
     public String getUpdateCatsStatus(int cat_id) {
-        try {
-            jdbcTemplate.execute("update cats set description='good' where cat_id=" + cat_id);
-            return "cats updated";
-        } catch (BadSqlGrammarException e) {
-            return "update failed: " + e.getMessage();
-        }
+//        try {
+//            jdbcTemplate.execute("update cats set description='good' where cat_id=" + cat_id);
+//            return "cats updated";
+//        } catch (BadSqlGrammarException e) {
+//            return "update failed: " + e.getMessage();
+//        }
+        return null;
     }
 
     @Override
     public String getDeleteCatStatus(Cat cat) {
-        String query = "delete from  cats  where cat_id=" + cat.getCat_id();
-        try {
-            jdbcTemplate.execute(query);
-            return "cat " + cat.getName() + " deleted from cats";
-        } catch (BadSqlGrammarException e) {
-            return "delete failed: " + e.getMessage();
-        }
+//        String query = "delete from  cats  where cat_id=" + cat.getCat_id();
+//        try {
+//            jdbcTemplate.execute(query);
+//            return "cat " + cat.getName() + " deleted from cats";
+//        } catch (BadSqlGrammarException e) {
+//            return "delete failed: " + e.getMessage();
+//        }
+        return null;
     }
 
     @Autowired

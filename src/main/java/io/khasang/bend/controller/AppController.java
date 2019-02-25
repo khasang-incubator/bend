@@ -1,72 +1,47 @@
 package io.khasang.bend.controller;
 
-import io.khasang.bend.service.*;
-import io.khasang.bend.service.impl.CreateTableCats;
-import io.khasang.bend.service.impl.cats.BarsikCat;
-import io.khasang.bend.service.impl.cats.MurzikCat;
+import io.khasang.bend.service.Cat;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-//@ImportResource(value = "classpath:ioc.xml")
 public class AppController {
-    private final KnightService knightService;
-    private final CreateTableCats createTable;
-    private final QueriesTableCats queriesTableCats;
-    private final MurzikCat murzik;
-    private final BarsikCat barsik;
+    private final  Cat cat;
 
     @Autowired
-    public AppController(KnightService knightService, CreateTableCats createTable, QueriesTableCats queriesTableCats, MurzikCat murzik, BarsikCat barsik) {
-        this.knightService = knightService;
-        this.createTable = createTable;
-        this.queriesTableCats = queriesTableCats;
-        this.murzik = murzik;
-        this.barsik = barsik;
+    public AppController(Cat cat) {
+        this.cat = cat;
     }
 
-    @RequestMapping("/quest/{val}")
-    public String getQuest(@PathVariable("val") String enemy, Model model) {
-        model.addAttribute("info", knightService.getAchievement(enemy));
-        return "quest";
+    @RequestMapping("/cat")
+    @Secured({"ROLE_USER", "ROLE_ADMIN"}) // 2ой вариант допуска к странице, + в SecurityConfig добавить @EnableGlobalMethodSecurity(securedEnabled = true)
+    public String getCatNamePage(Model model){
+        model.addAttribute("name", cat.getName());
+        return "cat";
     }
 
-    @RequestMapping("/create")
-    public String getTableCreateStatus(Model model) {
-        model.addAttribute("name", createTable.getTableCreationStatus("cats"));
-        return "create";
+    @RequestMapping("/admin")
+    public String getAdminPage(Model model) {
+        model.addAttribute("info", "Very secured admin info!");
+        return "admin";
     }
 
-    @RequestMapping("/cats/insert")
-    public String getInsertCatStatus(Model model) {
-        model.addAttribute("name", queriesTableCats.getInsertCatStatus(barsik));
-        return "insert";
+    @RequestMapping("/user")
+    public String getUserPage(Model model) {
+        model.addAttribute("info", "Very secured user info!");
+        return "user";
     }
 
-    @RequestMapping("/cats/select")
-    public String getSelectCatStatus(Model model) {
-        model.addAttribute("name", queriesTableCats.getSelectCatStatus(barsik.getCat_id()));
-        return "select";
-    }
-
-    @RequestMapping("/cats/select/all")
-    public String getSelectAllCatsStatus(Model model) {
-        model.addAttribute("name", queriesTableCats.getSelectAllCatsStatus());
-        return "select";
-    }
-
-    @RequestMapping("/cats/update")
-    public String getUpdateCatStatus(Model model) {
-        model.addAttribute("name", queriesTableCats.getUpdateCatsStatus(murzik.getCat_id()));
-        return "update";
-    }
-
-    @RequestMapping("/cats/delete")
-    public String getDeleteCatsStatus(Model model) {
-        model.addAttribute("name", queriesTableCats.getDeleteCatStatus(murzik));
-        return "delete";
+    @RequestMapping("/password/{password}")
+    public String getAdminInfo(@PathVariable("password") String password, Model model) {
+        model.addAttribute("password", password); // до хеширование
+        model.addAttribute("passwordAfterEncode"
+                , new BCryptPasswordEncoder().encode(password)); // после хеширования
+        return "password";
     }
 }

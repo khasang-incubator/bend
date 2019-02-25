@@ -3,7 +3,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.5.19.RELEASE")
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:2.1.3.RELEASE")
     }
 }
 
@@ -11,7 +11,7 @@ apply plugin: 'java'
 apply plugin: 'idea'
 apply plugin: 'application'
 apply plugin: 'org.springframework.boot'
-apply plugin: 'war'
+apply plugin: 'io.spring.dependency-management'
 
 group 'bend'
 version '1.0-SNAPSHOT'
@@ -25,16 +25,20 @@ repositories {
 }
 
 dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+
     compile("org.springframework.boot:spring-boot-starter-web")
     compile("org.springframework.boot:spring-boot-starter-tomcat")
     compile("org.springframework.boot:spring-boot-devtools")
 
-    compile group: 'org.springframework', name: 'spring-orm', version: '5.1.5.RELEASE' // отсюда DataSource, для работы с Hibernate
+    compile group: 'org.springframework.security', name: 'spring-security-core', version: '5.1.4.RELEASE'
+    compile group: 'org.springframework.security', name: 'spring-security-web', version: '5.1.4.RELEASE'
+    compile group: 'org.springframework.security', name: 'spring-security-config', version: '5.1.4.RELEASE'
+
+    compile group: 'org.springframework', name: 'spring-orm', version: '5.1.5.RELEASE'
     compile group: 'org.aspectj', name: 'aspectjrt', version:'1.9.2'
     compile group: 'org.aspectj', name: 'aspectjweaver', version:'1.9.2'
     compile group: 'org.apache.tomcat.embed', name: 'tomcat-embed-jasper', version: '9.0.16'
     compile group: 'javax.servlet.jsp.jstl', name: 'jstl', version: '1.2'
     compile group: 'org.postgresql', name: 'postgresql', version: '42.2.5.jre7'
-
-    testCompile group: 'junit', name: 'junit', version: '4.12'
 }

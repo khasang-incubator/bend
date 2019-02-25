@@ -10,7 +10,6 @@ public class BarsikCat implements Cat {
     private String name;
     private int cat_id = 1;
     private String description = "'good'";
-    private int color_id = 2;
 
     @Override
     public String getName() {
@@ -33,16 +32,6 @@ public class BarsikCat implements Cat {
     }
 
     @Override
-    public int getColor_id() {
-        return color_id;
-    }
-
-    @Override
-    public void setColor_id(int color_id) {
-        this.color_id = color_id;
-    }
-
-    @Override
     public String getDescription() {
         return description;
     }
@@ -60,6 +49,6 @@ public class BarsikCat implements Cat {
     @Override
     public String toString() {
         return "cat_id=" + cat_id + ", name=" + name +
-                ", description=" + description + ", color_id=" + color_id + "<br>";
+                ", description=" + description + ", color_id=" + "<br>";
     }
 }
