@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.ImportResource;
 import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -90,10 +91,23 @@ public class AppController {
         return "user";
     }
 
-    @RequestMapping("/manageruser")
-    public String getManagerUserPage(Model model) {
+    //manageranduser - user have to be manager or to be a user
+    @Secured({"ROLE_MANAGER","ROLE_USER"})
+    //@PreAuthorize("hasAnyRole('ROLE_USER','ROLE_MANAGER')")//можно и так
+    //@PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_MANAGER')")//можно так
+    @RequestMapping("/manageroruser")
+    public String getManagerOrUserPage(Model model) {
         model.addAttribute("info", "verySecuredManagerUserInfo");
-        return "manageruser";
+        return "manageroruser";
+    }
+
+    //manageranduser - user have to be manager and user in onetime
+    //?????????????????????? -only for manageruser    user who has both roles
+    @PreAuthorize("hasRole('ROLE_USER') and hasRole('ROLE_MANAGER')")
+    @RequestMapping("/manageranduser")
+    public String getManagerAndUserPage(Model model) {
+        model.addAttribute("info", "verySecuredManagerUserInfo");
+        return "manageranduser";
     }
 
     @RequestMapping("/manager")

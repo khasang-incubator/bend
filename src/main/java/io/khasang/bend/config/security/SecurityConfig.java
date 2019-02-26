@@ -52,3 +52,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         this.userDetailsService = userDetailsService;
     }
 }
+
+
+//в спринге роль - это role
+//а priviledge - это granted authority
