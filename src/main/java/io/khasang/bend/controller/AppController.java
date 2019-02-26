@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 @ImportResource(value = "classpath:ioc.xml")
@@ -51,5 +52,26 @@ public class AppController {
     public String getQuest(@PathVariable("val") String enemy, Model model) {
         model.addAttribute("info", knightService.getAchievement(enemy));
         return "quest";
+    }
+
+    @RequestMapping(value = {"/", "/helloworld**"}, method = {RequestMethod.GET})
+    public String welcomePage(Model model) {
+        model.addAttribute("title", "Spring Security Tutorial");
+        model.addAttribute("message", "Welcome Page !");
+        return "helloworld";
+    }
+
+    @RequestMapping(value = "/protected**", method = RequestMethod.GET)
+    public String protectedPage(Model model) {
+        model.addAttribute("title", "Spring Security 3.2.4 Hello World Tutorial");
+        model.addAttribute("message", "This is protected page - Only for Admin Users!");
+        return "protected";
+    }
+
+    @RequestMapping(value = "/confidential**", method = RequestMethod.GET)
+    public String adminPage(Model model) {
+        model.addAttribute("title", "Spring Security 3.2.4 Hello World Tutorial");
+        model.addAttribute("message", "This is confidential page - Need Super Admin Role!");
+        return "protected";
     }
 }
