@@ -90,6 +90,18 @@ public class AppController {
         return "user";
     }
 
+    @RequestMapping("/manageruser")
+    public String getManagerUserPage(Model model) {
+        model.addAttribute("info", "verySecuredManagerUserInfo");
+        return "manageruser";
+    }
+
+    @RequestMapping("/manager")
+    public String getManagerPage(Model model) {
+        model.addAttribute("info", "verySecuredManagerInfo");
+        return "manager";
+    }
+
     @RequestMapping("/password/{password}")
     public String getPasswordHash(@PathVariable("password") String password, Model model){
         model.addAttribute("password", password);

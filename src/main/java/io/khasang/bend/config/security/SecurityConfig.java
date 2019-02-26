@@ -34,14 +34,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //    }
 
     //prod
-//    public void configure(AuthenticationManagerBuilder auth) throws Exception {
-//        auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
-//    }
-
-    //    NON PROD spring-sec5
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userDetailsService);
+        auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
     }
+
+//    //    NON PROD spring-sec5
+//    public void configure(AuthenticationManagerBuilder auth) throws Exception {
+//        auth.userDetailsService(userDetailsService);
+//    }
 
     private PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
