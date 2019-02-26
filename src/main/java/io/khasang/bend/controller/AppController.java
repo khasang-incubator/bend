@@ -103,7 +103,7 @@ public class AppController {
 
     //manageranduser - user have to be manager and user in onetime
     //?????????????????????? -only for manageruser    user who has both roles
-    @PreAuthorize("hasRole('ROLE_USER') and hasRole('ROLE_MANAGER')")
+    @PreAuthorize("hasRole('ROLE_USER') and hasRole('ROLE_MANAGER')")// and hasRole('MANAGER')
     @RequestMapping("/manageranduser")
     public String getManagerAndUserPage(Model model) {
         model.addAttribute("info", "verySecuredManagerUserInfo");
