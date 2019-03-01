@@ -58,6 +58,7 @@ public class AppController {
     //http://localhost:8080/cat/create?id=2&name=vaska&description=voryugahttp://localhost:8080/cat/create?id=2&name=vaska&description=voryuga
     @RequestMapping("/cat/create")
     @Secured({"ROLE_USER","ROLE_ADMIN"})
+    //помимо secured есть еще @RolesAllowed
     public String getCatCreateStatus(@RequestParam("id") Long id, @RequestParam("name") String name, @RequestParam("description") String desc, Model model) {
         //model.addAttribute("info", knightService.getAchievement(enemy));
         model.addAttribute("info", catDao.create(id, name, desc));

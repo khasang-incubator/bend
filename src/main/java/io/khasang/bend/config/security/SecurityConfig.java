@@ -25,7 +25,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/user/**").access("hasRole('USER')")
                 .antMatchers("/").permitAll()
                 .and().csrf().disable().formLogin().defaultSuccessUrl("/",false);
+    //https://m.habr.com/ru/post/264641/
     }
+
+
 
 //    NON PROD spring-sec3-4
 //    public void configure(AuthenticationManagerBuilder auth) throws Exception {
