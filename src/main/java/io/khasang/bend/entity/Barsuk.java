@@ -12,8 +12,11 @@ public class Barsuk {
     @Column(name = "barsuk_id")
     private long id;
     private String name;
-    @Column(columnDefinition = "DATE")
-    private LocalDate year;
+    private String description;
+//    @Column(columnDefinition = "DATE")
+//    private LocalDate year;
+    @Transient
+    String somefield;
 
     public long getId() {
         return id;
@@ -31,11 +34,20 @@ public class Barsuk {
         this.name = name;
     }
 
-    public LocalDate getYear() {
-        return year;
+    public String getDescription() {
+        return description;
     }
 
-    public void setYear(LocalDate year) {
-        this.year = year;
+    public void setDescription(String description) {
+        this.description = description;
     }
+
+
+    //    public LocalDate getYear() {
+//        return year;
+//    }
+//
+//    public void setYear(LocalDate year) {
+//        this.year = year;
+//    }
 }
