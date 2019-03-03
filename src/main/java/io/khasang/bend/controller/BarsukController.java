@@ -46,5 +46,4 @@ public class BarsukController {
     public List<Barsuk> getAllBarsuk() {
         return barsukService.getAllBarsuk();
     }
-
 }
