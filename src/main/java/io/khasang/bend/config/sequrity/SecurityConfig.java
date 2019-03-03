@@ -34,7 +34,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //        auth.inMemoryAuthentication().withUser("user").password("user").roles("USER");
 //    }
 
-    //non for prod - spring 5 (InMemoryUserDetailsManager)
+    //non for prod - spring 5 (авторизация InMemoryUserDetailsManager)
     @Override
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailsService);

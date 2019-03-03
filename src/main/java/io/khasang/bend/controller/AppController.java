@@ -19,7 +19,7 @@ public class AppController {
     }
 
     @RequestMapping("/cat")
-    @Secured({"ROLE_USER", "ROLE_ADMIN"}) // 2ой вариант допуска к странице, + в SecurityConfig добавить @EnableGlobalMethodSecurity(securedEnabled = true)
+    @Secured({"ROLE_USER", "ROLE_ADMIN"}) // вариант допуска к странице, + в SecurityConfig добавить @EnableGlobalMethodSecurity(securedEnabled = true)
     public String getCatNamePage(Model model){
         model.addAttribute("name", cat.getName());
         return "cat";

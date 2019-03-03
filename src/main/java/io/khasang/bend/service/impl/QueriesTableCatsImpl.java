@@ -19,7 +19,7 @@ public class QueriesTableCatsImpl implements QueriesTableCats {
     @Override
     public String getInsertCatStatus(Cat cat) {
 //        String query = "INSERT INTO cats (cat_id, name, description, color_id) VALUES" +
-//                " (" + cat.getCat_id() + ", " + cat.getName() + ", " + cat.getDescription()
+//                " (" + cat.getCat_id() + ", " + cat.getName() + ", " + cat.getPosition()
 //                + ", " + ")";
 //
 //        try {
