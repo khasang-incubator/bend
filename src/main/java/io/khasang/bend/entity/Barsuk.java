@@ -14,8 +14,8 @@ public class Barsuk {
     private long id;
     private String name;
     private String description;
-//    @Column(columnDefinition = "DATE")
-//    private LocalDate year;
+    @Column(columnDefinition = "DATE")
+    private LocalDate year;
 
     public long getId() {
         return id;
@@ -33,13 +33,13 @@ public class Barsuk {
         this.name = name;
     }
 
-//    public LocalDate getYear() {
-//        return year;
-//    }
-//
-//    public void setYear(LocalDate year) {
-//        this.year = year;
-//    }
+    public LocalDate getYear() {
+        return year;
+    }
+
+    public void setYear(LocalDate year) {
+        this.year = year;
+    }
 
     public String getDescription() {
         return description;
