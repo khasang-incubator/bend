@@ -5,7 +5,7 @@ import io.khasang.bend.model.Sex;
 import io.khasang.bend.model.UserStatus;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "users")
@@ -20,8 +20,8 @@ public class User {
     private int age;
     @Enumerated
     private Sex sex;
-    @Column(name = "birth_date")
-    private Date dateOfBirth;
+    @Column(name = "birth_date", columnDefinition = "DATE")
+    private LocalDate dateOfBirth;
     private String email;
     private String password;
     @Column(name = "phone_number")
@@ -81,11 +81,11 @@ public class User {
         this.sex = sex;
     }
 
-    public Date getDateOfBirth() {
+    public LocalDate getDateOfBirth() {
         return dateOfBirth;
     }
 
-    public void setDateOfBirth(Date dateOfBirth) {
+    public void setDateOfBirth(LocalDate dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
 
