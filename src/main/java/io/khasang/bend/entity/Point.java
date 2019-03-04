@@ -8,6 +8,7 @@ public class Point {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "point_id")
     private long id;
     private String name;
     private double coord_x;
