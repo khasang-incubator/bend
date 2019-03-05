@@ -21,6 +21,4 @@ package io.khasang.bend.entity;
 но тогда нужен REST для некоего класса GlobalNotification ?
  */
 
-public class Admin {
-
-}
+public class Admin { }
