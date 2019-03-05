@@ -46,4 +46,12 @@ public class Place {
     public void setAlbum_id(int album_id) {
         this.album_id = album_id;
     }
+
+    public int getPoint_id() {
+        return point_id;
+    }
+
+    public void setPoint_id(int point_id) {
+        this.point_id = point_id;
+    }
 }
