@@ -1,6 +1,5 @@
 package io.khasang.bend.controller;
 
-import com.sun.org.apache.xpath.internal.operations.Mod;
 import io.khasang.bend.service.Cat;
 import io.khasang.bend.service.CreateTable;
 import io.khasang.bend.service.KnightService;
@@ -13,8 +12,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import java.util.List;
 
 @Controller
 @ImportResource(value = "classpath:ioc.xml")
@@ -38,6 +35,11 @@ public class AppController {
     public String getHelloPage(Model model) {
         model.addAttribute("name", cat.getName());
         return "hello";
+    }
+
+    @RequestMapping("/")
+    public String getBadgerPage() {
+        return "menu";
     }
 
     @RequestMapping("/create")
