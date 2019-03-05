@@ -15,4 +15,5 @@ public class AppConfig {
     public BarsukDao barsukDao() {
         return new BarsukDaoImpl(Barsuk.class);
     }
+
 }
