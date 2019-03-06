@@ -1,6 +1,6 @@
 package io.khasang.bend.entity;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -14,6 +14,7 @@ public class Barsuk {
     private long id;
     private String name;
     private String description;
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     @Column(columnDefinition = "DATE")
     private LocalDate year;
 
