@@ -7,6 +7,9 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 
 import javax.sql.DataSource;
 
@@ -46,15 +49,15 @@ public class DataConfig {
 
 
     // non for prod
-//    @Bean
-//    public UserDetailsService userDetailsService() throws Exception {
-//        // ensure the passwords are encoded properly
-//        User.UserBuilder users = User.withDefaultPasswordEncoder();
-//        InMemoryUserDetailsManager manager = new InMemoryUserDetailsManager();
-//        manager.createUser(users.username("user").password("user").roles("USER").build());
-//        manager.createUser(users.username("admin").password("admin").roles("USER","ADMIN").build());
-//        return manager;
-//    }
+    @Bean
+    public UserDetailsService userDetailsService() throws Exception {
+        // ensure the passwords are encoded properly
+        User.UserBuilder users = User.withDefaultPasswordEncoder();
+        InMemoryUserDetailsManager manager = new InMemoryUserDetailsManager();
+        manager.createUser(users.username("user").password("user").roles("USER").build());
+        manager.createUser(users.username("admin").password("admin").roles("USER", "ADMIN").build());
+        return manager;
+    }
 
     public Environment getEnvironment() {
         return environment;
