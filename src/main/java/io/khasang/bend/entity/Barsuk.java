@@ -1,5 +1,7 @@
 package io.khasang.bend.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 
