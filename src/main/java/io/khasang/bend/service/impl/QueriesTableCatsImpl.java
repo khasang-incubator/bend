@@ -2,9 +2,7 @@ package io.khasang.bend.service.impl;
 
 import io.khasang.bend.service.Cat;
 import io.khasang.bend.service.QueriesTableCats;
-import io.khasang.bend.service.impl.cats.BarsikCat;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.BadSqlGrammarException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
@@ -56,13 +54,13 @@ public class QueriesTableCatsImpl implements QueriesTableCats {
         return null;
     }
 
-    private Cat getSelectCat(ResultSet rs) throws SQLException {
-        Cat cat = new BarsikCat();
-        cat.setCat_id(rs.getInt("cat_id"));
-        cat.setName(rs.getString("name"));
-        cat.setDescription(rs.getString("description"));
-        return cat;
-    }
+//    private Cat getSelectCat(ResultSet rs) throws SQLException {
+//        Cat cat = new BarsikCat();
+//        cat.setCat_id(rs.getInt("cat_id"));
+//        cat.setName(rs.getString("name"));
+//        cat.setDescription(rs.getString("description"));
+//        return cat;
+//    }
 
     @Override
     public String getUpdateCatsStatus(int cat_id) {

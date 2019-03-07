@@ -1,4 +1,4 @@
-package io.khasang.bend.service.impl.cats;
+package io.khasang.bend.service.impl;
 
 import io.khasang.bend.service.Cat;
 import org.springframework.stereotype.Service;
@@ -21,22 +21,18 @@ public class BarsikCat implements Cat {
         this.name = name;
     }
 
-    @Override
     public int getCat_id() {
         return cat_id;
     }
 
-    @Override
     public void setCat_id(int cat_id) {
         this.cat_id = cat_id;
     }
 
-    @Override
     public String getDescription() {
         return description;
     }
 
-    @Override
     public void setDescription(String description) {
         this.description = description;
     }

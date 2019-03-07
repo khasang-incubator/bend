@@ -24,7 +24,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/admin/**").access("hasRole('ADMIN')")
                 .antMatchers("/user/**").access("hasAnyRole({'USER', 'ADMIN'})")
                 .antMatchers("/").permitAll()
-                .and().csrf().disable().formLogin().defaultSuccessUrl("/", false);
+                .and().csrf().disable().cors().disable().formLogin().defaultSuccessUrl("/", false);
     }
 
     // NON PRODUCTION!!! spring 3-4
@@ -35,17 +35,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //    }
 
     //non for prod - spring 5 (авторизация InMemoryUserDetailsManager)
-    @Override
-    public void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userDetailsService);
-    }
-
-    // for production - spring 5, БД-авторизация JdbcDaoImpl
 //    @Override
 //    public void configure(AuthenticationManagerBuilder auth) throws Exception {
-//        auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
-//
+//        auth.userDetailsService(userDetailsService);
 //    }
+
+    // for production - spring 5, БД-авторизация JdbcDaoImpl
+    @Override
+    public void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
+
+    }
 
     private PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder(); // хеширование пароля
