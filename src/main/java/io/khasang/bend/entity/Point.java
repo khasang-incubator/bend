@@ -11,8 +11,12 @@ public class Point {
     @Column(name = "point_id")
     private long id;
     private String name;
-    private double coord_x;
-    private double coord_y;
+
+    @Column(name = "coord_x")
+    private double coordX;
+
+    @Column(name = "coord_y")
+    private double coordY;
     private String description;
 
     public long getId() {
@@ -31,20 +35,20 @@ public class Point {
         this.name = name;
     }
 
-    public double getCoord_x() {
-        return coord_x;
+    public double getCoordX() {
+        return coordX;
     }
 
-    public void setCoord_x(double coord_x) {
-        this.coord_x = coord_x;
+    public void setCoordX(double coordX) {
+        this.coordX = coordX;
     }
 
-    public double getCoord_y() {
-        return coord_y;
+    public double getCoordY() {
+        return coordY;
     }
 
-    public void setCoord_y(double coord_y) {
-        this.coord_y = coord_y;
+    public void setCoordY(double coordY) {
+        this.coordY = coordY;
     }
 
     public String getDescription() {
