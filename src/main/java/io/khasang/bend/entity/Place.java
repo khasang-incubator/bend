@@ -3,7 +3,6 @@ package io.khasang.bend.entity;
 import javax.persistence.*;
 import java.time.LocalDate;
 
-
 @Entity
 @Table(name = "places")
 public class Place {
@@ -12,8 +11,10 @@ public class Place {
     private long id;
     private String name;
     private String description;
-    private int album_id;//TODO with table albums??
-    private int point_id;//ya-API-point
+    //TODO with table albums 04.03.2019
+    private int album_id;
+    //TODO ya-API-point 04.03.2019
+    private int point_id;
 
     public long getId() {
         return id;
