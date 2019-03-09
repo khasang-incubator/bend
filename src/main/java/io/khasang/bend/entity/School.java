@@ -142,34 +142,3 @@ public class School {
         this.disciplinesList = disciplinesList;
     }
 }
-/*
-{
-"name":"gdfgdfg",
-"description":"gdfgdfg",
-"logoSrc":"gdfgdfg",
-"bannerSrc":"gdfgdfg",
-"originDate":"11111111",
-"albumId":"1",
-"leaderId":"1",
-"priceList":"gdfgdfg",
-"timeTable":"gdfgdfg",
-"disciplinesList":"asdasdas"
-"trainersList":"gdfgdfg",
-"studentsList":"gdfgdfg"
-}
-
-CREATE TABLE public.schools
-(
-  id integer,
-  name character varying(255),
-  description text,
-  logo_src character varying(255),
-  banner_src character varying(255),
-  album_id integer,
-  leader_id integer,
-  price_list text,
-  time_table text,
-  trainers_list text,
-  students_list text
-)
- */

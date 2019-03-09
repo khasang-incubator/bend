@@ -1,24 +1,21 @@
 package io.khasang.bend.entity;
 
 /*
-что делает глобальный админ?(если создавать такую роль)
-может редактировать всю информацию о школах которую туда добавляют админы школ
-может добавлять/удалять/редактировать школы
-может добавлять/удалять/редактировать пользователей(тут нужно сразу им роли раздавать)
-может добавлять/удалять/редактировать учеников
-может добавлять/удалять/редактировать тренеров
-может добавлять/удалять/редактировать админов-школ(ака менеджеров)
-может добавлять/удалять/редактировать фотографов
-может добавлять/удалять/редактировать дисциплины
-
-(в общем доступ к краду любой сущности, кроме, возможно чатов(чтобы не было лишнего соблазна лезть в чужие переписки))
-
-из каких-то специфических возможностей, например, присылать уведомления разным участникам системы,
-то бишь разным ролям или всем пользователям сразу
-Но тут, наверное нужна некая сущность Notification со сроком действия, - например чтобы уведомлять о плановых работах,
-о каких-то новых правилах, женщин с 8 марта поздравлять =)
-
-но тогда нужен REST для некоего класса GlobalNotification ?
- */
+* TODO
+* Global admin functions
+* edit all information about schools (info that added by schools admins)
+* add/delete/remove schools
+* add/delete/remove users(with roles)
+* add/delete/remove students
+* add/delete/remove trainers
+* add/delete/remove managers
+* add/delete/remove photographs
+* add/delete/remove disciplines
+* Thus, CRUD any entity, except chats and private messages
+*
+* global notifications
+* role-oriented notifications
+* TODO Notification Entity, and Entity REST (planned works, new rules e.g.)
+*/
 
 public class Admin { }

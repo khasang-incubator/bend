@@ -1,15 +1,18 @@
 package io.khasang.bend.entity;
 
 /*
-главные функции админа школы:
-1) искать учеников
-2) назначать ученикам тренеров
-3) заполнять информацию о школе(название, лого, фото, описание и т д)(это уже cущность School)(и ее филиалах? - вопрос сложности)
- */
+* TODO school Manager functions:
+* look for students
+* assign trainers for students
+* manage school info(name, logo, photo, description et cetera(school entity, filials e.g.))
+*/
 
-public class Manager {//может лучше назвать эту роль админа школы - "менеджером", чтобы можно было потом создать глобального админа?
+public class Manager {
 
-    //getCandidates();//поиск учеников со статусом в поиске, по дисциплинам
-    //assignTrainerToStudent();//на создание записи в связующей таблице
-    //unAssignTrainerFromStudent();//на удаление записи изсвязующей таблицы
+    //look for students(with checkbox - status looking for school, according disciplines)
+    //TODO getCandidates();
+    //create bind trainer-student
+    //TODO assignTrainerToStudent();
+    //delete bind trainer-student
+    //TODO unAssignTrainerFromStudent();
 }
