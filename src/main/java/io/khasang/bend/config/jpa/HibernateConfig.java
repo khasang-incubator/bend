@@ -11,6 +11,7 @@ import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import javax.persistence.EntityManager;
 import javax.sql.DataSource;
 import java.util.Properties;
 
@@ -30,6 +31,13 @@ public class HibernateConfig {
         sessionFactory.setHibernateProperties(properties());
         return sessionFactory;
     }
+
+//    @Bean
+//    public EntityManager entityManager() {
+//        EntityManagerFactory emf = Persistence.createEntityManagerFactory("com.baeldung.movie_catalog");
+//        EntityManager entityManager = new EntityManager() {
+//        }
+//    }
 
     @Bean
     @Autowired

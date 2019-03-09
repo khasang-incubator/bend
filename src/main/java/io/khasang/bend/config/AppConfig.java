@@ -1,9 +1,12 @@
 package io.khasang.bend.config;
 
+import io.khasang.bend.dao.AdminDao;
 import io.khasang.bend.dao.BarsukDao;
 import io.khasang.bend.dao.SchoolDao;
+import io.khasang.bend.dao.impl.AdminDaoImpl;
 import io.khasang.bend.dao.impl.BarsukDaoImpl;
 import io.khasang.bend.dao.impl.SchoolDaoImpl;
+import io.khasang.bend.entity.Admin;
 import io.khasang.bend.entity.Barsuk;
 import io.khasang.bend.entity.School;
 import org.springframework.context.annotation.Bean;
@@ -22,5 +25,10 @@ public class AppConfig {
     @Bean
     public SchoolDao schoolDao() {
         return new SchoolDaoImpl(School.class);
+    }
+
+    @Bean
+    public AdminDao adminDao() {
+        return new AdminDaoImpl();
     }
 }
