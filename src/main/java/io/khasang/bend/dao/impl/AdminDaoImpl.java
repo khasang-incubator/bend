@@ -2,7 +2,6 @@ package io.khasang.bend.dao.impl;
 
 import io.khasang.bend.dao.AdminDao;
 import io.khasang.bend.entity.School;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
 
