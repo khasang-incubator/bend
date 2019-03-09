@@ -17,26 +17,27 @@ public class School {
     @Column(name = "banner_src")
     private String bannerSrc;//большое изображение для заглавной страницы школы(по ширине экрана)
     @Column(columnDefinition = "DATE", name = "origin_date")
-    private Date originDate;//TODO????
+    //TODO 04.03.2019
+    private Date originDate;
     @Column(name = "album_id")
     private int albumId;
     @Column(name = "leader_id")
     private int leaderId;//user leader of school maybe NULL
     @Column(columnDefinition = "TEXT", name = "price_list")
-    private String priceList;//TODO???? может здесь лучше использовать StringBuilder?- попробовал, но что-то не то он мне в базу записал
+    private String priceList;
     @Column(columnDefinition = "TEXT", name = "time_table")
-    private String timeTable;//TODO???? может здесь лучше использовать StringBuilder? - попробовал, но что-то не то он мне в базу записал
+    private String timeTable;
 
-    //Что тут делать? Какой-то другой подход должен быть? Критерии?
-    //Что тут делать? Какой-то другой подход должен быть? Критерии?
+    //TODO cross-table query instead of list imitation(arrays and lists are not BasicTypes) 04.03.2019
+    //TODO new table, new entity 04.03.2019
     @Column(name = "disciplines_list")
-    private String disciplinesList;//TODO пока сделал так но чувствую что лучше это поместить в отдельную таблицу, а новая таблица - это уже получается - другая сущность?
+    private String disciplinesList;
+    //TODO new table, new entity 04.03.2019
     @Column(name = "trainers_list")
-    private String trainersList;//TODO пока сделал так но чувствую что лучше это поместить в отдельную таблицу, а новая таблица - это уже получается - другая сущность?
+    private String trainersList;
+    //TODO new table, new entity 04.03.2019
     @Column(name = "students_list")
-    private String studentsList;//TODO пока сделал так но чувствую что лучше это поместить в отдельную таблицу, а новая таблица - это уже получается - другая сущность?
-//    private int[] trainersList;//(массивы и листы тоже не подошли так как не BasicType)
-//    private int[] studentsList;//(массивы и листы тоже не подошли так как не BasicType)
+    private String studentsList;
 
     public long getId() {
         return id;
@@ -77,14 +78,6 @@ public class School {
     public void setBannerSrc(String bannerSrc) {
         this.bannerSrc = bannerSrc;
     }
-
-//    public Date getOriginDate() {
-//        return originDate;
-//    }
-//
-//    public void setOriginDate(Date originDate) {
-//        this.originDate = originDate;
-//    }
 
     public int getAlbumId() {
         return albumId;

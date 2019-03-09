@@ -1,7 +1,7 @@
 package io.khasang.bend.entity;
 
 /*
-* TODO
+* TODO 04.03.2019
 * Global admin functions
 * edit all information about schools (info that added by schools admins)
 * add/delete/remove schools
@@ -15,7 +15,7 @@ package io.khasang.bend.entity;
 *
 * global notifications
 * role-oriented notifications
-* TODO Notification Entity, and Entity REST (planned works, new rules e.g.)
+* TODO Notification Entity, and Entity REST (planned works, new rules e.g.) 04.03.2019
 */
 
 public class Admin { }
