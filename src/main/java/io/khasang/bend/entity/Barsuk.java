@@ -1,7 +1,5 @@
 package io.khasang.bend.entity;
 
-import org.springframework.format.annotation.DateTimeFormat;
-
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -16,7 +14,6 @@ public class Barsuk {
     private long id;
     private String name;
     private String description;
-    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     @Column(columnDefinition = "DATE")
     private LocalDate year;
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
