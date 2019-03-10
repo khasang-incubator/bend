@@ -29,13 +29,10 @@ public class School {
     private String timeTable;
 
     //TODO cross-table query instead of list imitation(arrays and lists are not BasicTypes) 04.03.2019
-    //TODO new table, new entity 04.03.2019
     @Column(name = "disciplines_list")
     private String disciplinesList;
-    //TODO new table, new entity 04.03.2019
     @Column(name = "trainers_list")
     private String trainersList;
-    //TODO new table, new entity 04.03.2019
     @Column(name = "students_list")
     private String studentsList;
 

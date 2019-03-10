@@ -1,8 +1,5 @@
 package io.khasang.bend.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
-
 /*
 * TODO 04.03.2019
 * Global admin functions
@@ -20,8 +17,7 @@ import javax.persistence.Table;
 * role-oriented notifications
 * TODO Notification Entity, and Entity REST (planned works, new rules e.g.) 04.03.2019
 */
-//@Entity
-//@Table(name = "schools")
+
 public class Admin {
 
     public Admin(){};
