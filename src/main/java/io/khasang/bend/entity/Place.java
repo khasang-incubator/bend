@@ -1,7 +1,6 @@
 package io.khasang.bend.entity;
 
 import javax.persistence.*;
-import java.time.LocalDate;
 
 @Entity
 @Table(name = "places")
