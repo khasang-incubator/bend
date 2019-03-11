@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/bend.bend.iml" filepath="$PROJECT_DIR$/.idea/modules/bend.bend.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/bend.bend.main.iml" filepath="$PROJECT_DIR$/.idea/modules/bend.bend.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/bend.bend.test.iml" filepath="$PROJECT_DIR$/.idea/modules/bend.bend.test.iml" />
+    </modules>
+  </component>
+</project>

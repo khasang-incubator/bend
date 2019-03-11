@@ -1,7 +1,6 @@
 package io.khasang.bend.dao.impl;
 
 import io.khasang.bend.dao.BasicDao;
-import io.khasang.bend.entity.Point;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
