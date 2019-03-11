@@ -2,6 +2,7 @@ package io.khasang.bend.controller;
 
 import io.khasang.bend.entity.Barsuk;
 import io.khasang.bend.service.BarsukService;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,7 +18,8 @@ public class BarsukController {
         this.barsukService = barsukService;
     }
 
-    @RequestMapping(value = "/add", method = RequestMethod.POST, produces = "application/json;charset=utf-8")
+    //@RequestMapping(value = "/add", method = RequestMethod.POST, produces = "application/json;charset=utf-8")
+    @RequestMapping(value = "/add", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     @ResponseBody
     public Barsuk addBarsuk(@RequestBody Barsuk barsuk) {
         return barsukService.add(barsuk);
