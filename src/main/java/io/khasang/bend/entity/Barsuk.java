@@ -4,6 +4,8 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "barsuki")
@@ -14,9 +16,12 @@ public class Barsuk {
     private long id;
     private String name;
     private String description;
-    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+
     @Column(columnDefinition = "DATE")
     private LocalDate year;
+
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+    private List<BarsukWoman> barsukWomens = new ArrayList<>();
 
     public long getId() {
         return id;
@@ -48,5 +53,13 @@ public class Barsuk {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public List<BarsukWoman> getBarsukWomens() {
+        return barsukWomens;
+    }
+
+    public void setBarsukWomens(List<BarsukWoman> barsukWomens) {
+        this.barsukWomens = barsukWomens;
     }
 }

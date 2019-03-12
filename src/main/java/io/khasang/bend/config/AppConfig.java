@@ -1,15 +1,8 @@
 package io.khasang.bend.config;
 
-import io.khasang.bend.dao.CarDao;
-import io.khasang.bend.dao.EmployeeDao;
-import io.khasang.bend.dao.PointDao;
-import io.khasang.bend.dao.UserDao;
-import io.khasang.bend.dao.impl.CarDaoImpl;
-import io.khasang.bend.dao.impl.EmployeeDaoImpl;
-import io.khasang.bend.dao.impl.UserDaoImpl;
-import io.khasang.bend.entity.Car;
-import io.khasang.bend.entity.Employee;
-import io.khasang.bend.entity.User;
+import io.khasang.bend.dao.*;
+import io.khasang.bend.dao.impl.*;
+import io.khasang.bend.entity.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
@@ -24,17 +17,26 @@ public class AppConfig {
     }
 
     @Bean
+    public BarsukDao barsukDao() { return new BarsukDaoImpl(Barsuk.class);
+    }
+
+    @Bean
     public CarDao carDao(){
         return new CarDaoImpl(Car.class);
     }
 
     @Bean
-    public PointDao pointDao(){
-        return new PointDaoImpl(Point.class);
+    public UserDao userDao(){
+        return new UserDaoImpl(User.class);
     }
 
     @Bean
-    public UserDao userDao(){
-        return new UserDaoImpl(User.class);
+    public SchoolDao schoolDao() {
+        return new SchoolDaoImpl(School.class);
+    }
+
+    @Bean
+    public AdminDao adminDao() {
+        return new AdminDaoImpl();
     }
 }

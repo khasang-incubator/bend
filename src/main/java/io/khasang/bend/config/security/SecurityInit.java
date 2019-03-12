@@ -1,4 +1,4 @@
-package io.khasang.bend.config.sequrity;
+package io.khasang.bend.config.security;
 
 import org.springframework.security.web.context.AbstractSecurityWebApplicationInitializer;
 
