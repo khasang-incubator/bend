@@ -21,6 +21,8 @@ public class TrainerControllerIntegrationTest {
     public void checkBarsukAdding() {
         Trainer trainer = createTrainer();
         RestTemplate restTemplate = new RestTemplate();
+        //https://www.baeldung.com/rest-template
+        //restTemplate.exchange - таким образом мы можем отправить rest POST
         ResponseEntity<Trainer> responseEntity = restTemplate.exchange(
                 ROOT+GET_BY_ID+"/{id}",
                 HttpMethod.GET,
@@ -39,6 +41,8 @@ public class TrainerControllerIntegrationTest {
         Trainer trainer = prefillTrainer();
         HttpEntity<Trainer> entity = new HttpEntity<>(trainer, headers);
         RestTemplate template = new RestTemplate();
+        //https://www.baeldung.com/rest-template
+        //restTemplate.exchange - таким образом мы можем отправить rest POST
         Trainer createdTrainer = template.exchange(
                 ROOT+ADD,
                 HttpMethod.POST,
@@ -61,8 +65,8 @@ public class TrainerControllerIntegrationTest {
         school.setDescription("schooldesc");
 
         School school2 = new School();
-        school.setName("schoolname2");
-        school.setDescription("schooldesc2");
+        school2.setName("schoolname2");
+        school2.setDescription("schooldesc2");
 
         List<School> list = new ArrayList();
         list.add(school);

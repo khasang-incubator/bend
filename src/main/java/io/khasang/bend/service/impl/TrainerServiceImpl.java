@@ -1,8 +1,10 @@
 package io.khasang.bend.service.impl;
 
+import io.khasang.bend.dao.SchoolDao;
 import io.khasang.bend.dao.TrainerDao;
 import io.khasang.bend.entity.Trainer;
 import io.khasang.bend.service.TrainerService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -34,5 +36,10 @@ public class TrainerServiceImpl implements TrainerService {
     @Override
     public List<Trainer> getAllTrainers() {
         return trainerDao.getAll();
+    }
+
+    @Autowired
+    public void setTrainerDao(TrainerDao trainerDao) {
+        this.trainerDao = trainerDao;
     }
 }
