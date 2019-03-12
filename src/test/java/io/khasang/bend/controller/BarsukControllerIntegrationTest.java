@@ -2,7 +2,6 @@ package io.khasang.bend.controller;
 
 import io.khasang.bend.entity.Barsuk;
 import io.khasang.bend.entity.BarsukWoman;
-import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.http.*;
 import org.springframework.web.client.RestTemplate;
@@ -45,6 +44,7 @@ public class BarsukControllerIntegrationTest {
         Barsuk barsuk = prefillBarsuk();
         HttpEntity<Barsuk> entity = new HttpEntity<>(barsuk, headers);
         RestTemplate template = new RestTemplate();
+
         Barsuk createdBarsuk = template.exchange(
                 ROOT + ADD,
                 HttpMethod.POST,
@@ -60,8 +60,8 @@ public class BarsukControllerIntegrationTest {
 
     private Barsuk prefillBarsuk() {
         Barsuk barsuk = new Barsuk();
-        barsuk.setDescription("strong");
         barsuk.setName("Jack");
+        barsuk.setDescription("strong");
         barsuk.setYear(LocalDate.of(2017, 11, 21));
 
         BarsukWoman woman1 = new BarsukWoman();
