@@ -4,9 +4,11 @@ import io.khasang.bend.entity.Barsuk;
 import io.khasang.bend.entity.BarsukWoman;
 import org.junit.Assert;
 import org.junit.Test;
+import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.*;
 import org.springframework.web.client.RestTemplate;
 
+import java.lang.reflect.Type;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -36,6 +38,24 @@ public class BarsukControllerIntegrationTest {
         assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
         Barsuk receivedBarsuk = responseEntity.getBody();
         assertNotNull(receivedBarsuk);
+    }
+
+    @Test
+    public void checkAllBarsuk() {
+        RestTemplate template = new RestTemplate();
+        createBarsuk();
+        createBarsuk();
+
+        ResponseEntity<List<Barsuk>> result = template.exchange(
+                ROOT + GET_ALL,
+                HttpMethod.GET,
+                null,
+                new ParameterizedTypeReference<List<Barsuk>>() {
+                }
+        );
+
+        List<Barsuk> barsuks = result.getBody();
+        assertNotNull(barsuks);
     }
 
     private Barsuk createBarsuk() {
