@@ -5,7 +5,6 @@ import io.khasang.bend.entity.Point;
 import io.khasang.bend.service.PointService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 
 @Service

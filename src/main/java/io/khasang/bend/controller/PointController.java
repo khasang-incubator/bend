@@ -36,7 +36,7 @@ public class PointController {
         return pointService.delete(id);
     }
 
-    @RequestMapping(value = "/get/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    @RequestMapping(value = "/get/{id}", method = RequestMethod.GET, produces = "application/json;charset=utf-8")
     @ResponseBody
     public Point getById(@PathVariable("id") long id) {
         return pointService.getById(id);

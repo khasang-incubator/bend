@@ -1,7 +1,6 @@
 package io.khasang.bend.service;
 
 import io.khasang.bend.entity.Point;
-
 import java.util.List;
 
 public interface PointService {

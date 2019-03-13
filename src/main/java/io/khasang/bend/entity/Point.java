@@ -9,10 +9,8 @@ public class Point {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     private String name;
-
     @Column(name = "coord_x")
     private double coordX;
-
     @Column(name = "coord_y")
     private double coordY;
     private String description;
