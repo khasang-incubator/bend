@@ -32,9 +32,7 @@ public class User {
     @Enumerated
     @Column(name = "user_status")
     private UserStatus userStatus;
-    @Column(name = "is_on_map")
     private boolean isOnMap;
-    @Column(name = "is_health_limited")
     private boolean isHealthLimited;
     @Column(name = "user_description")
     private String userDescription;

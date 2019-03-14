@@ -12,22 +12,8 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
 public class AppConfig {
 
     @Bean
-    public EmployeeDao employeeDao() {
-        return new EmployeeDaoImpl(Employee.class);
-    }
-
-    @Bean
-    public BarsukDao barsukDao() { return new BarsukDaoImpl(Barsuk.class);
-    }
-
-    @Bean
-    public CarDao carDao(){
-        return new CarDaoImpl(Car.class);
-    }
-
-    @Bean
-    public UserDao userDao(){
-        return new UserDaoImpl(User.class);
+    public BarsukDao barsukDao() {
+        return new BarsukDaoImpl(Barsuk.class);
     }
 
     @Bean
@@ -38,5 +24,20 @@ public class AppConfig {
     @Bean
     public AdminDao adminDao() {
         return new AdminDaoImpl();
+    }
+
+    @Bean
+    public UserDao userDao() {
+        return new UserDaoImpl(User.class);
+    }
+
+    @Bean
+    public CarDao carDao() {
+        return new CarDaoImpl(Car.class);
+    }
+
+    @Bean
+    public EmployeeDao employeeDao (){
+        return new EmployeeDaoImpl(Employee.class);
     }
 }
