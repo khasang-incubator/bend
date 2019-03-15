@@ -2,7 +2,10 @@ package io.khasang.bend.config;
 
 import io.khasang.bend.dao.*;
 import io.khasang.bend.dao.impl.*;
-import io.khasang.bend.entity.*;
+import io.khasang.bend.entity.Barsuk;
+import io.khasang.bend.entity.Place;
+import io.khasang.bend.entity.School;
+import io.khasang.bend.entity.User;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
@@ -12,22 +15,8 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
 public class AppConfig {
 
     @Bean
-    public EmployeeDao employeeDao() {
-        return new EmployeeDaoImpl(Employee.class);
-    }
-
-    @Bean
-    public BarsukDao barsukDao() { return new BarsukDaoImpl(Barsuk.class);
-    }
-
-    @Bean
-    public CarDao carDao(){
-        return new CarDaoImpl(Car.class);
-    }
-
-    @Bean
-    public UserDao userDao(){
-        return new UserDaoImpl(User.class);
+    public BarsukDao barsukDao() {
+        return new BarsukDaoImpl(Barsuk.class);
     }
 
     @Bean
@@ -38,5 +27,15 @@ public class AppConfig {
     @Bean
     public AdminDao adminDao() {
         return new AdminDaoImpl();
+    }
+
+    @Bean
+    public UserDao userDao() {
+        return new UserDaoImpl(User.class);
+    }
+
+    @Bean
+    public PlaceDao placeDao() {
+        return new PlaceDaoImpl(Place.class);
     }
 }
