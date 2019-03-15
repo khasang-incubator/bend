@@ -2,8 +2,10 @@ package io.khasang.bend.config;
 
 import io.khasang.bend.dao.*;
 import io.khasang.bend.dao.impl.*;
+import io.khasang.bend.entity.Barsuk;
 import io.khasang.bend.entity.Place;
-import io.khasang.bend.entity.Point;
+import io.khasang.bend.entity.School;
+import io.khasang.bend.entity.User;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
