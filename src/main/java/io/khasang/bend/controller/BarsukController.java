@@ -2,6 +2,7 @@ package io.khasang.bend.controller;
 
 import io.khasang.bend.entity.Barsuk;
 import io.khasang.bend.service.BarsukService;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -29,7 +30,7 @@ public class BarsukController {
         return barsukService.update(barsuk);
     }
 
-    @RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE, produces = "application/json;charset=utf-8")
+    @RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     @ResponseBody
     public Barsuk deleteBarsuk(@PathVariable("id") long id) {
         return barsukService.delete(id);
