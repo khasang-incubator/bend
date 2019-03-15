@@ -8,6 +8,7 @@ import org.springframework.core.env.Environment;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.jdbc.JdbcDaoImpl;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
@@ -37,15 +38,17 @@ public class DataConfig {
         return jdbcTemplate;
     }
 
-    //for prod  авторизация через БД (auth.properties)
+
+    // for prod
 //    @Bean
-//    public UserDetailsService userDetailsService(){
+//    public UserDetailsService userDetailsService() {
 //        JdbcDaoImpl dao = new JdbcDaoImpl();
 //        dao.setDataSource(dataSource());
-//        dao.setUsersByUsernameQuery(environment.getRequiredProperty("usersByQuery")); // для понимания, что такой user существует, с таким логином
-//        dao.setAuthoritiesByUsernameQuery(environment.getRequiredProperty("rolesByQuery")); // есть ли у юзера нужная нам роль
+//        dao.setUsersByUsernameQuery(environment.getRequiredProperty("usersByQuery"));
+//        dao.setAuthoritiesByUsernameQuery(environment.getRequiredProperty("rolesByQuery"));
 //        return dao;
 //    }
+
 
     // non for prod
     @Bean
@@ -54,10 +57,12 @@ public class DataConfig {
         User.UserBuilder users = User.withDefaultPasswordEncoder();
         InMemoryUserDetailsManager manager = new InMemoryUserDetailsManager();
         manager.createUser(users.username("user").password("user").roles("USER").build());
-        manager.createUser(users.username("user2").password("user2").roles("USER").build());
         manager.createUser(users.username("admin").password("admin").roles("USER","ADMIN").build());
-        manager.createUser(users.username("admin2").password("admin2").roles("USER","ADMIN").build());
         return manager;
+    }
+
+    public Environment getEnvironment() {
+        return environment;
     }
 
     @Autowired

@@ -18,6 +18,7 @@ import java.util.Properties;
 @EnableTransactionManagement
 @PropertySource(value = "classpath:hibernate.properties")
 public class HibernateConfig {
+
     private Environment environment;
     private DataSource dataSource;
 
