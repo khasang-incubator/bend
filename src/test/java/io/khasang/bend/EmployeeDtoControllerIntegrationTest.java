@@ -44,15 +44,15 @@ public class EmployeeDtoControllerIntegrationTest {
         createEmployee();
         createEmployee();
 
-        ResponseEntity<List<Employee>> result = template.exchange(
+        ResponseEntity<List<EmployeeDto>> result = template.exchange(
                 ROOT + GET_ALL,
                 HttpMethod.GET,
                 null,
-                new ParameterizedTypeReference<List<Employee>>() {
+                new ParameterizedTypeReference<List<EmployeeDto>>() {
                 }
         );
 
-        List<Employee> employees = result.getBody();
+        List<EmployeeDto> employees = result.getBody();
         assertNotNull(employees);
     }
 

@@ -34,6 +34,14 @@ public class EmployeeDto {
         return employeeDto;
     }
 
+    public List<EmployeeDto> getEmployeeDtoListFromEmployees(List<Employee> employees){
+        List<EmployeeDto> employeeDtos = new ArrayList<>();
+        for (Employee employee: employees) {
+            employeeDtos.add(getEmployeeDtoFromEmployee(employee));
+        }
+        return employeeDtos;
+    }
+
     public Long getId() {
         return id;
     }

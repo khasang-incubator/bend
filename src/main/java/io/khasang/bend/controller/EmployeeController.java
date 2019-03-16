@@ -44,7 +44,7 @@ public class EmployeeController {
 
     @RequestMapping(value = "/all", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     @ResponseBody
-    public List<Employee> getAll() {
+    public List<EmployeeDto> getAll() {
         return employeeService.getAllEmployees();
     }
 
