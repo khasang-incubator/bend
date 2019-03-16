@@ -14,5 +14,5 @@ public interface CarService {
 
     Car getById(long id);
 
-    List<Car> getAll();
+    List<Car> getAllCars();
 }
