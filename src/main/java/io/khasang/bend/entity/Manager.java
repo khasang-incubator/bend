@@ -8,7 +8,6 @@ package io.khasang.bend.entity;
 */
 
 public class Manager {
-
     //look for students(with checkbox - status looking for school, according disciplines)
     //TODO getCandidates(); 04.03.2019
     //create bind trainer-student
