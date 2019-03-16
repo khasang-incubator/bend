@@ -19,6 +19,8 @@ public class EmployeeDtoControllerIntegrationTest {
     private final static String ADD = "/add";
     private final static String GET_BY_ID = "/get/{id}";
     private final static String GET_ALL = "/all";
+    private final static String GET_ALL_BY_NAME = "/getall-byname/{name}";
+
 
     @Test
     public void checkAddEmployee() {
@@ -50,6 +52,25 @@ public class EmployeeDtoControllerIntegrationTest {
                 null,
                 new ParameterizedTypeReference<List<EmployeeDto>>() {
                 }
+        );
+
+        List<EmployeeDto> employees = result.getBody();
+        assertNotNull(employees);
+    }
+
+    @Test
+    public void checkGetAllEmployeesByName(){
+        RestTemplate template = new RestTemplate();
+        createEmployee();
+        createEmployee();
+
+        ResponseEntity<List<EmployeeDto>> result = template.exchange(
+                ROOT + GET_ALL_BY_NAME,
+                HttpMethod.GET,
+                null,
+                new ParameterizedTypeReference<List<EmployeeDto>>() {
+                },
+                "Henry Morgan"
         );
 
         List<EmployeeDto> employees = result.getBody();

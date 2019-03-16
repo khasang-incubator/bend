@@ -42,6 +42,12 @@ public class EmployeeController {
         return employeeService.getById(id);
     }
 
+    @RequestMapping(value = "/getall-byname/{name}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    @ResponseBody
+    public EmployeeDto getByName(@PathVariable("id") long id) {
+        return employeeService.getById(id);
+    }
+
     @RequestMapping(value = "/all", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     @ResponseBody
     public List<EmployeeDto> getAll() {
