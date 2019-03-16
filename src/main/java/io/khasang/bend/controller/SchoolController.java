@@ -10,7 +10,6 @@ import java.util.List;
 @Controller
 @RequestMapping("/school")
 public class SchoolController {
-
     private SchoolService schoolService;
 
     public SchoolController(SchoolService schoolService) {
