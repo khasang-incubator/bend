@@ -1,5 +1,6 @@
 package io.khasang.bend.controller;
 
+import io.khasang.bend.dto.EmployeeDto;
 import io.khasang.bend.entity.Car;
 import io.khasang.bend.entity.Employee;
 import org.junit.Test;
@@ -7,6 +8,7 @@ import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.*;
 import org.springframework.web.client.RestTemplate;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,16 +25,16 @@ public class EmployeeControllerIntegrationTest {
         Employee employee = createEmployee();
 
         RestTemplate template = new RestTemplate();
-        ResponseEntity<Employee> responseEntity = template.exchange(
+        ResponseEntity<EmployeeDto> responseEntity = template.exchange(
                 ROOT + GET_BY_ID,
                 HttpMethod.GET,
                 null,
-                Employee.class,
+                EmployeeDto.class,
                 employee.getId()
         );
 
         assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
-        Employee recievedEmployee = responseEntity.getBody();
+        EmployeeDto recievedEmployee = responseEntity.getBody();
         assertNotNull(recievedEmployee);
     }
 
@@ -82,9 +84,11 @@ public class EmployeeControllerIntegrationTest {
 
         Car car1 = new Car();
         car1.setModel("Ford");
+        car1.setYear(LocalDate.of(2011,12,21));
 
         Car car2 = new Car();
         car2.setModel("Audi");
+        car2.setYear(LocalDate.of(2014,3,11));
 
         List<Car> carList = new ArrayList<>();
         carList.add(car1);

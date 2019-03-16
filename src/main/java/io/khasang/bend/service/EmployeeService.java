@@ -1,5 +1,6 @@
 package io.khasang.bend.service;
 
+import io.khasang.bend.dto.EmployeeDto;
 import io.khasang.bend.entity.Employee;
 
 import java.util.List;
@@ -12,9 +13,7 @@ public interface EmployeeService {
 
     Employee delete(long id);
 
-    Employee getById(long id);
+    EmployeeDto getById(long id);
 
-    List<Employee> getAll();
-
-
+    List<EmployeeDto> getAll();
 }

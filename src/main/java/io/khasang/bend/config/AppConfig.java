@@ -37,7 +37,7 @@ public class AppConfig {
     }
 
     @Bean
-    public EmployeeDao employeeDao (){
+    public EmployeeDao employeeDao() {
         return new EmployeeDaoImpl(Employee.class);
     }
 }

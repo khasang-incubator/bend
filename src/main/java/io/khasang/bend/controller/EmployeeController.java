@@ -1,5 +1,6 @@
 package io.khasang.bend.controller;
 
+import io.khasang.bend.dto.EmployeeDto;
 import io.khasang.bend.entity.Employee;
 import io.khasang.bend.service.EmployeeService;
 import org.springframework.http.MediaType;
@@ -23,7 +24,7 @@ public class EmployeeController {
         return employeeService.add(employee);
     }
 
-    @RequestMapping(value = "/up", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    @RequestMapping(value = "/update", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     @ResponseBody
     public Employee update(@RequestBody Employee employee) {
         return employeeService.update(employee);
@@ -37,13 +38,13 @@ public class EmployeeController {
 
     @RequestMapping(value = "/get/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     @ResponseBody
-    public Employee get(@PathVariable("id") long id) {
+    public EmployeeDto get(@PathVariable("id") long id) {
         return employeeService.getById(id);
     }
 
     @RequestMapping(value = "/all", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     @ResponseBody
-    public List<Employee> getAll() {
+    public List<EmployeeDto> getAll() {
         return employeeService.getAll();
     }
 }
