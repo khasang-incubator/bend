@@ -1,10 +1,10 @@
 package io.khasang.bend.controller;
 
 /*
-* TODO 09.03.2019
-* view unpublished students
-* view unpublished schools
-*/
+ * TODO 09.03.2019
+ * view unpublished students
+ * view unpublished schools
+ */
 
 import io.khasang.bend.entity.*;
 import io.khasang.bend.service.AdminService;
@@ -67,5 +67,4 @@ public class AdminController {
     public List<Student> getVacantStudents() {
         return adminService.getVacantStudentsReport();
     }
-
 }
