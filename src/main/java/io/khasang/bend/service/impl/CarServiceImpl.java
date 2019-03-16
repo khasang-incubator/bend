@@ -6,9 +6,11 @@ import io.khasang.bend.entity.Car;
 import io.khasang.bend.entity.Employee;
 import io.khasang.bend.service.CarService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service("carService")
 public class CarServiceImpl implements CarService {
 
     private CarDao carDao;

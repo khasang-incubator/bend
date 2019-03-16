@@ -44,6 +44,6 @@ public class CarController {
     @RequestMapping(value = "/get/all",  method = RequestMethod.GET, produces = "application/json;charset=utf-8")
     @ResponseBody
     public List<Car> getAll() {
-        return carService.getAll();
+        return carService.getAllCars();
     }
 }

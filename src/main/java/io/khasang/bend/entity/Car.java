@@ -1,5 +1,7 @@
 package io.khasang.bend.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -17,6 +19,7 @@ public class Car {
     @Column(columnDefinition = "DATE")
     private LocalDate year;
 
+    //@JsonIgnore
     @ManyToMany(fetch = FetchType.EAGER, mappedBy = "carList")
     private List<Employee> employees = new ArrayList<>();
 

@@ -1,5 +1,6 @@
 package io.khasang.bend;
 
+import io.khasang.bend.dto.EmployeeDto;
 import io.khasang.bend.entity.Car;
 import io.khasang.bend.entity.Employee;
 import org.junit.Test;
@@ -7,12 +8,13 @@ import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.*;
 import org.springframework.web.client.RestTemplate;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.*;
 
-public class EmployeeControllerIntegrationTest {
+public class EmployeeDtoControllerIntegrationTest {
     private final static String ROOT = "http://localhost:8080/employee";
     private final static String ADD = "/add";
     private final static String GET_BY_ID = "/get/{id}";
@@ -23,16 +25,16 @@ public class EmployeeControllerIntegrationTest {
         Employee employee = createEmployee();
 
         RestTemplate template = new RestTemplate();
-        ResponseEntity<Employee> responseEntity = template.exchange(
+        ResponseEntity<EmployeeDto> responseEntity = template.exchange(
                 ROOT + GET_BY_ID,
                 HttpMethod.GET,
                 null,
-                Employee.class,
+                EmployeeDto.class,
                 employee.getId()
         );
 
         assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
-        Employee recievedEmployee = responseEntity.getBody();
+        EmployeeDto recievedEmployee = responseEntity.getBody();
         assertNotNull(recievedEmployee);
     }
 
@@ -82,9 +84,11 @@ public class EmployeeControllerIntegrationTest {
 
         Car car1 = new Car();
         car1.setModel("Ford");
+        car1.setYear(LocalDate.of(2011,12,21));
 
         Car car2 = new Car();
         car2.setModel("Audi");
+        car2.setYear(LocalDate.of(2012,10,5));
 
         List<Car> carList = new ArrayList<>();
         carList.add(car1);

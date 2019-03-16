@@ -2,6 +2,7 @@ package io.khasang.bend.config;
 
 import io.khasang.bend.dao.*;
 import io.khasang.bend.dao.impl.*;
+import io.khasang.bend.dto.EmployeeDto;
 import io.khasang.bend.entity.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
