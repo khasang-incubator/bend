@@ -14,4 +14,6 @@ public interface BarsukService {
     Barsuk getById(long id);
 
     List<Barsuk> getAllBarsuk();
+
+    List<Barsuk> getByName(String name);
 }

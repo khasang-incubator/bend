@@ -36,6 +36,12 @@ public class BarsukController {
         return barsukService.delete(id);
     }
 
+    @RequestMapping(value = "/name/{name}", method = RequestMethod.GET)
+    @ResponseBody
+    public List<Barsuk> getBarsukById(@PathVariable("name") String name) {
+        return barsukService.getByName(name);
+    }
+
     @RequestMapping(value = "/get/{id}", method = RequestMethod.GET)
     @ResponseBody
     public Barsuk getBarsukById(@PathVariable("id") long id) {
