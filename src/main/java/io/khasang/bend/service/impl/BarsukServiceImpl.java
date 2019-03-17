@@ -37,6 +37,11 @@ public class BarsukServiceImpl implements BarsukService {
         return barsukDao.getAll();
     }
 
+    @Override
+    public List<Barsuk> getByName(String name) {
+        return barsukDao.getByName(name);
+    }
+
     @Autowired
     public void setBarsukDao(BarsukDao barsukDao) {
         this.barsukDao = barsukDao;
