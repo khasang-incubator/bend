@@ -1,9 +1,9 @@
 package io.khasang.bend.entity;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "barsuki")
@@ -16,6 +16,16 @@ public class Barsuk {
     private String description;
     @Column(columnDefinition = "DATE")
     private LocalDate year;
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+    private List<BarsukWoman> barsukWomans = new ArrayList<>();
+
+    public List<BarsukWoman> getBarsukWomans() {
+        return barsukWomans;
+    }
+
+    public void setBarsukWomans(List<BarsukWoman> barsukWomans) {
+        this.barsukWomans = barsukWomans;
+    }
 
     public long getId() {
         return id;
