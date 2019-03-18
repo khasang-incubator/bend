@@ -47,4 +47,10 @@ public class EmployeeController {
     public List<EmployeeDto> getAll() {
         return employeeService.getAll();
     }
+
+    @RequestMapping(value = "/name/{name}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    @ResponseBody
+    public List<EmployeeDto> getAllByName(@PathVariable("name") String name) {
+        return employeeService.getByName(name);
+    }
 }

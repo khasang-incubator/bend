@@ -12,18 +12,19 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 public class EmployeeControllerIntegrationTest {
-    private final static String ROOT = "http://localhost:8080/employee";
-    private final static String ADD = "/add";
-    private final static String GET_BY_ID = "/get/{id}";
-    private final static String GET_ALL = "/all";
+    private static final String ROOT = "http://localhost:8080/employee";
+    private static final String ADD = "/add";
+    private static final String GET_BY_ID = "/get/{id}";
+    private static final String GET_BY_NAME = "/name/{name}";
+    private static final String GET_ALL = "/all";
 
     @Test
     public void checkAddEmployee() {
         Employee employee = createEmployee();
-
         RestTemplate template = new RestTemplate();
         ResponseEntity<EmployeeDto> responseEntity = template.exchange(
                 ROOT + GET_BY_ID,
@@ -56,6 +57,27 @@ public class EmployeeControllerIntegrationTest {
         assertNotNull(employees);
     }
 
+    @Test
+    public void checkGetByNameEmployees(){
+        RestTemplate template = new RestTemplate();
+        Employee employee = createEmployee();
+        createEmployee();
+
+        ResponseEntity<List<EmployeeDto>> result = template.exchange(
+                ROOT + GET_BY_NAME,
+                HttpMethod.GET,
+                null,
+                new ParameterizedTypeReference<List<EmployeeDto>>() {
+                },
+                employee.getName()
+        );
+
+        List<EmployeeDto> employees = result.getBody();
+        assertNotNull(employees);
+    }
+
+
+
     private Employee createEmployee() {
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON_UTF8);
@@ -73,13 +95,13 @@ public class EmployeeControllerIntegrationTest {
         ).getBody();
 
         assertNotNull(createdEmployee);
-        assertEquals("Henry Morgan", createdEmployee.getName());
+        assertEquals("Jack", createdEmployee.getName());
         return createdEmployee;
     }
 
     private Employee prefillEmployee() {
         Employee employee = new Employee();
-        employee.setName("Henry Morgan");
+        employee.setName("Jack");
         employee.setTitle("clerk");
 
         Car car1 = new Car();

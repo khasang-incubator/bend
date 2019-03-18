@@ -13,8 +13,8 @@ import java.util.List;
 
 @Transactional
 public class BasicDaoImpl<T> implements BasicDao<T> {
-    private final Class<T> entityClass;
-    private SessionFactory sessionFactory;
+    final Class<T> entityClass;
+    SessionFactory sessionFactory;
 
     public BasicDaoImpl(Class<T> entityClass) {
         this.entityClass = entityClass;
@@ -52,7 +52,7 @@ public class BasicDaoImpl<T> implements BasicDao<T> {
         return getSession().createQuery(criteriaQuery).list();
     }
 
-    private Session getSession() {
+    Session getSession() {
         return sessionFactory.getCurrentSession();
     }
 
