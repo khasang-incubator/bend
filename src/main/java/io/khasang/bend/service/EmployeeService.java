@@ -17,6 +17,8 @@ public interface EmployeeService {
 
     List<EmployeeDto> getAllEmployees();
 
+    List<EmployeeDto> getByName(String name);
+
     /*
         Employee add(Employee employee);
 

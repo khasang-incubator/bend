@@ -1,6 +1,5 @@
 package io.khasang.bend.dao.impl;
 
-import com.sun.org.apache.xpath.internal.operations.String;
 import io.khasang.bend.dao.EmployeeDao;
 import io.khasang.bend.entity.Employee;
 import org.hibernate.Session;
@@ -60,13 +59,16 @@ public class EmployeeDaoImpl implements EmployeeDao {
     }
 
     @Override
-    public List<Employee> getAllByName(java.lang.String name) {
-        CriteriaBuilder builder = sessionFactory.getCriteriaBuilder();
-        CriteriaQuery<Employee> criteriaQuery = builder.createQuery(entityClass);
-        Root<Employee> root = criteriaQuery.from(entityClass);
-        //TODO am I right?
-        criteriaQuery.select(root).where(builder.equal(root.get("name"), name));
-        return getSession().createQuery(criteriaQuery).list();
+    public List<Employee> getAllByName(String name) {
+        List<Employee> employees = getSession().createQuery("from Employee where name = ?1").setParameter(1, name).list();
+        return employees;
+//        CriteriaBuilder builder = sessionFactory.getCriteriaBuilder();
+//        CriteriaQuery<Employee> criteriaQuery = builder.createQuery(entityClass);
+//        Root<Employee> root = criteriaQuery.from(entityClass);
+//        //TODO am I right?
+//
+//        criteriaQuery.select(root).where(builder.equal(root.get("name"), name));
+//        return getSession().createQuery(criteriaQuery).list();
     }
 }
 

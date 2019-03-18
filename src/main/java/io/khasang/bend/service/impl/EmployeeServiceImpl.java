@@ -43,6 +43,11 @@ public class EmployeeServiceImpl implements EmployeeService {
         return employeeDto.getEmployeeDtoListFromEmployees(employeeDao.getAll());
     }
 
+    @Override
+    public List<EmployeeDto> getByName(String name) {
+        return employeeDto.getEmployeeDtoListFromEmployees(employeeDao.getAllByName(name));
+    }
+
     @Autowired
     public void setEmployeeDao(EmployeeDao employeeDao) {
         this.employeeDao = employeeDao;

@@ -3,11 +3,17 @@ package io.khasang.bend;
 import io.khasang.bend.dto.EmployeeDto;
 import io.khasang.bend.entity.Car;
 import io.khasang.bend.entity.Employee;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.*;
 import org.springframework.web.client.RestTemplate;
 
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,6 +26,25 @@ public class EmployeeDtoControllerIntegrationTest {
     private final static String GET_BY_ID = "/get/{id}";
     private final static String GET_ALL = "/all";
     private final static String GET_ALL_BY_NAME = "/getall-byname/{name}";
+
+
+
+
+
+
+//    protected SessionFactory sessionFactory;
+//
+//    @Autowired
+//    public void setSessionFactory(SessionFactory sessionFactory) {
+//        this.sessionFactory = sessionFactory;
+//    }
+//
+//    protected Session getSession() {
+//        return sessionFactory.getCurrentSession();
+//    }
+
+
+
 
 
     @Test
@@ -58,10 +83,28 @@ public class EmployeeDtoControllerIntegrationTest {
         assertNotNull(employees);
     }
 
+//    @Test
+//    public void checkCriteria () {
+//        System.err.println("sf"+sessionFactory);
+//        CriteriaBuilder builder = sessionFactory.getCriteriaBuilder();
+//        CriteriaQuery<Employee> criteriaQuery = builder.createQuery(Employee.class);
+//        Root<Employee> root = criteriaQuery.from(Employee.class);
+//        //TODO am I right?
+//        criteriaQuery.select(root).where(builder.equal(root.get("name"), "Fransis Drake"));
+//
+//        List<Employee> arl = getSession().createQuery(criteriaQuery).list();
+//
+//        for (Employee e : arl) {
+//            System.err.println(""+e.getName());
+//        }
+//        assertTrue(true);
+//    }
+
+
     @Test
     public void checkGetAllEmployeesByName(){
         RestTemplate template = new RestTemplate();
-        createEmployee();
+        Employee employee = createEmployee();
         createEmployee();
 
         ResponseEntity<List<EmployeeDto>> result = template.exchange(
@@ -70,7 +113,7 @@ public class EmployeeDtoControllerIntegrationTest {
                 null,
                 new ParameterizedTypeReference<List<EmployeeDto>>() {
                 },
-                "Henry Morgan"
+                employee.getName()
         );
 
         List<EmployeeDto> employees = result.getBody();
@@ -94,13 +137,13 @@ public class EmployeeDtoControllerIntegrationTest {
         ).getBody();
 
         assertNotNull(createdEmployee);
-        assertEquals("Henry Morgan", createdEmployee.getName());
+        assertEquals("Fransis Drake", createdEmployee.getName());
         return createdEmployee;
     }
 
     private Employee prefillEmployee() {
         Employee employee = new Employee();
-        employee.setName("Henry Morgan");
+        employee.setName("Fransis Drake");
         employee.setTitle("clerk");
 
         Car car1 = new Car();
