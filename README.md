@@ -2,6 +2,14 @@
 ## bend
 ###### bend
 
+``` java
+public class Main {
+    public static void main(String[] args) {
+    
+    }
+ }
+```
+
 | Column1 | Column2 | Column3 |
 | ---- | ---- | ---- |
 | Info | asfaf | dadsas|
