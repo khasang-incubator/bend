@@ -1,24 +1,35 @@
-package io.khasang.bend.entity;
+package io.khasang.bend.dto;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import io.khasang.bend.entity.*;
+import org.springframework.stereotype.*;
 
-@Entity
-@Table(name = "points")
-public class Point {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+import java.util.*;
+
+@Component
+public class PointDto {
     private long id;
     private String name;
-    @Column(name = "coord_x")
     private double coordX;
-    @Column(name = "coord_y")
     private double coordY;
     private String description;
+
+    public PointDto getPointDtoFromPoint(Point point) {
+        PointDto pointDto = new PointDto();
+        pointDto.setId(point.getId());
+        pointDto.setName(point.getName());
+        pointDto.setCoordX(point.getCoordX());
+        pointDto.setCoordY(point.getCoordY());
+        pointDto.setDescription(point.getDescription());
+        return pointDto;
+    }
+
+    public List<PointDto> getPointDtoListFromPoints(List<Point> points) {
+        List<PointDto> pointDtos = new ArrayList<>();
+        for (Point point : points) {
+            pointDtos.add(getPointDtoFromPoint(point));
+        }
+        return pointDtos;
+    }
 
     public long getId() {
         return id;
