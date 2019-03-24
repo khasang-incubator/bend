@@ -1,49 +1,50 @@
 package io.khasang.bend.service.impl;
 
-import io.khasang.bend.dao.BarsukDao;
 import io.khasang.bend.entity.Barsuk;
+import io.khasang.bend.jpa.BarsukCrud;
 import io.khasang.bend.service.BarsukService;
+import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityManager;
 import java.util.List;
 
 @Service("barsukService")
 public class BarsukServiceImpl implements BarsukService {
-    private BarsukDao barsukDao;
+    private BarsukCrud barsukCrud;
+    @Autowired
+    private EntityManager entityManager;
 
     @Override
     public Barsuk add(Barsuk barsuk) {
-        return barsukDao.add(barsuk);
-    }
-
-    @Override
-    public Barsuk update(Barsuk barsuk) {
-        return barsukDao.update(barsuk);
+        return barsukCrud.save(barsuk);
     }
 
     @Override
     public Barsuk delete(long id) {
-        return barsukDao.delete(getById(id));
+        Barsuk barsukFoDelete = getById(id);
+        barsukCrud.delete(barsukFoDelete);
+        return barsukFoDelete;
     }
 
     @Override
     public Barsuk getById(long id) {
-        return barsukDao.getById(id);
+        return barsukCrud.findById(id);
     }
 
     @Override
     public List<Barsuk> getAllBarsuk() {
-        return barsukDao.getAll();
+        return barsukCrud.findAll();
     }
 
     @Override
     public List<Barsuk> getByName(String name) {
-        return barsukDao.getByName(name);
+        return barsukCrud.findByName(name);
     }
 
     @Autowired
-    public void setBarsukDao(BarsukDao barsukDao) {
-        this.barsukDao = barsukDao;
+    public void setBarsukCrud(BarsukCrud barsukCrud) {
+        this.barsukCrud = barsukCrud;
     }
 }

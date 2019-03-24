@@ -3,7 +3,7 @@
 ###### bend
 
 ``` java
-public class Main {
+pu1blic class Main {
     public static void main(String[] args) {
     
     }

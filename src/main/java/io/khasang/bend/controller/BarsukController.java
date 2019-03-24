@@ -24,12 +24,6 @@ public class BarsukController {
         return barsukService.add(barsuk);
     }
 
-    @RequestMapping(value = "/update", method = RequestMethod.PUT, produces = "application/json;charset=utf-8")
-    @ResponseBody
-    public Barsuk updateBarsuk(@RequestBody Barsuk barsuk) {
-        return barsukService.update(barsuk);
-    }
-
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     @ResponseBody
     public Barsuk deleteBarsuk(@PathVariable("id") long id) {

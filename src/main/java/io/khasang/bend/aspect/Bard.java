@@ -22,15 +22,15 @@ public class Bard {
 //        System.err.println(val);
 //        System.err.println("Lalalala");
 //    }
-//
-    @Around("execution(* io.khasang.bend.service.impl.KnightServiceImpl.getAchievement(..)) && args(val, ..)")
-    public Object action(ProceedingJoinPoint joinPoint, String val) throws Throwable {
-        long timeBefore = System.currentTimeMillis();
-        Object obj = joinPoint.proceed();
-        long timeAfter = System.currentTimeMillis();
-        System.err.println("Lalalala");
-        System.err.println("Knight defeat an enemy - " + val + " with "  + (timeAfter - timeBefore) + "ms");
-        return obj;
-    }
+////
+//    @Around("execution(* io.khasang.bend.service.impl.KnightServiceImpl.getAchievement(..)) && args(val, ..)")
+//    public Object action(ProceedingJoinPoint joinPoint, String val) throws Throwable {
+//        long timeBefore = System.currentTimeMillis();
+//        Object obj = joinPoint.proceed();
+//        long timeAfter = System.currentTimeMillis();
+//        System.err.println("Lalalala");
+//        System.err.println("Knight defeat an enemy - " + val + " with "  + (timeAfter - timeBefore) + "ms");
+//        return obj;
+//    }
 
 }
