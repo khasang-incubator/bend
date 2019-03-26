@@ -40,4 +40,9 @@ public class AppConfig {
     public RoleDao roleDao() {
         return new RoleDaoImpl(Role.class);
     }
+
+    @Bean
+    public PointDao pointDao() {
+        return new PointDaoImpl(Point.class);
+    }
 }
