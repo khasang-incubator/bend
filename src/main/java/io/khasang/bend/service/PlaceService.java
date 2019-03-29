@@ -13,5 +13,7 @@ public interface PlaceService {
 
     Place getById(long id);
 
+    List<Place> getByName(String name);
+
     List<Place> getAllPlaces();
 }
