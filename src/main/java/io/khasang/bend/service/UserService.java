@@ -1,5 +1,6 @@
 package io.khasang.bend.service;
 
+import io.khasang.bend.dto.UserDto;
 import io.khasang.bend.entity.User;
 
 import java.util.List;
@@ -11,7 +12,9 @@ public interface UserService {
 
     User delete(long id);
 
-    User getById(long id);
+    UserDto getById(long id);
 
-    List<User> getAllUsers();
+    List<UserDto> getAllUsers();
+
+    List<UserDto> getAllUsersByName(String name);
 }

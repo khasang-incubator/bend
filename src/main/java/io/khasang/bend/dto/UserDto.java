@@ -1,49 +1,66 @@
-package io.khasang.bend.entity;
+package io.khasang.bend.dto;
 
+import io.khasang.bend.entity.Discipline;
+import io.khasang.bend.entity.User;
 import io.khasang.bend.model.Gender;
 import io.khasang.bend.model.UserStatus;
+import org.springframework.stereotype.Component;
 
-import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-@Entity
-@Table(name = "users")
-public class User {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "user_id")
+@Component
+public class UserDto {
     private long id;
     private String name;
-    @Column(name = "last_name")
     private String lastName;
     private int age;
-    @Enumerated
     private Gender gender;
-    @Column(name = "birth_date", columnDefinition = "DATE")
     private LocalDate dateOfBirth;
     private String email;
     private String password;
-    @Column(name = "phone_number")
     private String phoneNumber;
-    @Enumerated
-    @Column(name = "user_status")
     private UserStatus userStatus;
     private boolean isOnMap;
     private boolean isHealthLimited;
-    @Column(name = "user_description")
     private String userDescription;
     private String interests;
-    @ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
-    private List<Discipline> disciplinesList = new ArrayList<>();
+    private List<DisciplineDto> disciplinesList = new ArrayList<>();
 
-    public List<Discipline> getDisciplinesList() {
-        return disciplinesList;
+    public UserDto getUserDtoFromUser(User user) {
+        UserDto userDto = new UserDto();
+        userDto.setName(user.getName());
+        userDto.setLastName(user.getLastName());
+        userDto.setAge(user.getAge());
+        userDto.setGender(user.getGender());
+        userDto.setDateOfBirth(user.getDateOfBirth());
+        userDto.setEmail(user.getEmail());
+        userDto.setPassword(user.getPassword());
+        userDto.setPhoneNumber(user.getPhoneNumber());
+        userDto.setUserStatus(user.getUserStatus());
+        userDto.setOnMap(user.isOnMap());
+        userDto.setHealthLimited(user.isHealthLimited());
+        userDto.setUserDescription(user.getUserDescription());
+        userDto.setInterests(user.getInterests());
+
+        List<DisciplineDto> tempDisciplineDto = new ArrayList<>();
+        for (Discipline discipline : user.getDisciplinesList()) {
+            DisciplineDto disciplineDto = new DisciplineDto();
+            disciplineDto.setName(discipline.getName());
+            disciplineDto.setId(discipline.getId());
+            tempDisciplineDto.add(disciplineDto);
+        }
+        userDto.setDisciplinesList(tempDisciplineDto);
+        return userDto;
     }
 
-    public void setDisciplinesList(List<Discipline> disciplinesList) {
-        this.disciplinesList = disciplinesList;
+    public List<UserDto> getUserDtoListFromUser(List<User> users) {
+        List<UserDto> userDtoList = new ArrayList<>();
+        for (User user : users) {
+            userDtoList.add(getUserDtoFromUser(user));
+        }
+        return userDtoList;
     }
 
     public long getId() {
@@ -156,5 +173,13 @@ public class User {
 
     public void setInterests(String interests) {
         this.interests = interests;
+    }
+
+    public List<DisciplineDto> getDisciplinesList() {
+        return disciplinesList;
+    }
+
+    public void setDisciplinesList(List<DisciplineDto> disciplinesList) {
+        this.disciplinesList = disciplinesList;
     }
 }
