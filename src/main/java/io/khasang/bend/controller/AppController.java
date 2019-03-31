@@ -3,6 +3,7 @@ package io.khasang.bend.controller;
 import io.khasang.bend.model.Cat;
 import io.khasang.bend.service.CreateTable;
 import io.khasang.bend.service.KnightService;
+import io.khasang.bend.util.CheckText;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.ImportResource;
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 @ImportResource(value = "classpath:ioc.xml")
@@ -22,12 +24,14 @@ public class AppController {
     private final Cat cat;
     private final KnightService knightService;
     private final CreateTable createTable;
+    private final CheckText checkText;
 
     @Autowired
-    public AppController(@Qualifier("murzik") Cat cat, KnightService knightService, CreateTable createTable) {
+    public AppController(@Qualifier("murzik") Cat cat, KnightService knightService, CreateTable createTable, CheckText checkText) {
         this.cat = cat;
         this.knightService = knightService;
         this.createTable = createTable;
+        this.checkText = checkText;
     }
 
     @RequestMapping("/cat")
@@ -66,5 +70,11 @@ public class AppController {
         model.addAttribute("password", password);
         model.addAttribute("passwordAfterEncode", new BCryptPasswordEncoder().encode(password));
         return "password";
+    }
+
+    @RequestMapping("/spell/{word}")
+    @ResponseBody
+    public String checkTextSpell(@PathVariable("word") String word) {
+        return checkText.checkText(word);
     }
 }
