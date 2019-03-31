@@ -1,19 +1,13 @@
-package io.khasang.bend.entity;
+package io.khasang.bend.dto;
 
-import javax.persistence.*;
+import io.khasang.bend.entity.User;
+
 import java.util.ArrayList;
 import java.util.List;
 
-@Entity
-@Table(name = "discipline")
-public class Discipline {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "discipline_id")
+public class DisciplineDto {
     private Long id;
     private String name;
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<User> userList = new ArrayList<>();
 
     public Long getId() {

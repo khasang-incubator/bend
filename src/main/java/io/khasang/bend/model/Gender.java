@@ -1,6 +1,6 @@
 package io.khasang.bend.model;
 
-public enum Sex {
+public enum Gender {
     MALE,
     FEMALE,
     UNKNOWN,

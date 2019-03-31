@@ -1,11 +1,12 @@
 package io.khasang.bend.entity;
 
-import io.khasang.bend.model.ActivityType;
-import io.khasang.bend.model.Sex;
+import io.khasang.bend.model.Gender;
 import io.khasang.bend.model.UserStatus;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "users")
@@ -19,16 +20,13 @@ public class User {
     private String lastName;
     private int age;
     @Enumerated
-    private Sex sex;
+    private Gender gender;
     @Column(name = "birth_date", columnDefinition = "DATE")
     private LocalDate dateOfBirth;
     private String email;
     private String password;
     @Column(name = "phone_number")
     private String phoneNumber;
-    @Enumerated
-    @Column(name = "activity_type")
-    private ActivityType activityType;
     @Enumerated
     @Column(name = "user_status")
     private UserStatus userStatus;
@@ -37,9 +35,16 @@ public class User {
     @Column(name = "user_description")
     private String userDescription;
     private String interests;
-    @Enumerated
-    @Column(name = "activity_interests")
-    private ActivityType activityInterests;
+    @ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+    private List<Discipline> disciplinesList = new ArrayList<>();
+
+    public List<Discipline> getDisciplinesList() {
+        return disciplinesList;
+    }
+
+    public void setDisciplinesList(List<Discipline> disciplinesList) {
+        this.disciplinesList = disciplinesList;
+    }
 
     public long getId() {
         return id;
@@ -73,12 +78,12 @@ public class User {
         this.age = age;
     }
 
-    public Sex getSex() {
-        return sex;
+    public Gender getGender() {
+        return gender;
     }
 
-    public void setSex(Sex sex) {
-        this.sex = sex;
+    public void setGender(Gender gender) {
+        this.gender = gender;
     }
 
     public LocalDate getDateOfBirth() {
@@ -111,14 +116,6 @@ public class User {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
-    }
-
-    public ActivityType getActivityType() {
-        return activityType;
-    }
-
-    public void setActivityType(ActivityType activityType) {
-        this.activityType = activityType;
     }
 
     public UserStatus getUserStatus() {
@@ -159,13 +156,5 @@ public class User {
 
     public void setInterests(String interests) {
         this.interests = interests;
-    }
-
-    public ActivityType getActivityInterests() {
-        return activityInterests;
-    }
-
-    public void setActivityInterests(ActivityType activityInterests) {
-        this.activityInterests = activityInterests;
     }
 }

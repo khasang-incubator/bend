@@ -1,5 +1,6 @@
 package io.khasang.bend.controller;
 
+import io.khasang.bend.dto.UserDto;
 import io.khasang.bend.entity.User;
 import io.khasang.bend.service.UserService;
 import org.springframework.stereotype.Controller;
@@ -36,13 +37,19 @@ public class UserController {
 
     @RequestMapping(value = "/get/{id}", method = RequestMethod.GET)
     @ResponseBody
-    public User getUserById(@PathVariable long id) {
+    public UserDto getUserById(@PathVariable long id) {
         return userService.getById(id);
     }
 
     @RequestMapping(value = "/all", method = RequestMethod.GET)
     @ResponseBody
-    public List<User> getAllUsers() {
+    public List<UserDto> getAllUsers() {
         return userService.getAllUsers();
+    }
+
+    @RequestMapping(value = "/name/{name}", method = RequestMethod.GET)
+    @ResponseBody
+    public List<UserDto> getAllEmployeesByName(@PathVariable("name") String name) {
+        return userService.getAllUsersByName(name);
     }
 }
