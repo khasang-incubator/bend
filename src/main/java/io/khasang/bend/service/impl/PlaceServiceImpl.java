@@ -34,6 +34,11 @@ public class PlaceServiceImpl implements PlaceService {
     }
 
     @Override
+    public List<Place> getByName(String name) {
+        return placeDao.getByName(name);
+    }
+
+    @Override
     public List<Place> getAllPlaces() {
         return placeDao.getAll();
     }

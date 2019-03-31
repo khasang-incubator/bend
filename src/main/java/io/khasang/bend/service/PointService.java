@@ -6,7 +6,6 @@ import io.khasang.bend.entity.Point;
 import java.util.List;
 
 public interface PointService {
-
     Point add(Point point);
 
     Point update(Point point);

@@ -10,10 +10,18 @@ public class Place {
     private long id;
     private String name;
     private String description;
-    //TODO with table albums 04.03.2019
-    private int album_id;
-    //TODO ya-API-point 04.03.2019
-    private int point_id;
+
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+    @JoinColumn(name = "point_id")
+    private Point point;
+
+    public Point getPoint() {
+        return point;
+    }
+
+    public void setPoint(Point point) {
+        this.point = point;
+    }
 
     public long getId() {
         return id;
@@ -37,21 +45,5 @@ public class Place {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public int getAlbum_id() {
-        return album_id;
-    }
-
-    public void setAlbum_id(int album_id) {
-        this.album_id = album_id;
-    }
-
-    public int getPoint_id() {
-        return point_id;
-    }
-
-    public void setPoint_id(int point_id) {
-        this.point_id = point_id;
     }
 }
