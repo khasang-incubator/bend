@@ -1,6 +1,6 @@
 package io.khasang.bend.controller;
 
-import io.khasang.bend.model.Cat;
+import io.khasang.bend.service.Cat;
 import io.khasang.bend.service.CreateTable;
 import io.khasang.bend.service.KnightService;
 import io.khasang.bend.util.CheckText;
@@ -46,6 +46,11 @@ public class AppController {
         return "menu";
     }
 
+    @RequestMapping("/create")
+    public String getTableCreateStatus(Model model) {
+        model.addAttribute("name", createTable.getAllCatsByName(1L));
+        return "create";
+    }
 
     @RequestMapping("/quest/{val}")
     public String getQuest(@PathVariable("val") String enemy, Model model) {

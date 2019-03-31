@@ -45,10 +45,4 @@ public class AppConfig {
     public PointDao pointDao() {
         return new PointDaoImpl(Point.class);
     }
-
-    @Bean
-    EmployeeDao employeeDao() {
-        return new EmployeeDaoImpl(Employee.class);
-    }
-
 }

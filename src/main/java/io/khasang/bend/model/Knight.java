@@ -1,5 +1,7 @@
 package io.khasang.bend.model;
 
+import org.springframework.stereotype.Repository;
+
 public class Knight {
     private String name;
     private String title;

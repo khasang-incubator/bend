@@ -1,12 +1,12 @@
 package io.khasang.bend.service.impl;
 
-import io.khasang.bend.model.Cat;
+import io.khasang.bend.service.Cat;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PreDestroy;
 
 @Service
-public class BarsikCat extends Cat {
+public class BarsikCat implements Cat {
     private Long id;
     private String name;
     private String secretField;
@@ -52,6 +52,10 @@ public class BarsikCat extends Cat {
     @PreDestroy
     public void getInfo() {
         System.out.println("!!!!!!adadad");
+    }
+
+    public Long getId() {
+        return id;
     }
 
     public void setId(Long id) {

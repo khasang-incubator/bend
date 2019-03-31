@@ -7,6 +7,7 @@ import java.util.List;
 @Entity
 @Table(name = "employees")
 public class Employee {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "employee_id")
@@ -47,4 +48,6 @@ public class Employee {
     public void setTitle(String title) {
         this.title = title;
     }
+
+
 }
