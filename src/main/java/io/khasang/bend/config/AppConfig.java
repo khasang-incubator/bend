@@ -46,7 +46,8 @@ public class AppConfig {
         return new PointDaoImpl(Point.class);
     }
 
-    @Bean ManagerDao managerDao() {
+    @Bean
+    public ManagerDao managerDao() {
         return new ManagerDaoImpl(Manager.class);
     }
 }
