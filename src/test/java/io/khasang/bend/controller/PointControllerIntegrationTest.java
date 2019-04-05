@@ -1,18 +1,15 @@
 package io.khasang.bend.controller;
 
-import io.khasang.bend.dto.PointDto;
 import io.khasang.bend.entity.Point;
 import org.junit.Test;
 import org.springframework.core.ParameterizedTypeReference;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.*;
 import org.springframework.web.client.RestTemplate;
+
 import java.util.List;
-import static org.junit.Assert.*;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 public class PointControllerIntegrationTest {
     private static final String ROOT = "http://localhost:8080/point";
@@ -25,16 +22,16 @@ public class PointControllerIntegrationTest {
     public void checkAddPoint() {
         Point point = createPoint();
         RestTemplate template = new RestTemplate();
-        ResponseEntity<PointDto> responseEntity = template.exchange(
+        ResponseEntity<Point> responseEntity = template.exchange(
                 ROOT + GET_BY_ID,
                 HttpMethod.GET,
                 null,
-                PointDto.class,
+                Point.class,
                 point.getId()
         );
 
         assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
-        PointDto recievedPoint = responseEntity.getBody();
+        Point recievedPoint = responseEntity.getBody();
         assertNotNull(recievedPoint);
     }
 
@@ -42,36 +39,16 @@ public class PointControllerIntegrationTest {
     public void checkGetAll() {
         RestTemplate template = new RestTemplate();
         createPoint();
-        createPoint();
 
-        ResponseEntity<List<PointDto>> result = template.exchange(
+        ResponseEntity<List<Point>> result = template.exchange(
                 ROOT + GET_ALL,
                 HttpMethod.GET,
                 null,
-                new ParameterizedTypeReference<List<PointDto>>() {
+                new ParameterizedTypeReference<List<Point>>() {
                 }
         );
 
-        List<PointDto> points = result.getBody();
-        assertNotNull(points);
-    }
-
-    @Test
-    public void checkGetByName() {
-        RestTemplate template = new RestTemplate();
-        Point point = createPoint();
-        createPoint();
-
-        ResponseEntity<List<PointDto>> result = template.exchange(
-                ROOT + GET_BY_NAME,
-                HttpMethod.GET,
-                null,
-                new ParameterizedTypeReference<List<PointDto>>() {
-                },
-                point.getName()
-        );
-
-        List<PointDto> points = result.getBody();
+        List<Point> points = result.getBody();
         assertNotNull(points);
     }
 
@@ -90,16 +67,14 @@ public class PointControllerIntegrationTest {
         ).getBody();
 
         assertNotNull(createdPoint);
-        assertEquals("Moscow", createdPoint.getName());
+        assertEquals(55.75222, createdPoint.getCoordN(), 0.00001);
         return createdPoint;
     }
 
     private Point prefillPoint() {
         Point point = new Point();
-        point.setName("Moscow");
-        point.setCoordX(55.75222);
-        point.setCoordY(37.61556);
-        point.setDescription("capital of Russia");
+        point.setCoordN(55.75222);
+        point.setCoordW(37.61556);
         return point;
     }
 }

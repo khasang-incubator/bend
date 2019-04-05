@@ -1,12 +1,15 @@
 package io.khasang.bend.controller;
 
+import io.khasang.bend.dto.PlaceDto;
 import io.khasang.bend.entity.Place;
 import io.khasang.bend.entity.Point;
+import io.khasang.bend.entity.School;
 import org.junit.Test;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.*;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
@@ -23,34 +26,36 @@ public class PlaceControllerIntegrationTest {
     public void checkAddPlace() {
         Place place = createPlace();
         RestTemplate template = new RestTemplate();
-        ResponseEntity<Place> entity = template.exchange(
+        ResponseEntity<PlaceDto> entity = template.exchange(
                 ROOT + GET_BY_ID,
                 HttpMethod.GET,
                 null,
-                Place.class,
+                PlaceDto.class,
                 place.getId()
         );
 
         assertEquals(HttpStatus.OK, entity.getStatusCode());
-        Place receivedPlace = entity.getBody();
+        PlaceDto receivedPlace = entity.getBody();
         assertNotNull(receivedPlace);
     }
+
+
 
     @Test
     public void checkGetByName() {
         RestTemplate template = new RestTemplate();
         Place place = createPlace();
 
-        ResponseEntity<List<Place>> result = template.exchange(
+        ResponseEntity<List<PlaceDto>> result = template.exchange(
                 ROOT + GET_BY_NAME,
                 HttpMethod.GET,
                 null,
-                new ParameterizedTypeReference<List<Place>>() {
+                new ParameterizedTypeReference<List<PlaceDto>>() {
                 },
                 place.getName()
         );
 
-        List<Place> places = result.getBody();
+        List<PlaceDto> places = result.getBody();
         assertNotNull(places);
     }
 
@@ -59,16 +64,16 @@ public class PlaceControllerIntegrationTest {
         RestTemplate template = new RestTemplate();
         createPlace();
 
-        ResponseEntity<List<Place>> result = template.exchange(
+        ResponseEntity<List<PlaceDto>> result = template.exchange(
                 ROOT + GET_ALL,
                 HttpMethod.GET,
                 null,
-                new ParameterizedTypeReference<List<Place>>() {
+                new ParameterizedTypeReference<List<PlaceDto>>() {
                 }
         );
 
-        List<Place> employees = result.getBody();
-        assertNotNull(employees);
+        List<PlaceDto> places = result.getBody();
+        assertNotNull(places);
     }
 
     private Place createPlace() {
@@ -87,23 +92,34 @@ public class PlaceControllerIntegrationTest {
         ).getBody();
 
         assertNotNull(createdPlace);
-        assertEquals("Moscow", createdPlace.getName());
+        assertEquals("Malibu", createdPlace.getName());
 
         return createdPlace;
     }
 
     private Place prefillPlace() {
         Place place = new Place();
-        place.setName("Moscow");
-        place.setDescription("Red square");
+        place.setName("Malibu");
+        place.setDescription("California");
+
+        School school1 = new School();
+        school1.setName("SchoolName1");
+        school1.setDescription("Description1");
+
+        School school2 = new School();
+        school2.setName("SchoolName2");
+        school2.setDescription("Description2");
+
+        List<School> schools = new ArrayList<>();
+        schools.add(school1);
+        schools.add(school2);
 
         Point point = new Point();
-        point.setCoordX(55.75222);
-        point.setCoordY(37.61556);
-        point.setName("Moscow");
-        point.setDescription("The capital of Russia");
+        point.setCoordN(34.00501);
+        point.setCoordW(118.81009);
 
         place.setPoint(point);
+        place.setSchoolList(schools);
         return place;
     }
 }

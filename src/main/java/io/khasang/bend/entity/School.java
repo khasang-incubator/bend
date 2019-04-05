@@ -1,7 +1,9 @@
 package io.khasang.bend.entity;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "schools")
@@ -17,24 +19,24 @@ public class School {
     @Column(name = "banner_src")
     private String bannerSrc;//большое изображение для заглавной страницы школы(по ширине экрана)
     @Column(columnDefinition = "DATE", name = "origin_date")
-    //TODO 04.03.2019
     private Date originDate;
-    @Column(name = "album_id")
-    private int albumId;
-    @Column(name = "leader_id")
-    private int leaderId;//user leader of school maybe NULL
     @Column(columnDefinition = "TEXT", name = "price_list")
     private String priceList;
     @Column(columnDefinition = "TEXT", name = "time_table")
     private String timeTable;
 
-    //TODO cross-table query instead of list imitation(arrays and lists are not BasicTypes) 04.03.2019
-    @Column(name = "disciplines_list")
-    private String disciplinesList;
-    @Column(name = "trainers_list")
-    private String trainersList;
-    @Column(name = "students_list")
-    private String studentsList;
+//    @ManyToMany(fetch = FetchType.EAGER)
+//    private List<Discipline> disciplinesList;
+
+//    @ManyToMany(fetch = FetchType.EAGER)
+//    private List<Trainer> trainersList;
+
+//    @ManyToMany(fetch = FetchType.EAGER)
+//    private List<Student> studentsList;
+
+
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private List<Place> placesList = new ArrayList<>();
 
     public long getId() {
         return id;
@@ -76,22 +78,6 @@ public class School {
         this.bannerSrc = bannerSrc;
     }
 
-    public int getAlbumId() {
-        return albumId;
-    }
-
-    public void setAlbumId(int albumId) {
-        this.albumId = albumId;
-    }
-
-    public int getLeaderId() {
-        return leaderId;
-    }
-
-    public void setLeaderId(int leaderId) {
-        this.leaderId = leaderId;
-    }
-
     public String getPriceList() {
         return priceList;
     }
@@ -108,27 +94,43 @@ public class School {
         this.timeTable = timeTable;
     }
 
-    public String getTrainersList() {
-        return trainersList;
+    public Date getOriginDate() {
+        return originDate;
     }
 
-    public void setTrainersList(String trainersList) {
-        this.trainersList = trainersList;
+    public void setOriginDate(Date originDate) {
+        this.originDate = originDate;
     }
 
-    public String getStudentsList() {
-        return studentsList;
+//    public List<Discipline> getDisciplinesList() {
+//        return disciplinesList;
+//    }
+//
+//    public void setDisciplinesList(List<Discipline> disciplinesList) {
+//        this.disciplinesList = disciplinesList;
+//    }
+//
+//    public List<Trainer> getTrainersList() {
+//        return trainersList;
+//    }
+//
+//    public void setTrainersList(List<Trainer> trainersList) {
+//        this.trainersList = trainersList;
+//    }
+//
+//    public List<Student> getStudentsList() {
+//        return studentsList;
+//    }
+//
+//    public void setStudentsList(List<Student> studentsList) {
+//        this.studentsList = studentsList;
+//    }
+
+    public List<Place> getPlacesList() {
+        return placesList;
     }
 
-    public void setStudentsList(String studentsList) {
-        this.studentsList = studentsList;
-    }
-
-    public String getDisciplinesList() {
-        return disciplinesList;
-    }
-
-    public void setDisciplinesList(String disciplinesList) {
-        this.disciplinesList = disciplinesList;
+    public void setPlacesList(List<Place> placesList) {
+        this.placesList = placesList;
     }
 }
