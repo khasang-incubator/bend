@@ -9,9 +9,9 @@ public class Point {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     @Column(name = "coordn")
-    private double coordN;
+    private Double coordN;
     @Column(name = "coordw")
-    private double coordW;
+    private Double coordW;
 
     public long getId() {
         return id;
@@ -21,19 +21,19 @@ public class Point {
         this.id = id;
     }
 
-    public double getCoordN() {
+    public Double getCoordN() {
         return coordN;
     }
 
-    public void setCoordN(double coordN) {
+    public void setCoordN(Double coordN) {
         this.coordN = coordN;
     }
 
-    public double getCoordW() {
+    public Double getCoordW() {
         return coordW;
     }
 
-    public void setCoordW(double coordW) {
+    public void setCoordW(Double coordW) {
         this.coordW = coordW;
     }
 }

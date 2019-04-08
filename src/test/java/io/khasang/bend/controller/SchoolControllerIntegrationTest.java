@@ -16,7 +16,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 public class SchoolControllerIntegrationTest {
-    private static final String ROOT = "http://localhost:8080/school";
+    private static final String ROOT = "http://localhost:8080/school2";
     private static final String ADD = "/add";
     private static final String GET_BY_ID = "/get/{id}";
     private static final String GET_BY_NAME = "/name/{name}";
