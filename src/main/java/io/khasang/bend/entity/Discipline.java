@@ -13,8 +13,11 @@ public class Discipline {
     @Column(name = "discipline_id")
     private Long id;
     private String name;
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "disciplinesList")
     private List<User> userList = new ArrayList<>();
+
+    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "disciplinesList")
+    private List<School> schoolList = new ArrayList<>();
 
     public Long getId() {
         return id;
@@ -38,5 +41,13 @@ public class Discipline {
 
     public void setUserList(List<User> userList) {
         this.userList = userList;
+    }
+
+    public List<School> getSchoolList() {
+        return schoolList;
+    }
+
+    public void setSchoolList(List<School> schoolList) {
+        this.schoolList = schoolList;
     }
 }

@@ -45,4 +45,19 @@ public class AppConfig {
     public PointDao pointDao() {
         return new PointDaoImpl(Point.class);
     }
+
+    @Bean
+    public DisciplineDao disciplineDao() {
+        return new DisciplineDaoImpl(Discipline.class);
+    }
+
+    @Bean
+    public StudentDao studentDao() {
+        return new StudentDaoImpl(Student.class);
+    }
+
+    @Bean
+    public TrainerDao trainerDao() {
+        return new TrainerDaoImpl(Trainer.class);
+    }
 }

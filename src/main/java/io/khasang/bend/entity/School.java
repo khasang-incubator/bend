@@ -10,14 +10,14 @@ import java.util.List;
 public class School {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private Long id;
     private String name;
     @Column(columnDefinition = "TEXT")
     private String description;
     @Column(name = "logo_src")
     private String logoSrc;
     @Column(name = "banner_src")
-    private String bannerSrc;//большое изображение для заглавной страницы школы(по ширине экрана)
+    private String bannerSrc;
     @Column(columnDefinition = "DATE", name = "origin_date")
     private Date originDate;
     @Column(columnDefinition = "TEXT", name = "price_list")
@@ -25,15 +25,15 @@ public class School {
     @Column(columnDefinition = "TEXT", name = "time_table")
     private String timeTable;
 
-//    @ManyToMany(fetch = FetchType.EAGER)
-//    private List<Discipline> disciplinesList;
+//    MultipleBagFetchException: cannot simultaneously fetch multiple bags: невозможно получить несколько пакетов
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private List<Discipline> disciplinesList = new ArrayList<>();
 
-//    @ManyToMany(fetch = FetchType.EAGER)
-//    private List<Trainer> trainersList;
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private List<Trainer> trainersList = new ArrayList<>();
 
-//    @ManyToMany(fetch = FetchType.EAGER)
-//    private List<Student> studentsList;
-
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private List<Student> studentsList = new ArrayList<>();
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<Place> placesList = new ArrayList<>();
@@ -102,29 +102,29 @@ public class School {
         this.originDate = originDate;
     }
 
-//    public List<Discipline> getDisciplinesList() {
-//        return disciplinesList;
-//    }
-//
-//    public void setDisciplinesList(List<Discipline> disciplinesList) {
-//        this.disciplinesList = disciplinesList;
-//    }
-//
-//    public List<Trainer> getTrainersList() {
-//        return trainersList;
-//    }
-//
-//    public void setTrainersList(List<Trainer> trainersList) {
-//        this.trainersList = trainersList;
-//    }
-//
-//    public List<Student> getStudentsList() {
-//        return studentsList;
-//    }
-//
-//    public void setStudentsList(List<Student> studentsList) {
-//        this.studentsList = studentsList;
-//    }
+    public List<Discipline> getDisciplinesList() {
+        return disciplinesList;
+    }
+
+    public void setDisciplinesList(List<Discipline> disciplinesList) {
+        this.disciplinesList = disciplinesList;
+    }
+
+    public List<Trainer> getTrainersList() {
+        return trainersList;
+    }
+
+    public void setTrainersList(List<Trainer> trainersList) {
+        this.trainersList = trainersList;
+    }
+
+    public List<Student> getStudentsList() {
+        return studentsList;
+    }
+
+    public void setStudentsList(List<Student> studentsList) {
+        this.studentsList = studentsList;
+    }
 
     public List<Place> getPlacesList() {
         return placesList;

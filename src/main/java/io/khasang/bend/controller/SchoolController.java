@@ -10,7 +10,6 @@ import java.util.List;
 @Controller
 @RequestMapping("/school")
 public class SchoolController {
-
     private SchoolService schoolService;
 
     public SchoolController(SchoolService schoolService) {
@@ -43,7 +42,7 @@ public class SchoolController {
 
     @RequestMapping(value = "/all", method = RequestMethod.GET)
     @ResponseBody
-    public List<School> getAllSchool() {
+    public List<School> getAll() {
         return schoolService.getAll();
     }
 }
