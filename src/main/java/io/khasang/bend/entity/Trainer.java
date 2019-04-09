@@ -1,5 +1,7 @@
 package io.khasang.bend.entity;
 
+import io.khasang.bend.model.TrainerStatus;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -24,6 +26,16 @@ public class Trainer {
     private String achievements;
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     private User user;
+    @Column(name = "trainer_status")
+    private TrainerStatus trainerStatus;
+
+    public TrainerStatus getTrainerStatus() {
+        return trainerStatus;
+    }
+
+    public void setTrainerStatus(TrainerStatus trainerStatus) {
+        this.trainerStatus = trainerStatus;
+    }
 
     public User getUser() {
         return user;

@@ -3,6 +3,7 @@ package io.khasang.bend.controller;
 import io.khasang.bend.entity.Student;
 import io.khasang.bend.entity.User;
 import io.khasang.bend.model.Gender;
+import io.khasang.bend.model.StudentStatus;
 import io.khasang.bend.model.UserStatus;
 import org.junit.Test;
 import org.springframework.core.ParameterizedTypeReference;
@@ -84,7 +85,7 @@ public class StudentControllerIntegrationTest {
         Student student = new Student();
         student.setExperience("NOOB");
         student.setHeight("1.80");
-        student.setStatus(UserStatus.SEARCHING_FOR_SCHOOL);
+        student.setStudentStatus(StudentStatus.VACANT);
         student.setWeight("70");
         User user = new User();
         user.setName("Kate");
@@ -95,7 +96,7 @@ public class StudentControllerIntegrationTest {
         user.setEmail("kate.nobin@gmail.com");
         user.setPassword("pinkypink");
         user.setPhoneNumber("800-800-1000");
-        user.setUserStatus(UserStatus.ON_TRAINING);
+        user.setUserStatus(UserStatus.EMPTY_STATUS);
         user.setOnMap(true);
         user.setHealthLimited(false);
         user.setUserDescription("Kitty");

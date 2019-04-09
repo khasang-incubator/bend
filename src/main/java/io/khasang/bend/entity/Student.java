@@ -1,5 +1,6 @@
 package io.khasang.bend.entity;
 
+import io.khasang.bend.model.StudentStatus;
 import io.khasang.bend.model.UserStatus;
 
 import javax.persistence.CascadeType;
@@ -22,10 +23,19 @@ public class Student {
     private String experience;
     private String weight;
     private String height;
-    private UserStatus status;
+    @Column(name = "student_status")
+    private StudentStatus studentStatus;
 
     @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
     private User user;
+
+    public StudentStatus getStudentStatus() {
+        return studentStatus;
+    }
+
+    public void setStudentStatus(StudentStatus studentStatus) {
+        this.studentStatus = studentStatus;
+    }
 
     public long getId() {
         return id;
@@ -59,13 +69,6 @@ public class Student {
         this.height = height;
     }
 
-    public UserStatus getStatus() {
-        return status;
-    }
-
-    public void setStatus(UserStatus status) {
-        this.status = status;
-    }
 
     public User getUser() {
         return user;

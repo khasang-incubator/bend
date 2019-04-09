@@ -12,18 +12,18 @@ import java.util.List;
 
 @Component
 public class UserDto {
-    private long id;
+    private Long id;
     private String name;
     private String lastName;
-    private int age;
+    private Integer age;
     private Gender gender;
     private LocalDate dateOfBirth;
     private String email;
     private String password;
     private String phoneNumber;
     private UserStatus userStatus;
-    private boolean isOnMap;
-    private boolean isHealthLimited;
+    private Boolean isOnMap;
+    private Boolean isHealthLimited;
     private String userDescription;
     private String interests;
     private List<DisciplineDto> disciplinesList = new ArrayList<>();
@@ -39,8 +39,8 @@ public class UserDto {
         userDto.setPassword(user.getPassword());
         userDto.setPhoneNumber(user.getPhoneNumber());
         userDto.setUserStatus(user.getUserStatus());
-        userDto.setOnMap(user.isOnMap());
-        userDto.setHealthLimited(user.isHealthLimited());
+        userDto.setOnMap(user.getOnMap());
+        userDto.setHealthLimited(user.getHealthLimited());
         userDto.setUserDescription(user.getUserDescription());
         userDto.setInterests(user.getInterests());
 
@@ -63,11 +63,11 @@ public class UserDto {
         return userDtoList;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -87,11 +87,11 @@ public class UserDto {
         this.lastName = lastName;
     }
 
-    public int getAge() {
+    public Integer getAge() {
         return age;
     }
 
-    public void setAge(int age) {
+    public void setAge(Integer age) {
         this.age = age;
     }
 
@@ -143,19 +143,19 @@ public class UserDto {
         this.userStatus = userStatus;
     }
 
-    public boolean isOnMap() {
+    public Boolean getOnMap() {
         return isOnMap;
     }
 
-    public void setOnMap(boolean onMap) {
+    public void setOnMap(Boolean onMap) {
         isOnMap = onMap;
     }
 
-    public boolean isHealthLimited() {
+    public Boolean getHealthLimited() {
         return isHealthLimited;
     }
 
-    public void setHealthLimited(boolean healthLimited) {
+    public void setHealthLimited(Boolean healthLimited) {
         isHealthLimited = healthLimited;
     }
 

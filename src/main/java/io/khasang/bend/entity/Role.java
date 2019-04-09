@@ -3,28 +3,28 @@ package io.khasang.bend.entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "role")
+@Table(name = "roles")
 public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "role_id")
-    private long id;
-    @Column(name = "name_role")
-    private String nameRole;
+    private Integer id;
+    @Column(name = "role_name")
+    private String name;
 
     public long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public String getNameRole() {
-        return nameRole;
+    public String getName() {
+        return name;
     }
 
-    public void setNameRole(String nameRole) {
-        this.nameRole = nameRole;
+    public void setName(String name) {
+        this.name = name;
     }
 }
