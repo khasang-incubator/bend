@@ -32,7 +32,7 @@ public class RoleServiceImpl implements RoleService {
     }
 
     @Override
-    public List<Role> getAllRols() {
+    public List<Role> getAllRoles() {
         return roleDao.getAll();
     }
 

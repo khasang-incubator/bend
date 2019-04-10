@@ -7,5 +7,4 @@ public class StudentDaoImpl extends BasicDaoImpl<Student> implements StudentDao 
     public StudentDaoImpl(Class<Student> entityClass) {
         super(entityClass);
     }
-
 }

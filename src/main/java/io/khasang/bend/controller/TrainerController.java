@@ -1,20 +1,23 @@
 package io.khasang.bend.controller;
 
-import io.khasang.bend.dto.TrainerDto;
 import io.khasang.bend.entity.Trainer;
-import io.khasang.bend.service.TrainerDtoService;
+import io.khasang.bend.service.TrainerService;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 
 @Controller
-@RequestMapping("/trainers2")
-public class TrainerDtoController {
-    private TrainerDtoService trainerService;
+@RequestMapping("/trainers")
+public class TrainerController {
+    private TrainerService trainerService;
 
-    public TrainerDtoController(TrainerDtoService trainerService) {
+    public TrainerController(TrainerService trainerService) {
         this.trainerService = trainerService;
     }
 
@@ -38,13 +41,13 @@ public class TrainerDtoController {
 
     @RequestMapping(value = "/get/{id}", method = RequestMethod.GET)
     @ResponseBody
-    public TrainerDto getTrainerById(@PathVariable long id) {
+    public Trainer getTrainerById(@PathVariable long id) {
         return trainerService.getById(id);
     }
 
     @RequestMapping(value = "/all", method = RequestMethod.GET)
     @ResponseBody
-    public List<TrainerDto> getAllTrainers() {
-        return trainerService.getAll();
+    public List<Trainer> getAllTrainers() {
+        return trainerService.getAllTrainers();
     }
 }

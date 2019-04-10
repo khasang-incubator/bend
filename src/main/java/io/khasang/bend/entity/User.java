@@ -2,8 +2,18 @@ package io.khasang.bend.entity;
 
 import io.khasang.bend.model.Gender;
 import io.khasang.bend.model.UserStatus;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-import javax.persistence.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -16,11 +26,11 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "user_id")
-    private long id;
+    private Long id;
     private String name;
     @Column(name = "last_name")
     private String lastName;
-    private int age;
+    private Integer age;
     @Enumerated
     private Gender gender;
     @Column(name = "birth_date", columnDefinition = "DATE")
@@ -32,11 +42,13 @@ public class User {
     @Enumerated
     @Column(name = "user_status")
     private UserStatus userStatus;
-    private boolean isOnMap;
-    private boolean isHealthLimited;
+    private Boolean isOnMap;
+    private Boolean isHealthLimited;
     @Column(name = "user_description")
     private String userDescription;
     private String interests;
+    @Column(name = "role_id")
+    private Integer role;
     @ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     private Set<Discipline> disciplinesSet = new HashSet<>();
 
@@ -48,11 +60,19 @@ public class User {
         this.disciplinesSet = disciplinesSet;
     }
 
-    public long getId() {
+    public Integer getRole() {
+        return role;
+    }
+
+    public void setRole(Integer role) {
+        this.role = role;
+    }
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -72,11 +92,11 @@ public class User {
         this.lastName = lastName;
     }
 
-    public int getAge() {
+    public Integer getAge() {
         return age;
     }
 
-    public void setAge(int age) {
+    public void setAge(Integer age) {
         this.age = age;
     }
 
@@ -109,7 +129,7 @@ public class User {
     }
 
     public void setPassword(String password) {
-        this.password = password;
+        this.password = new BCryptPasswordEncoder().encode(password);
     }
 
     public String getPhoneNumber() {
@@ -128,19 +148,19 @@ public class User {
         this.userStatus = userStatus;
     }
 
-    public boolean isOnMap() {
+    public Boolean getOnMap() {
         return isOnMap;
     }
 
-    public void setOnMap(boolean onMap) {
+    public void setOnMap(Boolean onMap) {
         isOnMap = onMap;
     }
 
-    public boolean isHealthLimited() {
+    public Boolean getHealthLimited() {
         return isHealthLimited;
     }
 
-    public void setHealthLimited(boolean healthLimited) {
+    public void setHealthLimited(Boolean healthLimited) {
         isHealthLimited = healthLimited;
     }
 

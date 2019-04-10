@@ -1,12 +1,15 @@
 package io.khasang.bend.entity;
 
-import io.khasang.bend.model.UserStatus;
-
-import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import io.khasang.bend.model.StudentStatus;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 @Entity
 @Table(name = "students")
@@ -18,10 +21,19 @@ public class Student {
     private String experience;
     private String weight;
     private String height;
-    private UserStatus status;
+    @Column(name = "student_status")
+    private StudentStatus studentStatus;
 
     @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
     private User user;
+
+    public StudentStatus getStudentStatus() {
+        return studentStatus;
+    }
+
+    public void setStudentStatus(StudentStatus studentStatus) {
+        this.studentStatus = studentStatus;
+    }
 
     public long getId() {
         return id;
@@ -55,13 +67,6 @@ public class Student {
         this.height = height;
     }
 
-    public UserStatus getStatus() {
-        return status;
-    }
-
-    public void setStatus(UserStatus status) {
-        this.status = status;
-    }
 
     public User getUser() {
         return user;
@@ -70,5 +75,4 @@ public class Student {
     public void setUser(User user) {
         this.user = user;
     }
-
 }

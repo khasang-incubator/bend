@@ -52,12 +52,17 @@ public class AppConfig {
     }
 
     @Bean
-    public StudentDao studentDao() {
-        return new StudentDaoImpl(Student.class);
+    public ManagerDao managerDao() {
+        return new ManagerDaoImpl(Manager.class);
     }
 
     @Bean
     public TrainerDao trainerDao() {
         return new TrainerDaoImpl(Trainer.class);
+    }
+
+    @Bean
+    public StudentDao studentDao() {
+        return new StudentDaoImpl(Student.class);
     }
 }

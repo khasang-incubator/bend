@@ -1,10 +1,16 @@
 package io.khasang.bend.entity;
 
-import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import io.khasang.bend.model.TrainerStatus;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 @Entity
 @Table(name = "trainers")
@@ -20,6 +26,16 @@ public class Trainer {
     private String achievements;
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     private User user;
+    @Column(name = "trainer_status")
+    private TrainerStatus trainerStatus;
+
+    public TrainerStatus getTrainerStatus() {
+        return trainerStatus;
+    }
+
+    public void setTrainerStatus(TrainerStatus trainerStatus) {
+        this.trainerStatus = trainerStatus;
+    }
 
     public User getUser() {
         return user;
@@ -60,5 +76,4 @@ public class Trainer {
     public void setAchievements(String achievements) {
         this.achievements = achievements;
     }
-
 }

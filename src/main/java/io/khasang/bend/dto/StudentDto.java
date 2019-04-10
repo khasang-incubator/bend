@@ -25,7 +25,6 @@ public class StudentDto {
         studentDto.setExperience(student.getExperience());
         studentDto.setHeight(student.getHeight());
         studentDto.setWeight(student.getWeight());
-        studentDto.setStatus(student.getStatus());
         studentDto.setUser(student.getUser());
 
         return studentDto;
