@@ -4,7 +4,9 @@ import io.khasang.bend.model.UserStatus;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "students")
@@ -20,9 +22,6 @@ public class Student {
 
     @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
     private User user;
-
-    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "studentsList")
-    private List<School> schoolList = new ArrayList<>();
 
     public long getId() {
         return id;
@@ -72,11 +71,4 @@ public class Student {
         this.user = user;
     }
 
-    public List<School> getSchoolList() {
-        return schoolList;
-    }
-
-    public void setSchoolList(List<School> schoolList) {
-        this.schoolList = schoolList;
-    }
 }

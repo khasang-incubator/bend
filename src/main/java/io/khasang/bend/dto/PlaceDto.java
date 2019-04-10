@@ -5,40 +5,27 @@ import io.khasang.bend.entity.School;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Component
 public class PlaceDto {
     private long id;
     private String name;
     private String description;
-    private List<SchoolDto> schoolList = new ArrayList<>();
+    private Set<SchoolDto> schoolSet = new HashSet<>();
 
     public PlaceDto getPlaceDtoFromPlace(Place place) {
         PlaceDto placeDto = new PlaceDto();
         placeDto.setId(place.getId());
         placeDto.setName(place.getName());
         placeDto.setDescription(place.getDescription());
-
-        List<SchoolDto> schoolDtos = new ArrayList<>();
-        for (School school : place.getSchoolList()) {
-            SchoolDto schoolDto = new SchoolDto();
-            schoolDto.setId(school.getId());
-            schoolDto.setName(school.getName());
-            schoolDto.setDescription(school.getDescription());
-            schoolDto.setBannerSrc(school.getBannerSrc());
-            schoolDto.setLogoSrc(school.getLogoSrc());
-            schoolDto.setOriginDate(school.getOriginDate());
-            schoolDto.setPriceList(school.getPriceList());
-            schoolDto.setTimeTable(school.getTimeTable());
-            schoolDtos.add(schoolDto);
-        }
-        placeDto.setSchoolList(schoolDtos);
         return placeDto;
     }
 
-    public List<PlaceDto> getPlaceDtoListFromPlaces(List<Place> places) {
-        List<PlaceDto> pointDtos = new ArrayList<>();
+    public Set<PlaceDto> getPlaceDtoSetFromPlaces(Set<Place> places) {
+        Set<PlaceDto> pointDtos = new HashSet<>();
         for (Place place : places) {
             pointDtos.add(getPlaceDtoFromPlace(place));
         }
@@ -69,11 +56,11 @@ public class PlaceDto {
         this.description = description;
     }
 
-    public List<SchoolDto> getSchoolList() {
-        return schoolList;
+    public Set<SchoolDto> getSchoolSet() {
+        return schoolSet;
     }
 
-    public void setSchoolList(List<SchoolDto> schoolList) {
-        this.schoolList = schoolList;
+    public void setSchoolSet(Set<SchoolDto> schoolSet) {
+        this.schoolSet = schoolSet;
     }
 }

@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Set;
 
 @Service("placeService")
 public class PlaceServiceImpl implements PlaceService {
@@ -34,13 +35,13 @@ public class PlaceServiceImpl implements PlaceService {
     }
 
     @Override
-    public List<Place> getByName(String name) {
+    public Set<Place> getByName(String name) {
         return placeDao.getByName(name);
     }
 
     @Override
-    public List<Place> getAllPlaces() {
-        return placeDao.getAll();
+    public Set<Place> getAllPlaces() {
+        return placeDao.getAllSet();
     }
 
     @Autowired

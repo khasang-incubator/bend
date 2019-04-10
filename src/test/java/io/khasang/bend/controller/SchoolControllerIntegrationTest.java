@@ -10,7 +10,9 @@ import org.springframework.http.*;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -114,11 +116,11 @@ public class SchoolControllerIntegrationTest {
         place2.setDescription("Place2Description");
         place2.setPoint(point);
 
-        List<Place> list = new ArrayList<>();
-        list.add(place1);
-        list.add(place2);
+        Set<Place> set = new HashSet<>();
+        set.add(place1);
+        set.add(place2);
 
-        school.setPlacesList(list);
+        school.setPlacesSet(set);
         return school;
     }
 }

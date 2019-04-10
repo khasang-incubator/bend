@@ -3,9 +3,7 @@ package io.khasang.bend.dto;
 import io.khasang.bend.entity.*;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 @Component
 public class SchoolDto {
@@ -24,7 +22,7 @@ public class SchoolDto {
 
     private List<StudentDto> studentsList = new ArrayList<>();
 
-    private List<PlaceDto> placesList = new ArrayList<>();
+    private Set<PlaceDto> placesSet = new HashSet<>();
 
     public SchoolDto getSchoolDtoFromSchool(School school) {
         SchoolDto schoolDto = new SchoolDto();
@@ -37,15 +35,15 @@ public class SchoolDto {
         schoolDto.setPriceList(school.getPriceList());
         schoolDto.setDescription(school.getDescription());
 
-        List<PlaceDto> placeDtos = new ArrayList<>();
-        for (Place place : school.getPlacesList()) {
+        Set<PlaceDto> placeDtos = new HashSet<>();
+        for (Place place : school.getPlacesSet()) {
             PlaceDto placeDto = new PlaceDto();
             placeDto.setId(place.getId());
             placeDto.setName(place.getName());
             placeDto.setDescription(place.getDescription());
             placeDtos.add(placeDto);
         }
-        schoolDto.setPlacesList(placeDtos);
+        schoolDto.setPlacesSet(placeDtos);
         return schoolDto;
     }
 
@@ -145,11 +143,11 @@ public class SchoolDto {
         this.studentsList = studentsList;
     }
 
-    public List<PlaceDto> getPlacesList() {
-        return placesList;
+    public Set<PlaceDto> getPlacesSet() {
+        return placesSet;
     }
 
-    public void setPlacesList(List<PlaceDto> placesList) {
-        this.placesList = placesList;
+    public void setPlacesSet(Set<PlaceDto> placesSet) {
+        this.placesSet = placesSet;
     }
 }

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Set;
 
 @Controller
 @RequestMapping("/place2")
@@ -44,13 +45,13 @@ public class PlaceDtoController {
 
     @RequestMapping(value = "/name/{name}", method = RequestMethod.GET)
     @ResponseBody
-    public List<PlaceDto> getByName(@PathVariable("name") String name) {
+    public Set<PlaceDto> getByName(@PathVariable("name") String name) {
         return placeService.getByName(name);
     }
 
     @RequestMapping(value = "/all", method = RequestMethod.GET)
     @ResponseBody
-    public List<PlaceDto> getAllPlaces() {
+    public Set<PlaceDto> getAllPlaces() {
         return placeService.getAll();
     }
 }

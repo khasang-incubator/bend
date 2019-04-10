@@ -2,7 +2,9 @@ package io.khasang.bend.entity;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "places")
@@ -17,8 +19,8 @@ public class Place {
     @JoinColumn(name = "point_id")
     private Point point;
 
-    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "placesList")
-    private List<School> schoolList = new ArrayList<>();
+    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "placesSet")
+    private Set<School> schoolSet = new HashSet<>();
 
     public Point getPoint() {
         return point;
@@ -52,11 +54,11 @@ public class Place {
         this.description = description;
     }
 
-    public List<School> getSchoolList() {
-        return schoolList;
+    public Set<School> getSchoolSet() {
+        return schoolSet;
     }
 
-    public void setSchoolList(List<School> schoolList) {
-        this.schoolList = schoolList;
+    public void setSchoolSet(Set<School> schoolSet) {
+        this.schoolSet = schoolSet;
     }
 }

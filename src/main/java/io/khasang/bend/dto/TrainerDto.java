@@ -25,16 +25,6 @@ public class TrainerDto {
         trainerDto.setAchievements(trainer.getAchievements());
         trainerDto.setUser(trainer.getUser());
 
-        List<SchoolDto> schoolDtos = new ArrayList<>();
-        for (School school : trainer.getSchoolList()) {
-            SchoolDto schoolDto = new SchoolDto();
-            schoolDto.setId(school.getId());
-            schoolDto.setName(school.getName());
-            schoolDto.setDescription(school.getDescription());
-            schoolDtos.add(schoolDto);
-        }
-
-        trainerDto.setSchoolList(schoolDtos);
         return trainerDto;
     }
 
@@ -86,11 +76,4 @@ public class TrainerDto {
         this.user = user;
     }
 
-    public List<SchoolDto> getSchoolList() {
-        return schoolList;
-    }
-
-    public void setSchoolList(List<SchoolDto> schoolList) {
-        this.schoolList = schoolList;
-    }
 }

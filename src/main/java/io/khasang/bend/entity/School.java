@@ -1,9 +1,7 @@
 package io.khasang.bend.entity;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 @Entity
 @Table(name = "schools")
@@ -30,13 +28,7 @@ public class School {
     private List<Discipline> disciplinesList = new ArrayList<>();
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    private List<Trainer> trainersList = new ArrayList<>();
-
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    private List<Student> studentsList = new ArrayList<>();
-
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    private List<Place> placesList = new ArrayList<>();
+    private Set<Place> placesSet = new HashSet<>();
 
     public long getId() {
         return id;
@@ -110,27 +102,11 @@ public class School {
         this.disciplinesList = disciplinesList;
     }
 
-    public List<Trainer> getTrainersList() {
-        return trainersList;
+    public Set<Place> getPlacesSet() {
+        return placesSet;
     }
 
-    public void setTrainersList(List<Trainer> trainersList) {
-        this.trainersList = trainersList;
-    }
-
-    public List<Student> getStudentsList() {
-        return studentsList;
-    }
-
-    public void setStudentsList(List<Student> studentsList) {
-        this.studentsList = studentsList;
-    }
-
-    public List<Place> getPlacesList() {
-        return placesList;
-    }
-
-    public void setPlacesList(List<Place> placesList) {
-        this.placesList = placesList;
+    public void setPlacesSet(Set<Place> placesSet) {
+        this.placesSet = placesSet;
     }
 }

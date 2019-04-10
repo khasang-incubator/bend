@@ -10,7 +10,9 @@ import org.springframework.http.*;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -46,16 +48,16 @@ public class PlaceControllerIntegrationTest {
         RestTemplate template = new RestTemplate();
         Place place = createPlace();
 
-        ResponseEntity<List<PlaceDto>> result = template.exchange(
+        ResponseEntity<Set<PlaceDto>> result = template.exchange(
                 ROOT + GET_BY_NAME,
                 HttpMethod.GET,
                 null,
-                new ParameterizedTypeReference<List<PlaceDto>>() {
+                new ParameterizedTypeReference<Set<PlaceDto>>() {
                 },
                 place.getName()
         );
 
-        List<PlaceDto> places = result.getBody();
+        Set<PlaceDto> places = result.getBody();
         assertNotNull(places);
     }
 
@@ -64,15 +66,15 @@ public class PlaceControllerIntegrationTest {
         RestTemplate template = new RestTemplate();
         createPlace();
 
-        ResponseEntity<List<PlaceDto>> result = template.exchange(
+        ResponseEntity<Set<PlaceDto>> result = template.exchange(
                 ROOT + GET_ALL,
                 HttpMethod.GET,
                 null,
-                new ParameterizedTypeReference<List<PlaceDto>>() {
+                new ParameterizedTypeReference<Set<PlaceDto>>() {
                 }
         );
 
-        List<PlaceDto> places = result.getBody();
+        Set<PlaceDto> places = result.getBody();
         assertNotNull(places);
     }
 
@@ -110,7 +112,7 @@ public class PlaceControllerIntegrationTest {
         school2.setName("SchoolName2");
         school2.setDescription("Description2");
 
-        List<School> schools = new ArrayList<>();
+        Set<School> schools = new HashSet<>();
         schools.add(school1);
         schools.add(school2);
 
@@ -119,7 +121,7 @@ public class PlaceControllerIntegrationTest {
         point.setCoordW(118.81009);
 
         place.setPoint(point);
-        place.setSchoolList(schools);
+        place.setSchoolSet(schools);
         return place;
     }
 }

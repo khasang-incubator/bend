@@ -28,16 +28,6 @@ public class StudentDto {
         studentDto.setStatus(student.getStatus());
         studentDto.setUser(student.getUser());
 
-        List<SchoolDto> schoolDtos = new ArrayList<>();
-        for (School school : student.getSchoolList()) {
-            SchoolDto schoolDto = new SchoolDto();
-            schoolDto.setId(school.getId());
-            schoolDto.setName(school.getName());
-            schoolDto.setDescription(school.getDescription());
-            schoolDtos.add(schoolDto);
-        }
-
-        studentDto.setSchoolList(schoolDtos);
         return studentDto;
     }
 

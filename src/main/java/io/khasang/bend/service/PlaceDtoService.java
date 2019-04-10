@@ -4,6 +4,7 @@ import io.khasang.bend.dto.PlaceDto;
 import io.khasang.bend.entity.Place;
 
 import java.util.List;
+import java.util.Set;
 
 public interface PlaceDtoService {
     Place add(Place place);
@@ -14,7 +15,7 @@ public interface PlaceDtoService {
 
     PlaceDto getById(long id);
 
-    List<PlaceDto> getByName(String name);
+    Set<PlaceDto> getByName(String name);
 
-    List<PlaceDto> getAll();
+    Set<PlaceDto> getAll();
 }

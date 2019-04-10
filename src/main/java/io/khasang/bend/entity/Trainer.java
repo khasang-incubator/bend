@@ -2,7 +2,9 @@ package io.khasang.bend.entity;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "trainers")
@@ -18,9 +20,6 @@ public class Trainer {
     private String achievements;
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     private User user;
-
-    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "trainersList")
-    private List<School> schoolList = new ArrayList<>();
 
     public User getUser() {
         return user;
@@ -62,11 +61,4 @@ public class Trainer {
         this.achievements = achievements;
     }
 
-    public List<School> getSchoolList() {
-        return schoolList;
-    }
-
-    public void setSchoolList(List<School> schoolList) {
-        this.schoolList = schoolList;
-    }
 }
