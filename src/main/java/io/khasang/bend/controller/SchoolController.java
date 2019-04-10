@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Set;
 
 @Controller
 @RequestMapping("/school")
@@ -42,7 +43,7 @@ public class SchoolController {
 
     @RequestMapping(value = "/all", method = RequestMethod.GET)
     @ResponseBody
-    public List<School> getAll() {
+    public Set<School> getAll() {
         return schoolService.getAll();
     }
 }

@@ -14,16 +14,16 @@ import java.util.Set;
 public class DisciplineDto {
     private Long id;
     private String name;
-    private List<User> userList = new ArrayList<>();
-    private List<SchoolDto> schoolList = new ArrayList<>();
+    private Set<User> userSet = new HashSet<>();
+    private Set<SchoolDto> schoolSet = new HashSet<>();
 
     public DisciplineDto getDisciplineDtoFromDiscipline(Discipline discipline){
         DisciplineDto disciplineDto = new DisciplineDto();
         disciplineDto.setId(discipline.getId());
         disciplineDto.setName(discipline.getName());
 
-        List<SchoolDto> schoolDtos = new ArrayList<>();
-        for (School school : discipline.getSchoolList()) {
+        Set<SchoolDto> schoolDtos = new HashSet<>();
+        for (School school : discipline.getSchoolSet()) {
             SchoolDto schoolDto = new SchoolDto();
             schoolDto.setId(school.getId());
             schoolDto.setName(school.getName());
@@ -31,7 +31,7 @@ public class DisciplineDto {
             schoolDtos.add(schoolDto);
         }
 
-        disciplineDto.setSchoolList(schoolDtos);
+        disciplineDto.setSchoolSet(schoolDtos);
         return disciplineDto;
     }
 
@@ -59,19 +59,19 @@ public class DisciplineDto {
         this.name = name;
     }
 
-    public List<User> getUserList() {
-        return userList;
+    public Set<User> getUserSet() {
+        return userSet;
     }
 
-    public void setUserList(List<User> userList) {
-        this.userList = userList;
+    public void setUserSet(Set<User> userSet) {
+        this.userSet = userSet;
     }
 
-    public List<SchoolDto> getSchoolList() {
-        return schoolList;
+    public Set<SchoolDto> getSchoolSet() {
+        return schoolSet;
     }
 
-    public void setSchoolList(List<SchoolDto> schoolList) {
-        this.schoolList = schoolList;
+    public void setSchoolSet(Set<SchoolDto> schoolList) {
+        this.schoolSet = schoolSet;
     }
 }

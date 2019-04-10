@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Set;
 
 @Service("schoolDtoService")
 public class SchoolDtoServiceImpl implements SchoolDtoService {
@@ -35,13 +36,13 @@ public class SchoolDtoServiceImpl implements SchoolDtoService {
     }
 
     @Override
-    public List<SchoolDto> getByName(String name) {
-        return schoolDto.getSchoolDtoListFromSchools(schoolDao.getByName(name));
+    public Set<SchoolDto> getByName(String name) {
+        return schoolDto.getSchoolDtoSetFromSchools(schoolDao.getByName(name));
     }
 
     @Override
-    public List<SchoolDto> getAll() {
-        return schoolDto.getSchoolDtoListFromSchools(schoolDao.getAll());
+    public Set<SchoolDto> getAll() {
+        return schoolDto.getSchoolDtoSetFromSchools(schoolDao.getAllSet());
     }
 
     @Autowired

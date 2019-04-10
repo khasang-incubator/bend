@@ -19,7 +19,7 @@ public class Discipline {
     private Set<User> userSet = new HashSet<>();
 
     @ManyToMany(fetch = FetchType.EAGER, mappedBy = "disciplinesSet")
-    private List<School> schoolList = new ArrayList<>();
+    private Set<School> schoolSet = new HashSet<>();
 
     public Long getId() {
         return id;
@@ -45,11 +45,11 @@ public class Discipline {
         this.userSet = userSet;
     }
 
-    public List<School> getSchoolList() {
-        return schoolList;
+    public Set<School> getSchoolSet() {
+        return schoolSet;
     }
 
-    public void setSchoolList(List<School> schoolList) {
-        this.schoolList = schoolList;
+    public void setSchoolSet(Set<School> schoolSet) {
+        this.schoolSet = schoolSet;
     }
 }
