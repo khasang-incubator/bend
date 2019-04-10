@@ -4,7 +4,6 @@ import io.khasang.bend.dao.SchoolDao;
 import io.khasang.bend.entity.School;
 
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 public class SchoolDaoImpl extends BasicDaoImpl<School> implements SchoolDao {
