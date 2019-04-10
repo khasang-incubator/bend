@@ -75,7 +75,7 @@ public class ManagerControllerIntegrationTest {
         user.setEmail("ivan.dulin@gmail.com");
         user.setPassword("12345");
         user.setPhoneNumber("800-900-1010");
-        user.setUserStatus(UserStatus.ON_TRAINING);
+        user.setUserStatus(UserStatus.EMPTY_STATUS);
         user.setOnMap(true);
         user.setHealthLimited(false);
         user.setUserDescription("NERD");

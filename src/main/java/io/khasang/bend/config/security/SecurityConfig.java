@@ -36,16 +36,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 
     // non for production - spring 5
-    @Override
-    public void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userDetailsService);
-    }
-
-    // for production
 //    @Override
 //    public void configure(AuthenticationManagerBuilder auth) throws Exception {
-//        auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
+//        auth.userDetailsService(userDetailsService);
 //    }
+
+    // for production
+    @Override
+    public void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
+    }
 
     private PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
