@@ -7,6 +7,7 @@ import io.khasang.bend.dao.PlaceDao;
 import io.khasang.bend.dao.PointDao;
 import io.khasang.bend.dao.RoleDao;
 import io.khasang.bend.dao.SchoolDao;
+import io.khasang.bend.dao.StudentDao;
 import io.khasang.bend.dao.TrainerDao;
 import io.khasang.bend.dao.UserDao;
 import io.khasang.bend.dao.impl.AdminDaoImpl;
@@ -16,6 +17,7 @@ import io.khasang.bend.dao.impl.PlaceDaoImpl;
 import io.khasang.bend.dao.impl.PointDaoImpl;
 import io.khasang.bend.dao.impl.RoleDaoImpl;
 import io.khasang.bend.dao.impl.SchoolDaoImpl;
+import io.khasang.bend.dao.impl.StudentDaoImpl;
 import io.khasang.bend.dao.impl.TrainerDaoImpl;
 import io.khasang.bend.dao.impl.UserDaoImpl;
 import io.khasang.bend.entity.Barsuk;
@@ -24,6 +26,7 @@ import io.khasang.bend.entity.Place;
 import io.khasang.bend.entity.Point;
 import io.khasang.bend.entity.Role;
 import io.khasang.bend.entity.School;
+import io.khasang.bend.entity.Student;
 import io.khasang.bend.entity.Trainer;
 import io.khasang.bend.entity.User;
 import org.springframework.context.annotation.Bean;
@@ -75,7 +78,12 @@ public class AppConfig {
     }
 
     @Bean
-    TrainerDao trainerDao() {
+    public TrainerDao trainerDao() {
         return new TrainerDaoImpl(Trainer.class);
+    }
+
+    @Bean
+    public StudentDao studentDao() {
+        return new StudentDaoImpl(Student.class);
     }
 }
