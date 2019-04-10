@@ -1,19 +1,20 @@
 package io.khasang.bend.service;
 
+import io.khasang.bend.dto.SchoolDto;
 import io.khasang.bend.entity.School;
 
 import java.util.List;
 
-public interface SchoolService {
+public interface SchoolDtoService {
     School add(School school);
 
     School update(School school);
 
     School delete(long id);
 
-    School getById(long id);
+    SchoolDto getById(long id);
 
-    List<School> getByName(String name);
+    List<SchoolDto> getByName(String name);
 
-    List<School> getAll();
+    List<SchoolDto> getAll();
 }

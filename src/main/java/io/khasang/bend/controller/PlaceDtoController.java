@@ -1,7 +1,8 @@
 package io.khasang.bend.controller;
 
+import io.khasang.bend.dto.PlaceDto;
 import io.khasang.bend.entity.Place;
-import io.khasang.bend.service.PlaceService;
+import io.khasang.bend.service.PlaceDtoService;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -10,12 +11,11 @@ import java.util.List;
 import java.util.Set;
 
 @Controller
-@RequestMapping("/place")
-public class PlaceController {
+@RequestMapping("/place2")
+public class PlaceDtoController {
+    private PlaceDtoService placeService;
 
-    private PlaceService placeService;
-
-    public PlaceController(PlaceService placeService) {
+    public PlaceDtoController(PlaceDtoService placeService) {
         this.placeService = placeService;
     }
 
@@ -39,19 +39,19 @@ public class PlaceController {
 
     @RequestMapping(value = "/get/{id}", method = RequestMethod.GET)
     @ResponseBody
-    public Place getPlaceById(@PathVariable("id") long id) {
+    public PlaceDto getPlaceById(@PathVariable("id") long id) {
         return placeService.getById(id);
     }
 
     @RequestMapping(value = "/name/{name}", method = RequestMethod.GET)
     @ResponseBody
-    public Set<Place> getByName(@PathVariable("name") String name) {
+    public Set<PlaceDto> getByName(@PathVariable("name") String name) {
         return placeService.getByName(name);
     }
 
     @RequestMapping(value = "/all", method = RequestMethod.GET)
     @ResponseBody
-    public Set<Place> getAllPlaces() {
-        return placeService.getAllPlaces();
+    public Set<PlaceDto> getAllPlaces() {
+        return placeService.getAll();
     }
 }

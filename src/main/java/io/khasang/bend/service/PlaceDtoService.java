@@ -1,20 +1,21 @@
 package io.khasang.bend.service;
 
+import io.khasang.bend.dto.PlaceDto;
 import io.khasang.bend.entity.Place;
 
 import java.util.List;
 import java.util.Set;
 
-public interface PlaceService {
+public interface PlaceDtoService {
     Place add(Place place);
 
     Place update(Place place);
 
     Place delete(long id);
 
-    Place getById(long id);
+    PlaceDto getById(long id);
 
-    Set<Place> getByName(String name);
+    Set<PlaceDto> getByName(String name);
 
-    Set<Place> getAllPlaces();
+    Set<PlaceDto> getAll();
 }

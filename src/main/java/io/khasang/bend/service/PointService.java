@@ -1,6 +1,5 @@
 package io.khasang.bend.service;
 
-import io.khasang.bend.dto.PointDto;
 import io.khasang.bend.entity.Point;
 
 import java.util.List;
@@ -12,9 +11,7 @@ public interface PointService {
 
     Point delete(long id);
 
-    PointDto getById(long id);
+    Point getById(long id);
 
-    List<PointDto> getByName(String name);
-
-    List<PointDto> getAll();
+    List<Point> getAll();
 }
