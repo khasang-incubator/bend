@@ -6,7 +6,9 @@ import io.khasang.bend.entity.User;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Component
 public class DisciplineDto {
@@ -33,8 +35,8 @@ public class DisciplineDto {
         return disciplineDto;
     }
 
-    public List<DisciplineDto> getDisciplineDtoListFromDisciplines(List<Discipline> disciplines) {
-        List<DisciplineDto> disciplineDtos = new ArrayList<>();
+    public Set<DisciplineDto> getDisciplineDtoSetFromDisciplines(Set<Discipline> disciplines) {
+        Set<DisciplineDto> disciplineDtos = new HashSet<>();
         for (Discipline discipline : disciplines) {
             disciplineDtos.add(getDisciplineDtoFromDiscipline(discipline));
         }

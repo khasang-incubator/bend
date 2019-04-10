@@ -13,10 +13,10 @@ public class Discipline {
     @Column(name = "discipline_id")
     private Long id;
     private String name;
-    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "disciplinesList")
+    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "disciplinesSet")
     private List<User> userList = new ArrayList<>();
 
-    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "disciplinesList")
+    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "disciplinesSet")
     private List<School> schoolList = new ArrayList<>();
 
     public Long getId() {

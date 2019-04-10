@@ -4,6 +4,7 @@ import io.khasang.bend.dto.DisciplineDto;
 import io.khasang.bend.entity.Discipline;
 
 import java.util.List;
+import java.util.Set;
 
 public interface DisciplineDtoService {
     Discipline add(Discipline discipline);
@@ -14,7 +15,7 @@ public interface DisciplineDtoService {
 
     DisciplineDto getById(long id);
 
-    List<DisciplineDto> getByName(String name);
+    Set<DisciplineDto> getByName(String name);
 
-    List<DisciplineDto> getAll();
+    Set<DisciplineDto> getAll();
 }

@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Set;
 
 @Service("disciplineDtoService")
 public class DisciplineDtoServiceImpl implements DisciplineDtoService {
@@ -35,13 +36,13 @@ public class DisciplineDtoServiceImpl implements DisciplineDtoService {
     }
 
     @Override
-    public List<DisciplineDto> getByName(String name) {
-        return disciplineDto.getDisciplineDtoListFromDisciplines(disciplineDao.getByName(name));
+    public Set<DisciplineDto> getByName(String name) {
+        return disciplineDto.getDisciplineDtoSetFromDisciplines(disciplineDao.getByName(name));
     }
 
     @Override
-    public List<DisciplineDto> getAll() {
-        return disciplineDto.getDisciplineDtoListFromDisciplines(disciplineDao.getAll());
+    public Set<DisciplineDto> getAll() {
+        return disciplineDto.getDisciplineDtoSetFromDisciplines(disciplineDao.getAllSet());
     }
 
     @Autowired

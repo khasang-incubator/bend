@@ -25,7 +25,7 @@ public class School {
 
 //    MultipleBagFetchException: cannot simultaneously fetch multiple bags: невозможно получить несколько пакетов
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    private List<Discipline> disciplinesList = new ArrayList<>();
+    private Set<Discipline> disciplinesSet = new HashSet<>();
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Set<Place> placesSet = new HashSet<>();
@@ -94,12 +94,12 @@ public class School {
         this.originDate = originDate;
     }
 
-    public List<Discipline> getDisciplinesList() {
-        return disciplinesList;
+    public Set<Discipline> getDisciplinesSet() {
+        return disciplinesSet;
     }
 
-    public void setDisciplinesList(List<Discipline> disciplinesList) {
-        this.disciplinesList = disciplinesList;
+    public void setDisciplinesSet(Set<Discipline> disciplinesList) {
+        this.disciplinesSet = disciplinesSet;
     }
 
     public Set<Place> getPlacesSet() {

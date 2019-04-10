@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Set;
 
 @Controller
 @RequestMapping("/disciplines")
@@ -44,7 +45,7 @@ public class DisciplineDtoController {
 
     @RequestMapping(value = "/all", method = RequestMethod.GET)
     @ResponseBody
-    public List<DisciplineDto> getAll() {
+    public Set<DisciplineDto> getAll() {
         return disciplineService.getAll();
     }
 }

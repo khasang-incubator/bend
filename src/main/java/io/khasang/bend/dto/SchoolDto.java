@@ -18,10 +18,6 @@ public class SchoolDto {
 
     private List<DisciplineDto> disciplinesList = new ArrayList<>();
 
-    private List<TrainerDto> trainersList = new ArrayList<>();
-
-    private List<StudentDto> studentsList = new ArrayList<>();
-
     private Set<PlaceDto> placesSet = new HashSet<>();
 
     public SchoolDto getSchoolDtoFromSchool(School school) {
@@ -125,22 +121,6 @@ public class SchoolDto {
 
     public void setDisciplinesList(List<DisciplineDto> disciplinesList) {
         this.disciplinesList = disciplinesList;
-    }
-
-    public List<TrainerDto> getTrainersList() {
-        return trainersList;
-    }
-
-    public void setTrainersList(List<TrainerDto> trainersList) {
-        this.trainersList = trainersList;
-    }
-
-    public List<StudentDto> getStudentsList() {
-        return studentsList;
-    }
-
-    public void setStudentsList(List<StudentDto> studentsList) {
-        this.studentsList = studentsList;
     }
 
     public Set<PlaceDto> getPlacesSet() {
