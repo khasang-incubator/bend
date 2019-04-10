@@ -2,6 +2,7 @@ package io.khasang.bend.controller;
 
 import io.khasang.bend.entity.Role;
 import io.khasang.bend.service.RoleService;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -43,8 +44,9 @@ public class RoleController {
     @RequestMapping(value = "/all", method = RequestMethod.GET)
     @ResponseBody
     public List<Role> getAllRoles(){
-        return roleService.getAllRols();
+        return roleService.getAllRoles();
     }
+
 
 }
 

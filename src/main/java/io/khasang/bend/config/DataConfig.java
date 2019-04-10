@@ -40,26 +40,26 @@ public class DataConfig {
 
 
     // for prod
-//    @Bean
-//    public UserDetailsService userDetailsService() {
-//        JdbcDaoImpl dao = new JdbcDaoImpl();
-//        dao.setDataSource(dataSource());
-//        dao.setUsersByUsernameQuery(environment.getRequiredProperty("usersByQuery"));
-//        dao.setAuthoritiesByUsernameQuery(environment.getRequiredProperty("rolesByQuery"));
-//        return dao;
-//    }
+    @Bean
+    public UserDetailsService userDetailsService() {
+        JdbcDaoImpl dao = new JdbcDaoImpl();
+        dao.setDataSource(dataSource());
+        dao.setUsersByUsernameQuery(environment.getRequiredProperty("usersByQuery"));
+        dao.setAuthoritiesByUsernameQuery(environment.getRequiredProperty("rolesByQuery"));
+        return dao;
+    }
 
 
     // non for prod
-    @Bean
-    public UserDetailsService userDetailsService() throws Exception {
-        // ensure the passwords are encoded properly
-        User.UserBuilder users = User.withDefaultPasswordEncoder();
-        InMemoryUserDetailsManager manager = new InMemoryUserDetailsManager();
-        manager.createUser(users.username("user").password("user").roles("USER").build());
-        manager.createUser(users.username("admin").password("admin").roles("USER","ADMIN").build());
-        return manager;
-    }
+//    @Bean
+//    public UserDetailsService userDetailsService() throws Exception {
+//        // ensure the passwords are encoded properly
+//        User.UserBuilder users = User.withDefaultPasswordEncoder();
+//        InMemoryUserDetailsManager manager = new InMemoryUserDetailsManager();
+//        manager.createUser(users.username("user").password("user").roles("USER").build());
+//        manager.createUser(users.username("admin").password("admin").roles("USER","ADMIN").build());
+//        return manager;
+//    }
 
     public Environment getEnvironment() {
         return environment;

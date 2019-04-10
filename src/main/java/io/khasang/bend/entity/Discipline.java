@@ -13,7 +13,7 @@ public class Discipline {
     @Column(name = "discipline_id")
     private Long id;
     private String name;
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "disciplinesList")
     private List<User> userList = new ArrayList<>();
 
     public Long getId() {
