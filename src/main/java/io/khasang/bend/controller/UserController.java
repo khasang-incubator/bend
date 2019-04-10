@@ -6,7 +6,7 @@ import io.khasang.bend.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import java.util.Set;
 
 @Controller
 @RequestMapping("/users")
@@ -43,13 +43,13 @@ public class UserController {
 
     @RequestMapping(value = "/all", method = RequestMethod.GET)
     @ResponseBody
-    public List<UserDto> getAllUsers() {
+    public Set<UserDto> getAllUsers() {
         return userService.getAllUsers();
     }
 
     @RequestMapping(value = "/name/{name}", method = RequestMethod.GET)
     @ResponseBody
-    public List<UserDto> getAllEmployeesByName(@PathVariable("name") String name) {
+    public Set<UserDto> getAllEmployeesByName(@PathVariable("name") String name) {
         return userService.getAllUsersByName(name);
     }
 }

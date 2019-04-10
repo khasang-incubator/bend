@@ -7,7 +7,7 @@ import io.khasang.bend.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import java.util.Set;
 
 @Service("userService")
 public class UserServiceImpl implements UserService {
@@ -35,13 +35,13 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<UserDto> getAllUsers() {
-        return userDto.getUserDtoListFromUser(userDao.getAll());
+    public Set<UserDto> getAllUsers() {
+        return userDto.getUserDtoSetFromUser(userDao.getAllSet());
     }
 
     @Override
-    public List<UserDto> getAllUsersByName(String name) {
-        return userDto.getUserDtoListFromUser(userDao.getAllUsersByName(name));
+    public Set<UserDto> getAllUsersByName(String name) {
+        return userDto.getUserDtoSetFromUser(userDao.getAllUsersByName(name));
     }
 
     @Autowired

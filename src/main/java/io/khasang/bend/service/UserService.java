@@ -3,7 +3,7 @@ package io.khasang.bend.service;
 import io.khasang.bend.dto.UserDto;
 import io.khasang.bend.entity.User;
 
-import java.util.List;
+import java.util.Set;
 
 public interface UserService {
     User add(User user);
@@ -14,7 +14,7 @@ public interface UserService {
 
     UserDto getById(long id);
 
-    List<UserDto> getAllUsers();
+    Set<UserDto> getAllUsers();
 
-    List<UserDto> getAllUsersByName(String name);
+    Set<UserDto> getAllUsersByName(String name);
 }
