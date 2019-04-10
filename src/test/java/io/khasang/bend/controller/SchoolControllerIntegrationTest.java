@@ -9,10 +9,7 @@ import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.*;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -46,16 +43,16 @@ public class SchoolControllerIntegrationTest {
         RestTemplate template = new RestTemplate();
         School school = createSchool();
 
-        ResponseEntity<List<SchoolDto>> result = template.exchange(
+        ResponseEntity<Set<SchoolDto>> result = template.exchange(
                 ROOT + GET_BY_NAME,
                 HttpMethod.GET,
                 null,
-                new ParameterizedTypeReference<List<SchoolDto>>() {
+                new ParameterizedTypeReference<Set<SchoolDto>>() {
                 },
                 school.getName()
         );
 
-        List<SchoolDto> schools = result.getBody();
+        Set<SchoolDto> schools = result.getBody();
         assertNotNull(schools);
     }
 
@@ -64,15 +61,15 @@ public class SchoolControllerIntegrationTest {
         RestTemplate template = new RestTemplate();
         createSchool();
 
-        ResponseEntity<List<SchoolDto>> result = template.exchange(
+        ResponseEntity<Set<SchoolDto>> result = template.exchange(
                 ROOT + GET_ALL,
                 HttpMethod.GET,
                 null,
-                new ParameterizedTypeReference<List<SchoolDto>>() {
+                new ParameterizedTypeReference<Set<SchoolDto>>() {
                 }
         );
 
-        List<SchoolDto> schools = result.getBody();
+        Set<SchoolDto> schools = result.getBody();
         assertNotNull(schools);
     }
 
@@ -99,8 +96,14 @@ public class SchoolControllerIntegrationTest {
 
     private School prefillSchool() {
         School school = new School();
+        //school.setId(1);
         school.setName("SchoolName");
         school.setDescription("SchoolDescription");
+        school.setLogoSrc("logosrc");
+        school.setBannerSrc("bannersrc");
+        school.setOriginDate(new Date());
+        school.setPriceList("priceList");
+        school.setTimeTable("timeTable");
 
         Point point = new Point();
         point.setCoordN(22.222);
