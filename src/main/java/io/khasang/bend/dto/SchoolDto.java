@@ -16,7 +16,7 @@ public class SchoolDto {
     private String priceList;
     private String timeTable;
 
-    private List<DisciplineDto> disciplinesList = new ArrayList<>();
+    private Set<DisciplineDto> disciplinesSet = new HashSet<>();
 
     private Set<PlaceDto> placesSet = new HashSet<>();
 
@@ -43,8 +43,8 @@ public class SchoolDto {
         return schoolDto;
     }
 
-    public List<SchoolDto> getSchoolDtoListFromSchools(List<School> schools) {
-        List<SchoolDto> schoolDtos = new ArrayList<>();
+    public Set<SchoolDto> getSchoolDtoSetFromSchools(Set<School> schools) {
+        Set<SchoolDto> schoolDtos = new HashSet<>();
         for (School school : schools) {
             schoolDtos.add(getSchoolDtoFromSchool(school));
         }
@@ -115,12 +115,12 @@ public class SchoolDto {
         this.timeTable = timeTable;
     }
 
-    public List<DisciplineDto> getDisciplinesList() {
-        return disciplinesList;
+    public Set<DisciplineDto> getDisciplinesSet() {
+        return disciplinesSet;
     }
 
-    public void setDisciplinesList(List<DisciplineDto> disciplinesList) {
-        this.disciplinesList = disciplinesList;
+    public void setDisciplinesSet(Set<DisciplineDto> disciplinesSet) {
+        this.disciplinesSet = disciplinesSet;
     }
 
     public Set<PlaceDto> getPlacesSet() {

@@ -4,6 +4,7 @@ import io.khasang.bend.dto.SchoolDto;
 import io.khasang.bend.entity.School;
 
 import java.util.List;
+import java.util.Set;
 
 public interface SchoolDtoService {
     School add(School school);
@@ -14,7 +15,7 @@ public interface SchoolDtoService {
 
     SchoolDto getById(long id);
 
-    List<SchoolDto> getByName(String name);
+    Set<SchoolDto> getByName(String name);
 
-    List<SchoolDto> getAll();
+    Set<SchoolDto> getAll();
 }

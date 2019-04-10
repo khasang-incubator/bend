@@ -7,8 +7,8 @@ import io.khasang.bend.model.UserStatus;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 @Component
 public class UserDto {
@@ -26,7 +26,7 @@ public class UserDto {
     private Boolean isHealthLimited;
     private String userDescription;
     private String interests;
-    private List<DisciplineDto> disciplinesList = new ArrayList<>();
+    private Set<DisciplineDto> disciplinesSet = new HashSet<>();
 
     public UserDto getUserDtoFromUser(User user) {
         UserDto userDto = new UserDto();
@@ -44,23 +44,23 @@ public class UserDto {
         userDto.setUserDescription(user.getUserDescription());
         userDto.setInterests(user.getInterests());
 
-        List<DisciplineDto> tempDisciplineDto = new ArrayList<>();
-        for (Discipline discipline : user.getDisciplinesList()) {
+        Set<DisciplineDto> tempDisciplineDto = new HashSet<>();
+        for (Discipline discipline : user.getDisciplinesSet()) {
             DisciplineDto disciplineDto = new DisciplineDto();
             disciplineDto.setName(discipline.getName());
             disciplineDto.setId(discipline.getId());
             tempDisciplineDto.add(disciplineDto);
         }
-        userDto.setDisciplinesList(tempDisciplineDto);
+        userDto.setDisciplinesSet(tempDisciplineDto);
         return userDto;
     }
 
-    public List<UserDto> getUserDtoListFromUser(List<User> users) {
-        List<UserDto> userDtoList = new ArrayList<>();
+    public Set<UserDto> getUserDtoSetFromUser(Set<User> users) {
+        Set<UserDto> userDtoSet = new HashSet<>();
         for (User user : users) {
-            userDtoList.add(getUserDtoFromUser(user));
+            userDtoSet.add(getUserDtoFromUser(user));
         }
-        return userDtoList;
+        return userDtoSet;
     }
 
     public Long getId() {
@@ -175,11 +175,11 @@ public class UserDto {
         this.interests = interests;
     }
 
-    public List<DisciplineDto> getDisciplinesList() {
-        return disciplinesList;
+    public Set<DisciplineDto> getDisciplinesSet() {
+        return disciplinesSet;
     }
 
-    public void setDisciplinesList(List<DisciplineDto> disciplinesList) {
-        this.disciplinesList = disciplinesList;
+    public void setDisciplinesSet(Set<DisciplineDto> disciplinesSet) {
+        this.disciplinesSet = disciplinesSet;
     }
 }

@@ -6,7 +6,7 @@ import io.khasang.bend.service.SchoolDtoService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import java.util.Set;
 
 @Controller
 @RequestMapping("/school2")
@@ -44,13 +44,13 @@ public class SchoolDtoController {
 
     @RequestMapping(value = "/name/{name}", method = RequestMethod.GET)
     @ResponseBody
-    public List<SchoolDto> getSchoolById(@PathVariable("name") String name) {
+    public Set<SchoolDto> getSchoolById(@PathVariable("name") String name) {
         return schoolService.getByName(name);
     }
 
     @RequestMapping(value = "/all", method = RequestMethod.GET)
     @ResponseBody
-    public List<SchoolDto> getAll() {
+    public Set<SchoolDto> getAll() {
         return schoolService.getAll();
     }
 }

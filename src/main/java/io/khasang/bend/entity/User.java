@@ -52,7 +52,7 @@ public class User {
     @ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     private Set<Discipline> disciplinesSet = new HashSet<>();
 
-    public Set<Discipline> getDisciplinesList() {
+    public Set<Discipline> getDisciplinesSet() {
         return disciplinesSet;
     }
 

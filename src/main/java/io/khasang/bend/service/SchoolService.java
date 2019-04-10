@@ -3,6 +3,7 @@ package io.khasang.bend.service;
 import io.khasang.bend.entity.School;
 
 import java.util.List;
+import java.util.Set;
 
 public interface SchoolService {
     School add(School school);
@@ -13,7 +14,7 @@ public interface SchoolService {
 
     School getById(long id);
 
-    List<School> getByName(String name);
+    Set<School> getByName(String name);
 
-    List<School> getAll();
+    Set<School> getAll();
 }

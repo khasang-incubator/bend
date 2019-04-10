@@ -2,8 +2,8 @@ package io.khasang.bend.dao;
 
 import io.khasang.bend.entity.User;
 
-import java.util.List;
+import java.util.Set;
 
 public interface UserDao extends BasicDao<User> {
-    List<User> getAllUsersByName(String name);
+    Set<User> getAllUsersByName(String name);
 }
