@@ -33,7 +33,12 @@ public class SchoolServiceImpl implements SchoolService {
     }
 
     @Override
-    public List<School> getAllSchools() {
+    public List<School> getByName(String name) {
+        return schoolDao.getByName(name);
+    }
+
+    @Override
+    public List<School> getAll() {
         return schoolDao.getAll();
     }
 

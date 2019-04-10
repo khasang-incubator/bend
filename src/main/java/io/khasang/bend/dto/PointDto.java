@@ -8,18 +8,14 @@ import java.util.*;
 @Component
 public class PointDto {
     private long id;
-    private String name;
-    private double coordX;
-    private double coordY;
-    private String description;
+    private double coordN;
+    private double coordW;
 
     public PointDto getPointDtoFromPoint(Point point) {
         PointDto pointDto = new PointDto();
         pointDto.setId(point.getId());
-        pointDto.setName(point.getName());
-        pointDto.setCoordX(point.getCoordX());
-        pointDto.setCoordY(point.getCoordY());
-        pointDto.setDescription(point.getDescription());
+        pointDto.setCoordN(point.getCoordN());
+        pointDto.setCoordW(point.getCoordW());
         return pointDto;
     }
 
@@ -39,35 +35,19 @@ public class PointDto {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public double getCoordN() {
+        return coordN;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setCoordN(double coordN) {
+        this.coordN = coordN;
     }
 
-    public double getCoordX() {
-        return coordX;
+    public double getCoordW() {
+        return coordW;
     }
 
-    public void setCoordX(double coordX) {
-        this.coordX = coordX;
-    }
-
-    public double getCoordY() {
-        return coordY;
-    }
-
-    public void setCoordY(double coordY) {
-        this.coordY = coordY;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
+    public void setCoordW(double coordW) {
+        this.coordW = coordW;
     }
 }

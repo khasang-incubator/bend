@@ -1,8 +1,6 @@
 package io.khasang.bend.entity;
 
 import io.khasang.bend.model.StudentStatus;
-import io.khasang.bend.model.UserStatus;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;

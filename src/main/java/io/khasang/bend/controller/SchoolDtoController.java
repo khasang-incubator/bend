@@ -1,18 +1,20 @@
 package io.khasang.bend.controller;
 
+import io.khasang.bend.dto.SchoolDto;
 import io.khasang.bend.entity.School;
-import io.khasang.bend.service.SchoolService;
+import io.khasang.bend.service.SchoolDtoService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @Controller
-@RequestMapping("/school")
-public class SchoolController {
-    private SchoolService schoolService;
+@RequestMapping("/school2")
+public class SchoolDtoController {
 
-    public SchoolController(SchoolService schoolService) {
+    private SchoolDtoService schoolService;
+
+    public SchoolDtoController(SchoolDtoService schoolService) {
         this.schoolService = schoolService;
     }
 
@@ -36,13 +38,19 @@ public class SchoolController {
 
     @RequestMapping(value = "/get/{id}", method = RequestMethod.GET)
     @ResponseBody
-    public School getSchoolById(@PathVariable("id") long id) {
+    public SchoolDto getSchoolById(@PathVariable("id") long id) {
         return schoolService.getById(id);
+    }
+
+    @RequestMapping(value = "/name/{name}", method = RequestMethod.GET)
+    @ResponseBody
+    public List<SchoolDto> getSchoolById(@PathVariable("name") String name) {
+        return schoolService.getByName(name);
     }
 
     @RequestMapping(value = "/all", method = RequestMethod.GET)
     @ResponseBody
-    public List<School> getAll() {
+    public List<SchoolDto> getAll() {
         return schoolService.getAll();
     }
 }

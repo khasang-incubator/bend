@@ -1,6 +1,7 @@
 package io.khasang.bend.dao;
 
 import java.util.List;
+import java.util.Set;
 
 public interface BasicDao<T> {
 
@@ -13,4 +14,6 @@ public interface BasicDao<T> {
     T getById(long id);
 
     List<T> getAll();
+
+    Set<T> getAllSet();
 }

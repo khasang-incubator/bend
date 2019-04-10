@@ -16,7 +16,9 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "users")
@@ -48,14 +50,14 @@ public class User {
     @Column(name = "role_id")
     private Integer role;
     @ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
-    private List<Discipline> disciplinesList = new ArrayList<>();
+    private Set<Discipline> disciplinesSet = new HashSet<>();
 
-    public List<Discipline> getDisciplinesList() {
-        return disciplinesList;
+    public Set<Discipline> getDisciplinesList() {
+        return disciplinesSet;
     }
 
-    public void setDisciplinesList(List<Discipline> disciplinesList) {
-        this.disciplinesList = disciplinesList;
+    public void setDisciplinesSet(Set<Discipline> disciplinesList) {
+        this.disciplinesSet = disciplinesSet;
     }
 
     public Integer getRole() {
