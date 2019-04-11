@@ -34,98 +34,6 @@
         </nav>
         <div class="container-fluid">
 
-
-
-
-            private String name;
-            private String lastName;
-            private int age;
-            private Gender gender;
-            private LocalDate dateOfBirth;
-            private String phoneNumber;
-            private boolean isOnMap;
-            private boolean isHealthLimited;
-
-
-
-            <div class="tab-pane">
-                <div>
-                    <h2>регистрация</h2>
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="name-label">имя</span>
-                        </div>
-                        <input id="name" type="text" class="form-control" placeholder="thetruesportsman@gmail.com" aria-label="Username" aria-describedby="basic-addon1">
-                    </div>
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="lastname-label">фамилия</span>
-                        </div>
-                        <input id="lastname" type="text" class="form-control" placeholder="Jack" aria-label="Username" aria-describedby="basic-addon1">
-                    </div>
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="age-label">возраст</span>
-                        </div>
-                        <input id="age" type="number" class="form-control" placeholder="Jack" aria-label="Username" aria-describedby="basic-addon1">
-                    </div>
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="gender-label">пол</span>
-                        </div>
-                        <select id="gender" class="form-control"  size="1" multiple name="gender" aria-label="пол:" aria-describedby="basic-addon1">
-                            <option selected value="0">пока не определился</option>
-                            <option value="1">Мужчина</option>
-                            <option value="2">Женщина</option>
-                        </select>
-                    </div>
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="birthdate-label">дата рождения</span>
-                        </div>
-                        <input id="birthdate" type="date" class="form-control" placeholder="Jack" aria-label="Username" aria-describedby="basic-addon1">
-                    </div>
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="phone-label">номер телефона</span>
-                        </div>
-                        <input id="phone" type="tel" class="form-control" placeholder="Jack" aria-label="Username" aria-describedby="basic-addon1">
-                    </div>
-
-
-
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="passwordregister2-label">повторите пароль</span>
-                        </div>
-                        <input id="passwordregister2" type="password" class="form-control" placeholder="type your password here" aria-label="Username" aria-describedby="basic-addon1">
-                    </div>
-                </div>
-            </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
             <!-- Кнопка, вызывающее модальное окно -->
             <!--<a href="#myModal" class="btn btn-primary" data-toggle="modal">Модальное окно</a>-->
 
@@ -137,6 +45,13 @@
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                         </div>
+
+
+
+
+
+
+
                         <!-- Футер модального окна -->
                         <div class="modal-footer">
                             <ul id="myTab" class="nav nav-tabs">
