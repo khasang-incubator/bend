@@ -41,6 +41,16 @@ public class AppController {
         return "hello";
     }
 
+    @RequestMapping("/register")
+    public String registerUser() {
+        return "user-reg-page";
+    }
+
+    @RequestMapping("/reg")
+    public String registerUserReg() {
+        return "reg";
+    }
+
     @RequestMapping("/")
     public String getBadgerPage() {
         return "menu";
