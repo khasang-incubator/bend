@@ -60,8 +60,8 @@ public class AppController {
 
     @RequestMapping("/admin")
     public String getAdminPage(Model model) {
-        model.addAttribute("info", "Very secured admin info!");
-        return "admin";
+        model.addAttribute("info", "Very secured gddfgdf info!");
+        return "gddfgdf";
     }
 
     @RequestMapping("/user")

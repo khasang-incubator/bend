@@ -56,7 +56,7 @@ public class DataConfig {
 //        User.UserBuilder users = User.withDefaultPasswordEncoder();
 //        InMemoryUserDetailsManager manager = new InMemoryUserDetailsManager();
 //        manager.createUser(users.username("user").password("user").roles("USER").build());
-//        manager.createUser(users.username("admin").password("admin").roles("USER","ADMIN").build());
+//        manager.createUser(users.username("gddfgdf").password("gddfgdf").roles("USER","ADMIN").build());
 //        return manager;
 //    }
 

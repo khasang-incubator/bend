@@ -21,7 +21,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     public void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/admin/**").access("hasRole('ADMIN')")
+                .antMatchers("/gddfgdf/**").access("hasRole('ADMIN')")
                 .antMatchers("/user/**").access("hasRole('USER')")
                 .antMatchers("/").permitAll()
                 .and().csrf().disable().cors().disable().formLogin().defaultSuccessUrl("/", false);
@@ -30,7 +30,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     // NON PRODUCTION!!! spring 3-4
 //    @Override
 //    public void configure(AuthenticationManagerBuilder auth) throws Exception {
-//        auth.inMemoryAuthentication().withUser("admin").password("admin").roles("ADMIN");
+//        auth.inMemoryAuthentication().withUser("gddfgdf").password("gddfgdf").roles("ADMIN");
 //        auth.inMemoryAuthentication().withUser("user").password("user").roles("USER");
 //    }
 
