@@ -1,0 +1,156 @@
+	.well {
+		background: none;
+		height: 420px;
+	}
+
+	.table-scroll tbody {
+		position: absolute;
+		overflow-y: scroll;
+		height: 350px;
+	}
+
+	.table-scroll tr {
+		width: 100%;
+		table-layout: fixed;
+		display: inline-table;
+	}
+
+	.table-scroll thead > tr > th {
+		border: none;
+	}
+	
+	.table th:nth-child(1),.table td:nth-child(1) {
+		width:20px;
+	}
+	
+	.message-notif {
+		background-color:#3399FF; 
+		display:inline-block; 
+		width:16px; 
+		height:16px; 
+		border-radius:10px; 
+		color:#ffffff; 
+		text-align: center; 
+		font-size:11px;
+	}
+	
+	.table-click-item {
+		float:left;
+		cursor:pointer;
+		color:#33CCFF;
+	}
+	
+	.table-places-list {
+		color:#007bff;
+	}
+	.table-places-list span:hover {
+		color:#005AB9;
+		cursor:pointer;
+		text-decoration:underline;
+	}
+	
+	.disciplines-mini {
+		color:#cccccc;
+		color: #cccccc;
+		width: 80%;
+		display: block;
+		margin: 10px;
+		padding-left: 10px;
+		padding-bottom: 10px;
+		font-size: 12px;
+	}
+	
+	.description {
+		padding:30px;
+	}
+	
+	.schoolname {
+		width: 100%;
+		display:block;
+		font-size:12px;
+		color: #666;
+	}
+	
+	.schoolname-logo {
+		width:inherit;
+	}
+	.schoolname-logo-container {
+		width:100%;
+		padding:5%;
+		display:block;
+	}
+	.disciplines {
+		color:#cccccc;
+	}
+	
+	.disciplines .fa{
+		color:#cccccc;
+		display:inline-block;
+		float:none;
+	}
+	
+	.disciplines .fa:hover{
+		color:#33CCFF;
+	}
+	
+	.school-list-logo {
+		max-width: 120px;
+		margin-left:10px;
+	}
+
+	.checkbox-biglist label {
+		padding:10px;
+		display:inline-block;
+	}
+	
+	.table-scroll .fa {
+		font-size:24px;
+	}
+
+	.interactive-map {
+		min-height: 300px;
+		margin-left: 0px;
+		margin-right: 0px;
+        background-image:url('../../images/yamap.jpg');
+    }
+	
+	@media screen and (max-width: 1200px) and (orientation: landscape) {
+		.table-click-item {
+			float:right;
+		}
+	}
+
+	.form-control {
+		border-radius: 0px;
+	}
+
+	.modal-content, .input-group-text, .btn {
+		border-radius: 0px;
+	}
+
+	.btn-info{
+
+	}
+
+	#myTab li {
+		padding: 0px;
+		background: none;
+		padding: 5px;
+		border: none;
+	}
+
+	#myTab li a {
+		padding: .375rem .75rem;
+		display: inline-block;
+		background-color: #0056b3;
+		/*border-color: #0056b3;*/
+		color:#ffffff;
+		width: 100%;
+		border: none;
+	}
+
+	#myTab li a:hover, #myTab li a.active {
+		/*border-color: #007bff;*/
+		background-color: #007bff;
+		color:#ffffff;
+	}
