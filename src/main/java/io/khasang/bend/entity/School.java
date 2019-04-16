@@ -129,17 +129,13 @@ public class School {
         School school = (School) o;
 
         if (id != school.id) return false;
-        if (name != null ? !name.equals(school.name) : school.name != null) return false;
-        if (description != null ? !description.equals(school.description) : school.description != null) return false;
-        return logoSrc != null ? logoSrc.equals(school.logoSrc) : school.logoSrc == null;
+        return name.equals(school.name);
     }
 
     @Override
     public int hashCode() {
         int result = (int) (id ^ (id >>> 32));
-        result = 31 * result + (name != null ? name.hashCode() : 0);
-        result = 31 * result + (description != null ? description.hashCode() : 0);
-        result = 31 * result + (logoSrc != null ? logoSrc.hashCode() : 0);
+        result = 31 * result + name.hashCode();
         return result;
     }
 }

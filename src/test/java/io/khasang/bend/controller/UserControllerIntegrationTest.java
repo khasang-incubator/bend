@@ -1,7 +1,7 @@
 package io.khasang.bend.controller;
 
 import io.khasang.bend.dto.UserDto;
-import io.khasang.bend.entity.Url;
+import io.khasang.bend.entity.HomePagesUrl;
 import io.khasang.bend.entity.User;
 import io.khasang.bend.model.Gender;
 import io.khasang.bend.model.UserStatus;
@@ -97,8 +97,8 @@ public class UserControllerIntegrationTest {
         return createdUser;
     }
 
-    private Url createUrl(){
-        Url url = new Url();
+    private HomePagesUrl createUrl(){
+        HomePagesUrl url = new HomePagesUrl();
         url.setUrl(String.valueOf(url.hashCode()));
         return url;
     }

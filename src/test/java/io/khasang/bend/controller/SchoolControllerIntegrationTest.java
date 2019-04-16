@@ -4,7 +4,7 @@ import io.khasang.bend.dto.SchoolDto;
 import io.khasang.bend.entity.Place;
 import io.khasang.bend.entity.Point;
 import io.khasang.bend.entity.School;
-import io.khasang.bend.entity.Url;
+import io.khasang.bend.entity.HomePagesUrl;
 import org.junit.Test;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.*;
@@ -95,8 +95,8 @@ public class SchoolControllerIntegrationTest {
         return createdSchool;
     }
 
-    private Url createUrl(){
-        Url url = new Url();
+    private HomePagesUrl createUrl(){
+        HomePagesUrl url = new HomePagesUrl();
         url.setUrl(String.valueOf(url.hashCode()));
         return url;
     }
