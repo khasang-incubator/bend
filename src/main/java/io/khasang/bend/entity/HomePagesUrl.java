@@ -8,8 +8,8 @@ public class HomePagesUrl {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     Long id;
-    @Column(name = "location")
-    String location;
+    @Column(name = "url")
+    String url;
 
     public Long getId() {
         return id;
@@ -20,10 +20,10 @@ public class HomePagesUrl {
     }
 
     public String getUrl() {
-        return location;
+        return url;
     }
 
     public void setUrl(String url) {
-        this.location = location;
+        this.url = url;
     }
 }
