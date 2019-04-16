@@ -79,17 +79,17 @@
 		padding:5%;
 		display:block;
 	}
-	.disciplines {
+	.disciplines-list {
 		color:#cccccc;
 	}
 	
-	.disciplines .fa{
+	.disciplines-list .fa{
 		color:#cccccc;
 		display:inline-block;
 		float:none;
 	}
 	
-	.disciplines .fa:hover{
+	.disciplines-list .fa:hover{
 		color:#33CCFF;
 	}
 	
@@ -98,11 +98,34 @@
 		margin-left:10px;
 	}
 
+	.checkbox-biglist{
+		/* This timing applies on the way IN */
+		transition-timing-function: ease-out;
+		/* A litttttle slower on the way in */
+		transition: 0.90s;
+
+		max-height: 9999rem;
+		opacity: 1;
+	}
+
 	.checkbox-biglist label {
 		padding:10px;
 		display:inline-block;
 	}
-	
+
+	.checkbox-biglist.hide {
+		max-height: 0;
+		opacity: 0;
+		/*display: none;*/
+	}
+
+	/* Show more Widjets */
+
+	.showmore {
+		color:#3399FF;
+		cursor:pointer;
+	}
+
 	.table-scroll .fa {
 		font-size:24px;
 	}
@@ -154,3 +177,5 @@
 		background-color: #007bff;
 		color:#ffffff;
 	}
+
+

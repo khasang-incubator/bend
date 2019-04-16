@@ -18,4 +18,8 @@ public class ShowTemplatesController {
     public String getManagerTemplate() {
         return "manager-template";
     }
+    @RequestMapping("/disciplines-widjet")
+    public String getDWTemplate() {
+        return "disciplines-widjet";
+    }
 }
