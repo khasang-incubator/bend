@@ -23,6 +23,9 @@ public class School {
     @Column(columnDefinition = "TEXT", name = "time_table")
     private String timeTable;
 
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private HomePagesUrl url;
+
 //    MultipleBagFetchException: cannot simultaneously fetch multiple bags: невозможно получить несколько пакетов
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Set<Discipline> disciplinesSet = new HashSet<>();
@@ -108,5 +111,35 @@ public class School {
 
     public void setPlacesSet(Set<Place> placesSet) {
         this.placesSet = placesSet;
+    }
+
+    public HomePagesUrl getUrl() {
+        return url;
+    }
+
+    public void setUrl(HomePagesUrl url) {
+        this.url = url;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        School school = (School) o;
+
+        if (id != school.id) return false;
+        if (name != null ? !name.equals(school.name) : school.name != null) return false;
+        if (description != null ? !description.equals(school.description) : school.description != null) return false;
+        return logoSrc != null ? logoSrc.equals(school.logoSrc) : school.logoSrc == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = (int) (id ^ (id >>> 32));
+        result = 31 * result + (name != null ? name.hashCode() : 0);
+        result = 31 * result + (description != null ? description.hashCode() : 0);
+        result = 31 * result + (logoSrc != null ? logoSrc.hashCode() : 0);
+        return result;
     }
 }

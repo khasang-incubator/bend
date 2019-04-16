@@ -4,6 +4,7 @@ import io.khasang.bend.dto.SchoolDto;
 import io.khasang.bend.entity.Place;
 import io.khasang.bend.entity.Point;
 import io.khasang.bend.entity.School;
+import io.khasang.bend.entity.Url;
 import org.junit.Test;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.*;
@@ -94,6 +95,12 @@ public class SchoolControllerIntegrationTest {
         return createdSchool;
     }
 
+    private Url createUrl(){
+        Url url = new Url();
+        url.setUrl(String.valueOf(url.hashCode()));
+        return url;
+    }
+
     private School prefillSchool() {
         School school = new School();
         //school.setId(1);
@@ -124,6 +131,9 @@ public class SchoolControllerIntegrationTest {
         set.add(place2);
 
         school.setPlacesSet(set);
+
+        school.setUrl(createUrl());
+
         return school;
     }
 }

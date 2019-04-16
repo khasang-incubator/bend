@@ -27,6 +27,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and().csrf().disable().cors().disable().formLogin().defaultSuccessUrl("/", false);
     }
 
+
     // NON PRODUCTION!!! spring 3-4
 //    @Override
 //    public void configure(AuthenticationManagerBuilder auth) throws Exception {

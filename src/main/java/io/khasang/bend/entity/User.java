@@ -4,16 +4,7 @@ import io.khasang.bend.model.Gender;
 import io.khasang.bend.model.UserStatus;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -49,6 +40,9 @@ public class User {
     private String interests;
     @Column(name = "role_id")
     private Integer role;
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private HomePagesUrl url;
+
     @ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     private Set<Discipline> disciplinesSet = new HashSet<>();
 
@@ -178,5 +172,37 @@ public class User {
 
     public void setInterests(String interests) {
         this.interests = interests;
+    }
+
+    public HomePagesUrl getUrl() {
+        return url;
+    }
+
+    public void setUrl(HomePagesUrl url) {
+        this.url = url;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        User user = (User) o;
+
+        if (id != null ? !id.equals(user.id) : user.id != null) return false;
+        if (!name.equals(user.name)) return false;
+        if (!lastName.equals(user.lastName)) return false;
+        if (!age.equals(user.age)) return false;
+        return gender == user.gender;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + name.hashCode();
+        result = 31 * result + lastName.hashCode();
+        result = 31 * result + age.hashCode();
+        result = 31 * result + (gender != null ? gender.hashCode() : 0);
+        return result;
     }
 }
