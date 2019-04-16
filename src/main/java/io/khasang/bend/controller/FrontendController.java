@@ -34,6 +34,9 @@ public class FrontendController {
             System.out.println("location"+ homepageadress +"catched");
         }
         return "student-template";
+
+
+        entityManager.
     }
 
 
