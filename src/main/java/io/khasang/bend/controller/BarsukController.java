@@ -38,7 +38,7 @@ public class BarsukController {
 
     @RequestMapping(value = "/name/{name}", method = RequestMethod.GET)
     @ResponseBody
-    public List<Barsuk> getBarsukById(@PathVariable("name") String name) {
+    public List<Barsuk> getBarsukByName(@PathVariable("name") String name) {
         return barsukService.getByName(name);
     }
 
