@@ -11,7 +11,7 @@ public class HomePagesUrl {
     Long id;
     @Column(name = "url")
     String url;
-    @Column(name = "entity_id")
+    @Column(name = "entity_type")
     Integer entityId;
 
     public Long getId() {
