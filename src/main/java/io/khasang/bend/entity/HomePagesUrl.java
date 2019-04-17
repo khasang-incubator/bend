@@ -7,9 +7,12 @@ import javax.persistence.*;
 public class HomePagesUrl {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
     Long id;
     @Column(name = "url")
     String url;
+    @Column(name = "entity_id")
+    Integer entityId;
 
     public Long getId() {
         return id;
@@ -25,5 +28,13 @@ public class HomePagesUrl {
 
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    public Integer getEntityId() {
+        return entityId;
+    }
+
+    public void setEntityId(Integer entityId) {
+        this.entityId = entityId;
     }
 }

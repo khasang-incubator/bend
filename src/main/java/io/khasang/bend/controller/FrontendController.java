@@ -1,13 +1,8 @@
 package io.khasang.bend.controller;
 
 import io.khasang.bend.entity.HomePagesUrl;
-import io.khasang.bend.entity.User;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -24,34 +19,29 @@ public class FrontendController {
     protected EntityManager entityManager;
 
     @RequestMapping(value = "{homepageadress}", method = RequestMethod.GET)
-    String getDynamicUriValueRegex(@PathVariable("homepageadress") String homepageadress){
+    String getDynamicUriValueRegex(@PathVariable("homepageadress") String homepageadress, Model model){
 
         Query q = entityManager.createQuery("FROM HomePagesUrl WHERE url = ?1");
+
         q.setParameter(1, homepageadress);
         System.err.println("location query"+q.toString());
         List<HomePagesUrl> resultList = q.getResultList();
         if (!resultList.isEmpty()){
+            HomePagesUrl homePagesUrl = resultList.get(0);
+            int i = homePagesUrl.getEntityId();
+                switch (i){
+                    case 0:
+                        model.addAttribute("urlId", homePagesUrl.getId());
+                        return "student-template";
+                    case 1:
+                        model.addAttribute("urlId", homePagesUrl.getId());
+                        return "manager-template";
+                }
+
             System.out.println("location"+ homepageadress +"catched");
         }
         return "student-template";
-
-
-        entityManager.
     }
-
-
-    //далее нужно проверить студент это или школа.. а лучше проверять это сразу в одном sql-запросе
-
-//    @RequestMapping(value = "{name}", method = RequestMethod.GET)
-//    String getDynamicUriValueRegex(@PathVariable("name") String name){
-//        System.out.println("Name is "+name);
-//        return "student-template";
-//    }
-//    @RequestMapping(value = "{name}", method = RequestMethod.GET)
-//    String getDynamicUriValueRegex(@PathVariable("name") String name){
-//        System.out.println("Name is "+name);
-//        return "student-template";
-//    }
 
     @PersistenceContext
     public void setEntityManager(EntityManager entityManager) {
@@ -61,6 +51,4 @@ public class FrontendController {
     public EntityManager getEntityManager() {
         return entityManager;
     }
-
-
 }

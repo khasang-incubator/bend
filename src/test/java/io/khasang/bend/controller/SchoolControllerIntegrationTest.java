@@ -97,6 +97,7 @@ public class SchoolControllerIntegrationTest {
 
     private HomePagesUrl createUrl(){
         HomePagesUrl url = new HomePagesUrl();
+        url.setEntityId(1);
         url.setUrl(String.valueOf(url.hashCode()));
         return url;
     }

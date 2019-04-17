@@ -24,6 +24,7 @@ public class School {
     private String timeTable;
 
     @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    //@Column(name = "url_id")
     private HomePagesUrl url;
 
 //    MultipleBagFetchException: cannot simultaneously fetch multiple bags: невозможно получить несколько пакетов

@@ -99,6 +99,7 @@ public class UserControllerIntegrationTest {
 
     private HomePagesUrl createUrl(){
         HomePagesUrl url = new HomePagesUrl();
+        url.setEntityId(0);
         url.setUrl(String.valueOf(url.hashCode()));
         return url;
     }
