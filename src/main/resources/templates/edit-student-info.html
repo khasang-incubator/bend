@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div th:fragment="edit-student-info" class="edit-student-info">
+    <h2>Профиль</h2>
+    <label>опыт</label>
+    <div class="checkbox-biglist">
+        <textarea id="experience-student-edit" rows="10" cols="45" name="text"></textarea>
+    </div>
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="weight-label">вес</span>
+        </div>
+        <input id="weight-student-edit" type="number" class="form-control" placeholder="32" aria-label="phone" aria-describedby="basic-addon1">
+    </div>
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="height-label">рост</span>
+        </div>
+        <input id="height-student-edit" type="number" class="form-control" placeholder="32" aria-label="phone" aria-describedby="basic-addon1">
+    </div>
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="studentStatus-label">статус</span>
+        </div>
+        <input type="radio" id="studentStatusChoice1" class="form-control"
+               name="contact" value="0">
+        <label for="studentStatusChoice1">свободен</label>
+        <input type="radio" id="studentStatusChoice2" class="form-control"
+               name="contact" value="1">
+        <label for="studentStatusChoice2">на обучении</label>
+    </div>
+</div>
+
+</body>
+</html>

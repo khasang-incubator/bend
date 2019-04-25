@@ -18,4 +18,8 @@ public class ShowTemplatesController {
     public String getManagerTemplate() {
         return "manager-template";
     }
+    @RequestMapping("/user-info")
+    public String getUserInfoTemplate() {
+        return "user-info-template";
+    }
 }

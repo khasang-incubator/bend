@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div th:fragment="edit-user-info">
+        <form type="POST" action="/">
+            <h2>Профиль</h2>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="lastname-label">фамилия</span>
+                </div>
+                <input id="lastname-user-edit" type="name" class="form-control" placeholder="Иванов" aria-label="lastname" aria-describedby="basic-addon1">
+            </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="gender-label">пол</span>
+                </div>
+                <input type="radio" id="genderChoice1" class="form-control"
+                       name="contact" value="0">
+                <label for="genderChoice1">мужской</label>
+                <input type="radio" id="genderChoice2" class="form-control"
+                       name="contact" value="1">
+                <label for="genderChoice2">женский</label>
+            </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="birthday-label">дата рождения</span>
+                </div>
+                <input id="birthday-user-edit" type="date" class="form-control" placeholder="32" aria-label="birthday" aria-describedby="basic-addon1">
+            </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="phone-label">телефон</span>
+                </div>
+                <input id="phone-user-edit" type="tel" class="form-control" placeholder="32" aria-label="phone" aria-describedby="basic-addon1">
+            </div>
+            <div class="checkbox-biglist">
+                <label><input id="isonmap-user-edit"  type="checkbox"/> показывать местоположение на карте</label>
+            </div>
+            <div class="checkbox-biglist">
+                <label><input id="ishealthlimited-user-edit"  type="checkbox"/> имеет ограничение по здоровью</label>
+            </div>
+            <label>пара слов о себе</label>
+            <div class="checkbox-biglist">
+                <textarea id="description-user-edit" rows="10" cols="45" name="text"></textarea>
+            </div>
+            <input class="btn btn-info reg-author-but" type="submit" value="далее"/>
+        </form>
+    </div>
+</body>
+</html>

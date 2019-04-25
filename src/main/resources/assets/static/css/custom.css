@@ -154,3 +154,11 @@
 		background-color: #007bff;
 		color:#ffffff;
 	}
+
+	#footer .navbar-text.pull-left {
+		color: #ffffff;
+	}
+
+	.input-group-prepend input {
+		cursor: pointer;
+	}

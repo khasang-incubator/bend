@@ -12,6 +12,7 @@
     <!-- Custom styles for this template -->
     <link href="/css/simple-sidebar.css" rel="stylesheet">
     <link rel="stylesheet" href="/css/custom.css">
+    <link rel="stylesheet" href="/css/reg.css">
 </head>
 <body>
 <div class="d-flex" id="wrapper">
@@ -30,6 +31,8 @@
     <div id="page-content-wrapper">
 
         <nav th:insert="~{topmenu :: topmenu}"></nav>
+
+        <div th:insert="~{edit-student-info :: edit-student-info}"></div>
 
         <div th:insert="~{schools-list :: schools-list}"></div>
 

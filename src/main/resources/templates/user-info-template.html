@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>User-info</title>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/simple-sidebar.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/custom.css">
+    <link rel="stylesheet" href="/css/reg.css">
+</head>
+<body>
+
+    <div class="d-flex center-block user-info-edit" id="wrapper">
+        <div class="d-flex center-block" th:insert="~{edit-user-info :: edit-user-info}" style="margin: auto; margin-top: 25px; margin-bottom: 25px;"></div>
+    </div>
+
+    <div th:insert="~{footer :: footer}"></div>
+
+</body>
+
+    <span th:insert="~{footer-script :: footer-script}"></span>
+    <script src="/js/reg.js"></script>
+
+</html>

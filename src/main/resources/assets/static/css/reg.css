@@ -215,3 +215,36 @@ label {
 #myTab {
     width: 100%;
 }
+
+
+
+
+
+/********************User-info**********************/
+
+.input-group input[type="radio"] {
+    cursor: pointer;
+}
+.user-info-edit .btn-info {
+    padding: .375rem .75rem;
+    display: inline-block;
+    background-color: #0056b3;
+    color:#ffffff;
+    width: 100%;
+    border: none;
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+.user-info-edit .btn-info:hover {
+    background-color: #007bff;
+    color:#ffffff;
+}
+
+/********************Student-info**********************/
+.edit-student-info input[type=number]::-webkit-inner-spin-button,
+.edit-student-info input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0;
+}
