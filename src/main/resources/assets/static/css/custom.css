@@ -124,6 +124,7 @@
 	.showmore {
 		color:#3399FF;
 		cursor:pointer;
+		text-align: center;
 	}
 
 	.table-scroll .fa {

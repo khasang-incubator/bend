@@ -1,34 +1,14 @@
 //http://localhost:8080/showtemplate/disciplines-widjet
 $(document).ready(function () {
 
-
-    // var service = 'http://localhost:8080/barsuk';
-    //
-    // var RestGetAll = function () {
-    //     $.ajax({
-    //         type: 'GET',
-    //         url: service + '/all',
-    //         dataType: 'json',
-    //         accept: 'json',
-    //         contentType: 'application/json;utf-8',
-    //         async: false,
-    //         success: function (result) {
-    //             $('#response').html(JSON.stringify(result))
-    //         },
-    //         error: function (jqXHR, testStatus, errorThrown) {
-    //             $('#response').html(JSON.stringify(jqXHR))
-    //         }
-    //     });
-    // };
-    //
-
-
     $("#disciplines-widjet .showmore").click(function () {
         //alert("showmore");
         if ($("#disciplines-widjet .checkbox-biglist").hasClass("hide")) {
             $("#disciplines-widjet .checkbox-biglist").removeClass("hide")
+            $(".showmore").text(" - ");
         } else {
             $("#disciplines-widjet .checkbox-biglist").addClass("hide");
+            $(".showmore").text(" + ");
         }
     });
 
@@ -59,8 +39,5 @@ $(document).ready(function () {
         } else {
             $(".disciplines-list-" + s).detach();
         }
-
-
     });
-
 });
