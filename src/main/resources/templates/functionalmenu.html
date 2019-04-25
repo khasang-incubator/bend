@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<ul th:fragment="functionalmenu" class="nav navbar-nav">
+    <li class="active"><a class="list-group-item list-group-item-action bg-light" href="#">список школ<span style="font-size:16px;" class="pull-right hidden-xs showopacity fa fa-list"></span></a></li>
+    <li class="active"><a class="list-group-item list-group-item-action bg-light" href="#">школы на карте<span style="font-size:16px;" class="pull-right hidden-xs showopacity fa fa-compass"></span></a></li>
+    <li class="dropdown">
+        <a title="чаты" href="#" class="list-group-item list-group-item-action bg-light dropdown-toggle" data-toggle="dropdown">сообщения <span style="background-color:#3399FF; display:inline-block; width:16px; height:16px; border-radius:10px; color:#ffffff; text-align: center; font-size:11px;">5</span><span class="caret"></span><span style="font-size:16px;" class="pull-right hidden-xs showopacity fa fa-user"></span></a>
+        <ul class="dropdown-menu forAnimate" role="menu">
+            <li><a class="list-group-item list-group-item-action bg-light" href="#">к списку чатов</a></li>
+            <li><a class="list-group-item list-group-item-action bg-light" href="#">школа WindySun</a></li>
+            <li><a class="list-group-item list-group-item-action bg-light" href="#">школа KiteMonkey <span class="message-notif">2</span></a></li>
+            <li class="divider"></li>
+            <li><a class="list-group-item list-group-item-action bg-light" href="#">Петя (ученик) <span class="message-notif">3</span></a></li>
+            <li class="divider"></li>
+            <li><a class="list-group-item list-group-item-action bg-light" href="#">Игорь (ученик)</a></li>
+        </ul>
+    </li>
+    <li ><a title="редактировать список дисциплин" class="list-group-item list-group-item-action bg-light" href="#">дисциплины<span style="font-size:16px;" class="pull-right hidden-xs showopacity fa fa fa-user"></span></a></li>
+    <li ><a title="редактировать информацию о стаже" class="list-group-item list-group-item-action bg-light" href="#">стаж<span style="font-size:16px;" class="pull-right hidden-xs showopacity fa fa-user"></span></a></li>
+    <li class="nav-item">
+        <a class="list-group-item list-group-item-action bg-light menu-toggle" href="#"> < скрыть панель действий </a>
+    </li>
+</ul>
+</body>
+</html>
