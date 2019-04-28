@@ -248,3 +248,25 @@ label {
     appearance: none;
     margin: 0;
 }
+
+
+
+
+.input-group-text {
+    min-width: 200px;
+}
+
+
+input::-webkit-inner-spin-button,
+input::-webkit-outer-spin-button{
+    -webkit-appearance:none;
+}
+input[type="number"]{
+    -moz-appearance:textfield;
+}
+
+#weight-student-edit::-webkit-inner-spin-button,
+#weight-student-edit::-webkit-outer-spin-button{
+    -webkit-appearance:none;
+}
+

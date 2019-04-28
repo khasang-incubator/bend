@@ -5,23 +5,15 @@
     <title>Title</title>
 </head>
 <body>
-    <div th:fragment="edit-manager-info">
+    <div th:fragment="edit-manager-info" class="edit-manager-info container-fluid">
         <h2>Профиль</h2>
         <label>Контактная информация</label>
         <div class="checkbox-biglist">
-            <textarea id="contactinfo-manager-edit" rows="10" cols="45" name="text"></textarea>
+            <textarea id="contactinfo-manager-edit" rows="5" cols="45" name="text" style="width:100%;"></textarea>
         </div>
         <label>Время для связи</label>
         <div class="checkbox-biglist">
-            <textarea id="contacttime-manager-edit" rows="10" cols="45" name="text"></textarea>
-        </div>
-        <div class="input-group mb-3">
-            <div class="checkbox-biglist">
-                <label><input id="contacttimestart-manager-edit" type="time" class="form-control" placeholder="32" aria-label="birthday" aria-describedby="basic-addon1"> время для связи по контактному телефону - от</label>
-            </div>
-            <div class="checkbox-biglist">
-                <label><input id="contacttimefinish-manager-edit" type="time" class="form-control" placeholder="32" aria-label="birthday" aria-describedby="basic-addon1"> время для связи по контактному телефону - до</label>
-            </div>
+            <textarea id="contacttime-manager-edit" rows="5" cols="45" name="text" style="width:100%;"></textarea>
         </div>
     </div>
 </body>

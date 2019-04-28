@@ -6,25 +6,25 @@
 </head>
 <body>
 
-<div th:fragment="edit-student-info" class="edit-student-info">
+<div th:fragment="edit-student-info" class="edit-student-info container-fluid">
     <h2>Профиль</h2>
     <label>опыт</label>
     <div class="checkbox-biglist">
-        <textarea id="experience-student-edit" rows="10" cols="45" name="text"></textarea>
+        <textarea id="experience-student-edit" rows="5" cols="45" name="text" style="width:100%;"></textarea>
     </div>
-    <div class="input-group mb-3">
+    <div class="input-group mb-3" style="width: 440px;">
         <div class="input-group-prepend">
             <span class="input-group-text" id="weight-label">вес</span>
         </div>
         <input id="weight-student-edit" type="number" class="form-control" placeholder="32" aria-label="phone" aria-describedby="basic-addon1">
     </div>
-    <div class="input-group mb-3">
+    <div class="input-group mb-3" style="width: 440px;">
         <div class="input-group-prepend">
             <span class="input-group-text" id="height-label">рост</span>
         </div>
         <input id="height-student-edit" type="number" class="form-control" placeholder="32" aria-label="phone" aria-describedby="basic-addon1">
     </div>
-    <div class="input-group mb-3">
+    <div class="input-group mb-3" style="width: 440px; margin-top: 25px;">
         <div class="input-group-prepend">
             <span class="input-group-text" id="studentStatus-label">статус</span>
         </div>

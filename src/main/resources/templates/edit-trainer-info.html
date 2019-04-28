@@ -5,19 +5,38 @@
     <title>Title</title>
 </head>
 <body>
-    <div th:fragment="edit-user-info">
+    <div th:fragment="edit-trainer-info" class="edit-manager-info container-fluid">
         <form type="POST" action="/">
 
+            <div th:fragment="edit-trainer-info container-fluid">
+                <h2>Профиль</h2>
 
-
-            4.Trainer
-            private long id;
-            int experienceAsTrainer;
-            String experience;//min text/html
-            String achievements;//min text/html
-            int trainerStatus !!!
-
-
+                <div class="input-group mb-3" style="width: 440px;">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="weight-label">стаж по годам</span>
+                    </div>
+                    <input id="weight-trainer-edit" type="number" class="form-control" placeholder=""  aria-describedby="basic-addon1">
+                </div>
+                <label>experience</label>
+                <div class="checkbox-biglist">
+                    <textarea id="experience-trainer-edit" rows="5" cols="45" name="text" style="width:100%;"></textarea>
+                </div>
+                <label>achievements</label>
+                <div class="checkbox-biglist">
+                    <textarea id="achievements-trainer-edit" rows="5" cols="45" name="text" style="width:100%;"></textarea>
+                </div>
+                <div class="input-group mb-3" style="width:440px; margin-top: 25px;">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="trainerStatus-label">статус</span>
+                    </div>
+                    <input type="radio" id="trainerStatusChoice1" class="form-control"
+                           name="contact" value="0">
+                    <label for="trainerStatusChoice1">свободен</label>
+                    <input type="radio" id="trainerStatusChoice2" class="form-control"
+                           name="contact" value="1">
+                    <label for="trainerStatusChoice2">занят</label>
+                </div>
+            </div>
 
         </form>
     </div>
