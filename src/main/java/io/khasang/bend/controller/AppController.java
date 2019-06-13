@@ -41,7 +41,7 @@ public class AppController {
         return "hello";
     }
 
-    @RequestMapping("/")
+    @RequestMapping("/menu")
     public String getBadgerPage() {
         return "menu";
     }

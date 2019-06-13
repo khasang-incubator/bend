@@ -1,6 +1,7 @@
 package io.khasang.bend.controller;
 
 import io.khasang.bend.dto.UserDto;
+import io.khasang.bend.entity.HomePagesUrl;
 import io.khasang.bend.entity.User;
 import io.khasang.bend.model.Gender;
 import io.khasang.bend.model.UserStatus;
@@ -11,6 +12,7 @@ import org.springframework.web.client.RestTemplate;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Random;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -95,6 +97,13 @@ public class UserControllerIntegrationTest {
         return createdUser;
     }
 
+    private HomePagesUrl createUrl(){
+        HomePagesUrl url = new HomePagesUrl();
+        url.setEntityId(0);
+        url.setUrl(String.valueOf(url.hashCode()));
+        return url;
+    }
+
     private User prefillUser() {
         User user = new User();
         user.setName("Ivan");
@@ -110,6 +119,7 @@ public class UserControllerIntegrationTest {
         user.setHealthLimited(false);
         user.setUserDescription("NERD");
         user.setInterests("Wakeboarding");
+        user.setUrl(createUrl());
         return user;
     }
 }
